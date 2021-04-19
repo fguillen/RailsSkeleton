@@ -32,7 +32,7 @@ class Admin::FrontUsersControllerTest < ActionController::TestCase
   end
 
   def test_create_invalid
-    AppreciableUser.any_instance.stubs(:valid?).returns(false)
+    FrontUser.any_instance.stubs(:valid?).returns(false)
     post(
       :create,
       params: {
@@ -61,7 +61,7 @@ class Admin::FrontUsersControllerTest < ActionController::TestCase
       }
     )
 
-    front_user = AppreciableUser.last
+    front_user = FrontUser.last
     assert_redirected_to [:admin, front_user]
 
     assert_equal("Admin Wadus", front_user.name)
@@ -79,7 +79,7 @@ class Admin::FrontUsersControllerTest < ActionController::TestCase
 
   def test_update_invalid
     front_user = FactoryBot.create(:front_user)
-    AppreciableUser.any_instance.stubs(:valid?).returns(false)
+    FrontUser.any_instance.stubs(:valid?).returns(false)
 
     put :update, params: { id: front_user, front_user: { password: "password", password_confirmation: "invalid" } }
 
@@ -115,6 +115,6 @@ class Admin::FrontUsersControllerTest < ActionController::TestCase
     assert_redirected_to :admin_front_users
     assert_not_nil(flash[:notice])
 
-    assert !AppreciableUser.exists?(front_user.id)
+    assert !FrontUser.exists?(front_user.id)
   end
 end

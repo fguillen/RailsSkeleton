@@ -8,7 +8,7 @@
 
 <table class="table table-striped table-hover">
   <tr>
-    <th><%= t "activerecord.attributes.front_user.slug" %></th>
+    <th><%= t "activerecord.attributes.front_user.uuid" %></th>
     <th><%= t "activerecord.attributes.front_user.name" %></th>
     <th><%= t "activerecord.attributes.front_user.email" %></th>
     <th><%= t "activerecord.attributes.front_user.created_at" %> At</th>
@@ -16,7 +16,7 @@
 
   <% @front_users.each do |front_user| %>
     <tr>
-      <td><%= link_to front_user.slug, [:admin, front_user] %></td>
+      <td><%= link_to front_user.uuid, [:admin, front_user] %></td>
       <td><%= link_to front_user.name, [:admin, front_user] %></td>
       <td><%= front_user.email %></td>
       <td><%= front_user.created_at.to_s(:datetimedb) %></td>

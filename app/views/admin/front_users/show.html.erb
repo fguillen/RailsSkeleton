@@ -8,7 +8,7 @@
 </nav>
 
 <dl class="row">
-  <dt class="col-sm-2 text-right"><%= t "activerecord.attributes.front_user.slug" %></dt><dd class="col-sm-10"><%= @front_user.slug %></dd>
+  <dt class="col-sm-2 text-right"><%= t "activerecord.attributes.front_user.uuid" %></dt><dd class="col-sm-10"><%= @front_user.uuid %></dd>
   <dt class="col-sm-2 text-right"><%= t "activerecord.attributes.front_user.name" %></dt><dd class="col-sm-10"><%= @front_user.name %></dd>
   <dt class="col-sm-2 text-right"><%= t "activerecord.attributes.front_user.email" %></dt><dd class="col-sm-10"><%= @front_user.email %></dd>
 </dl>
@@ -24,23 +24,11 @@
 <section class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">
-      <%= t "views.front_user.sections.sent_appreciations" %>
+      <%= t "views.front_user.sections.posts" %>
     </h3>
   </div>
 
   <div class="panel-body">
-    <%= render partial: "admin/appreciations/list", locals: { appreciations: @front_user.sent_appreciations } %>
-  </div>
-</section>
-
-<section class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">
-      <%= t "views.front_user.sections.received_appreciations" %>
-    </h3>
-  </div>
-
-  <div class="panel-body">
-    <%= render partial: "admin/appreciations/list", locals: { appreciations: @front_user.received_appreciations } %>
+    <%= render partial: "admin/posts/list", locals: { posts: @front_user.posts } %>
   </div>
 </section>
