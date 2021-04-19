@@ -1,0 +1,13 @@
+<% title (t "views.front_users.edit.title", :front_user_name => @front_user.name) %>
+
+<ol class="breadcrumb">
+  <li><%= link_to (t "layouts.breadcrumbs.front_users"), :admin_front_users %></li>
+  <li><%= link_to @front_user.name, [:admin, @front_user] %></li>
+  <li class="active"><%= t "layouts.breadcrumbs.edit" %></li>
+</ol>
+
+<p class="lead">
+  <%= t "views.front_users.edit.text" %>
+</p>
+
+<%= render "form" %>
