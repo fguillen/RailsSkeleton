@@ -4,6 +4,7 @@
         "crypted",
         "omniauth",
         "password",
+        "unprocessable",
         "wadus"
     ]
 }
