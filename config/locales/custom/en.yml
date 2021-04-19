@@ -21,8 +21,8 @@ en:
         body: Body
         created_at: Created at
         front_user:
-          one: FrontUser
           name: FrontUser Name
+          one: FrontUser
         one: Post
         title: Title
         uuid: Uuid
@@ -97,9 +97,9 @@ en:
       front_users: Appreciable users
       login: Login
       logout: Logout
+      my_posts: See my posts
       new_post: Write a new Appreciation
       posts: See all posts
-      my_posts: See my posts
   views:
     admin_sessions:
       forgot_password:
