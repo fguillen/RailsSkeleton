@@ -1,0 +1,135 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+.nav-steps {
+  counter-reset: step;
+  text-align: center;
+  margin: 35px 0 20px;
+  font-size: 0;
+  white-space: nowrap;
+}
+
+.nav-steps > li {
+  display: inline-block;
+  position: relative;
+  min-width: 200px;
+  padding: 20px 0 0;
+  border-top: 1px solid #444;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.nav-steps > li:before {
+  counter-increment: step;
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -15px;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  margin: auto;
+  line-height: 30px;
+  text-align: center;
+  background: white;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.nav-steps > li,
+.nav-steps > li:before,
+.nav-steps > li.active > a {
+  color: #444;
+}
+
+.nav-steps > li.active:before {
+  background: #337ab7;
+  color: white;
+}
+
+.nav-steps > li.active ~ li > a,
+.nav-steps > li.active ~ li:before {
+  color: #aaa;
+}
+.nav-steps > li[data-disabled] {
+  cursor: inherit;
+}
+
+.nav-steps > li.active ~ li {
+  border-color: #ddd;
+  cursor: default;
+}
+
+.nav-steps > li > a {
+  padding: 0;
+  color: inherit;
+}
+
+.nav-steps > li > a:hover,
+.nav-steps > li > a:active {
+  background: transparent;
+}
+
+
+.environment_badge {
+  position: absolute;
+  left: -52px;
+  top: 30px;
+  display: block;
+  width: 200px;
+  background: darkorange;
+  background: -moz-linear-gradient(top, darkorange 0%, darken(darkorange, 20) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, darkorange), color-stop(100%, darken(darkorange, 20)));
+  text-align: center;
+  padding: 4px 15px 4px 3px;
+  text-shadow: darken(darkorange, 20) 1px 1px 0;
+  -webkit-transform: rotate(-45deg);  /* Saf3.1+, Chrome */
+  -moz-transform: rotate(-45deg);  /* FF3.5+ */
+  -ms-transform: rotate(-45deg);  /* IE9 */
+  -o-transform: rotate(-45deg);  /* Opera 10.5 */
+  transform: rotate(-45deg);
+  box-shadow: rgba(0,0,0, 0.2) 0px 0px 6px;
+  -moz-box-shadow: rgba(0,0,0, 0.2) 0px 0px 6px;
+  -webkit-box-shadow: rgba(0,0,0, 0.2) 0px 0px 6px;
+  z-index: 1035;
+  letter-spacing: 1px;
+  font-style: normal;
+  font-size: 12px !important;
+  color: white;
+  text-transform: uppercase;
+  line-height: 12px;
+  display: block;
+  font-family: Verdana;
+}
+
+
+.navbar-inverse .navbar-text{
+  color: #F5F5F5;
+  margin-top: 10px;
+}
+.navbar-inverse{
+  background: #222222;
+  color: #F5F5F5;
+}
+.navbar-inverse .navbar-brand{
+  color: #F5F5F5;
+}
+
+.layout-bottom-navbar {
+  transition: 0.2s ease-in;
+}
+.layout-bottom-navbar.is-hidden {
+  display: block !important;
+  transform: translateY(100%);
+}

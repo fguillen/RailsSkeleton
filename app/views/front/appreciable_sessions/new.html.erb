@@ -1,0 +1,8 @@
+<% title t("views.appreciable_sessions.new.title") %>
+
+<div class="jumbotron login">
+  <h1 class="display-4">Authentication</h1>
+  <p class="lead">Only the very priviledged ScrapStats's crew can access to this site</p>
+  <hr class="my-4">
+  <%= link_to "Login with your ScrapStats's Account", "/auth/google_oauth2?from=front", :class=> "btn btn-outline-primary btn-lg" %>
+</div>

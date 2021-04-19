@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= render "/layouts/admin/header" %>
+  </head>
+
+  <body>
+    <% if !Rails.env.production? %>
+      <div class="environment_badge"><%= Rails.env %></div>
+    <% end %>
+
+    <div class="container">
+      <%= render "layouts/admin/menu_basic" %>
+
+      <div id="content">
+        <% flash.each do |type, message| %>
+          <%= content_tag :div, BlueCloth.new(message).to_html.html_safe, :id => "flash_#{type}", :class => bootstrap_alert_class(type.to_sym) %>
+        <% end %>
+
+        <%= yield %>
+      </div>
+    </div>
+
+    <%= render "layouts/admin/footer" %>
+  </body>
+  </body>
+</html>

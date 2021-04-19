@@ -1,0 +1,104 @@
+---
+test:
+  hosts: <%= ENV.fetch('SECRET_HOSTS').split(",").to_s %>
+  admin_email: it@scrapstats.com
+  google_auth:
+    client_id: "GOOGLE_CLIENT_ID"
+    client_secret: "<%= ENV.fetch('SECRET_GOOGLE_AUTH_CLIENT_SECRET') %>"
+  mini_graphite:
+    mock_mode: true
+    debug_mode:
+  smtp:
+    enabled: false
+  api:
+    admin_token:
+      - TEST_ADMIN_TOKEN_1
+      - TEST_ADMIN_TOKEN_2
+    token:
+      - TEST_TOKEN_1
+      - TEST_TOKEN_2
+  slack_notifier:
+    enabled: true
+    debug: false
+    webhook_url: https://hooks.slack.com/services/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
+
+development:
+  hosts: <%= ENV.fetch('SECRET_HOSTS').split(",").to_s %>
+  admin_email: it@scrapstats.com
+  google_auth:
+    client_id: "193465454284-apigmm255ti8n2rb9ov2obtir6s2cdin.apps.googleusercontent.com"
+    client_secret: "<%= ENV.fetch('SECRET_GOOGLE_AUTH_CLIENT_SECRET') %>"
+  mini_graphite:
+    mock_mode: true
+    debug_mode: true
+  smtp:
+    enabled: false
+  api:
+    admin_token:
+      - "<%= ENV.fetch('SECRET_API_ADMIN_TOKEN') %>"
+    token:
+      - "<%= ENV.fetch('SECRET_APP_TOKEN') %>"
+  slack_notifier:
+    enabled: true
+    debug: true
+    webhook_url: <%= ENV.fetch('SECRET_SLACK_WEBHOOK_URL') %>
+
+staging:
+  hosts: <%= ENV.fetch('SECRET_HOSTS').split(",").to_s %>
+  admin_email: it@scrapstats.com
+  google_auth:
+    client_id: "193465454284-apigmm255ti8n2rb9ov2obtir6s2cdin.apps.googleusercontent.com"
+    client_secret: "<%= ENV.fetch('SECRET_GOOGLE_AUTH_CLIENT_SECRET') %>"
+  mini_graphite:
+    graphite_host: 10.0.128.44
+    graphite_port: 2003
+    statsd_host: 10.0.128.44
+    statsd_port: 8125
+    mock_mode: false
+    debug_mode: true
+  smtp:
+    enabled: true
+    server: smtp.sendgrid.net
+    port: 587
+    domain: scrapstats.staging.scrapstats.com
+    user: apikey
+    pass: "<%= ENV.fetch('SECRET_SMTP_PASS') %>"
+  api:
+    admin_token:
+      - "<%= ENV.fetch('SECRET_API_ADMIN_TOKEN') %>"
+    token:
+      - "<%= ENV.fetch('SECRET_APP_TOKEN') %>"
+  slack_notifier:
+    enabled: true
+    debug: false
+    webhook_url: <%= ENV.fetch('SECRET_SLACK_WEBHOOK_URL') %>
+
+production:
+  hosts: <%= ENV.fetch('SECRET_HOSTS').split(",").to_s %>
+  admin_email: it@scrapstats.com
+  google_auth:
+    client_id: "193465454284-apigmm255ti8n2rb9ov2obtir6s2cdin.apps.googleusercontent.com"
+    client_secret: "<%= ENV.fetch('SECRET_GOOGLE_AUTH_CLIENT_SECRET') %>"
+  mini_graphite:
+    graphite_host: 10.0.0.44
+    graphite_port: 2003
+    statsd_host: 10.0.0.44
+    statsd_port: 8125
+    mock_mode: false
+    debug_mode: false
+  smtp:
+    enabled: true
+    server: smtp.sendgrid.net
+    port: 587
+    domain: scrapstats.scrapstats.com
+    user: apikey
+    pass: "<%= ENV.fetch('SECRET_SMTP_PASS') %>"
+  api:
+    admin_token:
+      - "<%= ENV.fetch('SECRET_API_ADMIN_TOKEN') %>"
+    token:
+      - "<%= ENV.fetch('SECRET_APP_TOKEN') %>"
+  slack_notifier:
+    enabled: true
+    debug: false
+    webhook_url: <%= ENV.fetch('SECRET_SLACK_WEBHOOK_URL') %>

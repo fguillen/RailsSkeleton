@@ -1,0 +1,22 @@
+<div id="appreciations" class="row row-cols-1 row-cols-sm-2 row-cols-lg-4">
+  <% appreciations.each do |appreciation| %>
+    <div class="col mb-4">
+      <div class="card appreciation <%= appreciation_custom_style(appreciation) %>">
+        <% if appreciation.pic.attached? %>
+          <div class="card-img-top text-center">
+            <%= image_tag appreciation.pic, class: "" %>
+          </div>
+        <% end %>
+
+        <div class="card-body">
+          <p class="static"><span><span class="font-weight-bold"><%= appreciation.by.name %></span>
+          wants to appreciate to</span></p>
+          <h5 class="card-title by"><%= appreciation.to_formatted %></h5>
+          <p class="static"><span>because</span></p>
+          <div class="card-text message"><%= render_markdown(appreciation.message) %></div>
+          <%= link_to appreciation.created_at.to_s(:datehuman_long), [:front, appreciation], class: "card-link bottom" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

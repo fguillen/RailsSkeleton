@@ -1,0 +1,46 @@
+<% title (t "views.appreciable_users.show.title", :appreciable_user_name => @appreciable_user.name) %>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to (t "layouts.breadcrumbs.appreciable_users"), :admin_appreciable_users %></li>
+    <li class="breadcrumb-item active"><%= @appreciable_user.name %></li>
+  </ol>
+</nav>
+
+<dl class="row">
+  <dt class="col-sm-2 text-right"><%= t "activerecord.attributes.appreciable_user.slug" %></dt><dd class="col-sm-10"><%= @appreciable_user.slug %></dd>
+  <dt class="col-sm-2 text-right"><%= t "activerecord.attributes.appreciable_user.name" %></dt><dd class="col-sm-10"><%= @appreciable_user.name %></dd>
+  <dt class="col-sm-2 text-right"><%= t "activerecord.attributes.appreciable_user.email" %></dt><dd class="col-sm-10"><%= @appreciable_user.email %></dd>
+</dl>
+
+<div class="controls text-right">
+  <p>
+    <%= link_to (t "views.appreciable_users.show.edit_button"), edit_admin_appreciable_user_path(@appreciable_user), :class => "btn btn-primary" %>
+    <%= link_to (t "views.appreciable_users.show.delete_button"), [:admin, @appreciable_user], :data => { :confirm => (t "views.appreciable_users.show.delete_confirmation") }, :method => :delete, :class => "btn btn-danger" %>
+  </p>
+</div>
+
+
+<section class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      <%= t "views.appreciable_user.sections.sent_appreciations" %>
+    </h3>
+  </div>
+
+  <div class="panel-body">
+    <%= render partial: "admin/appreciations/list", locals: { appreciations: @appreciable_user.sent_appreciations } %>
+  </div>
+</section>
+
+<section class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      <%= t "views.appreciable_user.sections.received_appreciations" %>
+    </h3>
+  </div>
+
+  <div class="panel-body">
+    <%= render partial: "admin/appreciations/list", locals: { appreciations: @appreciable_user.received_appreciations } %>
+  </div>
+</section>

@@ -1,0 +1,13 @@
+<% title (t "views.appreciations.edit.title", :appreciation_uuid => @appreciation.uuid) %>
+
+<ol class="breadcrumb">
+  <li><%= link_to (t "layouts.breadcrumbs.appreciations"), :admin_appreciations %></li>
+  <li><%= link_to @appreciation.uuid, [:admin, @appreciation] %></li>
+  <li class="active"><%= t "layouts.breadcrumbs.edit" %></li>
+</ol>
+
+<p class="lead">
+  <%= t "views.appreciations.edit.text" %>
+</p>
+
+<%= render "form" %>
