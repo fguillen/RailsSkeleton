@@ -34,9 +34,9 @@ class ActiveSupport::TestCase
     @controller.stubs(:current_admin_user).returns(@admin_user)
   end
 
-  def setup_appreciable_user
-    @appreciable_user = FactoryBot.create(:appreciable_user)
-    @controller.stubs(:current_appreciable_user).returns(@appreciable_user)
+  def setup_front_user
+    @front_user = FactoryBot.create(:front_user)
+    @controller.stubs(:current_front_user).returns(@front_user)
   end
 
   def assert_ids(array_1, array_2, _message = nil)

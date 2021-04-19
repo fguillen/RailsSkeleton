@@ -1,147 +1,30 @@
-
 <%= form_for [:front, @post] do |f| %>
   <%= render "/shared/form_errors", :object => f.object %>
-  <div class="row justify-content-md-center">
-    <div class="col-md-6">
-      <div class="card post <%= post_custom_style(@post) %>">
-        <% if @post.persisted? && @post.pic.attached? %>
-          <div class="card-img-top text-center">
-            <%= image_tag @post.pic, class: "" %>
-          </div>
-        <% end %>
-        <div class="card-body">
 
-          <p class="static">
-            <span>
-              <span class="font-weight-bold">I, <%= @post.by.name %></span>
-              want to appreciate to
-            </span>
-          </p>
+  <fieldset>
+    <legend><%= "Post attributes" %></legend>
+    <hr>
 
-          <h5 class="card-title by">
-            <%= f.text_area :to_names, class: "form-control", id: "names" %>
-          </h5>
+    <div class="form-group row">
+      <%= f.label :title, class: "col-sm-2 col-form-label text-right"%>
 
-          <p class="static"><span>because</span></p>
-
-          <div class="card-text message">
-            <%= f.text_area :message, class: "form-control", rows: 10, placeholder: t("activerecord.attributes.post.message") %>
-          </div>
-
-          <p class="static"><span>and I want to pump it up with this image</span></p>
-          <%= f.file_field :pic, class: "form-control-file" %>
-        </div>
-      </div>
-
-      <div class="controls text-right">
-        <p>
-          <%= f.submit class: "btn btn-outline-primary btn-lg", role: "button"%>
-        </p>
+      <div class="col-sm-10">
+        <%= f.text_field :title, class: "form-control", placeholder: t("activerecord.attributes.post.title") %>
       </div>
     </div>
-  </div>
+
+    <div class="form-group row">
+      <%= f.label :body, class: "col-sm-2 col-form-label text-right"%>
+
+      <div class="col-sm-10">
+        <%= f.text_area :body, class: "form-control", rows: 4, placeholder: t("activerecord.attributes.post.body") %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="offset-sm-2 col-sm-10">
+        <%= f.submit class: "btn btn-primary" %>
+      </div>
+    </div>
+  </fieldset>
 <% end %>
-
-<!-- Autocomplete Stuff -->
-
-<script type="text/javascript">
-  $( function() {
-    var availableTags = <%= FrontUser.order_by_name.map(&:name).to_json.html_safe %>;
-
-    function split( val ) {
-      return val.split( /,\s*/ );
-    }
-    function extractLast( term ) {
-      return split( term ).pop();
-    }
-
-    $( "#names" )
-      // don't navigate away from the field on tab when selecting an item
-      .on( "keydown", function( event ) {
-        if ( event.keyCode === $.ui.keyCode.TAB &&
-            $( this ).autocomplete( "instance" ).menu.active ) {
-          event.preventDefault();
-        }
-      })
-      .autocomplete({
-        minLength: 0,
-        source: function( request, response ) {
-          // delegate back to autocomplete, but extract the last term
-          response( $.ui.autocomplete.filter(
-            availableTags, extractLast( request.term ) ) );
-        },
-        focus: function() {
-          // prevent value inserted on focus
-          return false;
-        },
-        select: function( event, ui ) {
-          var terms = split( this.value );
-          // remove the current input
-          terms.pop();
-          // add the selected item
-          terms.push( ui.item.value );
-          // add placeholder to get the comma-and-space at the end
-          terms.push( "" );
-          this.value = terms.join( ", " );
-          return false;
-        }
-      });
-  } );
-</script>
-
-<style type="text/css">
-  .ui-autocomplete {
-    transform: rotate(-4deg);
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 1000;
-    float: left;
-    display: none;
-    min-width: 160px;
-    padding: 4px 0;
-    margin: 0 0 10px 25px;
-    list-style: none;
-    background-color: #ffffff;
-    border-color: #ccc;
-    border-color: rgba(0, 0, 0, 0.2);
-    border-style: solid;
-    border-width: 1px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    -webkit-background-clip: padding-box;
-    -moz-background-clip: padding;
-    background-clip: padding-box;
-    *border-right-width: 2px;
-    *border-bottom-width: 2px;
-}
-
-.ui-menu-item > a.ui-corner-all {
-    display: block;
-    padding: 3px 15px;
-    clear: both;
-    font-weight: normal;
-    line-height: 18px;
-    color: #555555;
-    white-space: nowrap;
-    text-decoration: none;
-}
-
-.ui-state-hover, .ui-state-active {
-    color: #ffffff;
-    text-decoration: none;
-    background-color: #0088cc;
-    border-radius: 0px;
-    -webkit-border-radius: 0px;
-    -moz-border-radius: 0px;
-    background-image: none;
-}
-
-.ui-helper-hidden-accessible {
-  display: none;
-}
-</style>

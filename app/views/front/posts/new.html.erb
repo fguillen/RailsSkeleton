@@ -1,3 +1,13 @@
 <% title (t "views.posts.new.title") %>
 
+<ol class="breadcrumb">
+  <li><%= link_to (t "layouts.breadcrumbs.posts"), :front_posts %></li>
+  <li class="active"><%= t "layouts.breadcrumbs.new" %></li>
+</ol>
+
+<p class="lead">
+  <%= (t "views.posts.new.text") %>
+</p>
+
+
 <%= render "form" %>

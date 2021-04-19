@@ -1,4 +1,9 @@
-<% title t("views.posts.index.title") %>
+<% title (t "views.posts.index.title") %>
 
+<ol class="breadcrumb">
+  <li class="active"><%= t "layouts.breadcrumbs.posts" %></li>
+</ol>
+
+<p><%= link_to "New Post", new_front_post_path, :class => "btn btn-outline-primary" %></p>
 
 <%= render partial: "list", locals: { posts: @posts } %>

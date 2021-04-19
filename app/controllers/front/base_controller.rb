@@ -3,12 +3,12 @@ class Front::BaseController < ApplicationController
 
   layout "/front/base"
 
-  helper_method :current_appreciable_user, :namespace
+  helper_method :current_front_user, :namespace
 
   private
 
-  def require_appreciable_user
-    unless current_appreciable_user
+  def require_front_user
+    unless current_front_user
       store_location
       flash[:alert] = t("controllers.front.authentication_required")
       redirect_to front_login_path
@@ -16,14 +16,16 @@ class Front::BaseController < ApplicationController
     end
   end
 
-  def current_appreciable_user_session
-    return @current_appreciable_user_session if defined?(@current_appreciable_user_session)
-    @current_appreciable_user_session = AppreciableSession.find
+  def current_front_user_session
+    return @current_front_user_session if defined?(@current_front_user_session)
+
+    @current_front_user_session = AppreciableSession.find
   end
 
-  def current_appreciable_user
-    return @current_appreciable_user if defined?(@current_appreciable_user)
-    @current_appreciable_user = current_appreciable_user_session && current_appreciable_user_session.record
+  def current_front_user
+    return @current_front_user if defined?(@current_front_user)
+
+    @current_front_user = current_front_user_session && current_front_user_session.record
   end
 
   def store_location

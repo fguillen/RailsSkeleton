@@ -1,3 +1,13 @@
 <% title (t "views.posts.edit.title", :post_uuid => @post.uuid) %>
 
+<ol class="breadcrumb">
+  <li><%= link_to (t "layouts.breadcrumbs.posts"), :front_posts %></li>
+  <li><%= link_to @post.uuid, [:front, @post] %></li>
+  <li class="active"><%= t "layouts.breadcrumbs.edit" %></li>
+</ol>
+
+<p class="lead">
+  <%= t "views.posts.edit.text" %>
+</p>
+
 <%= render "form" %>

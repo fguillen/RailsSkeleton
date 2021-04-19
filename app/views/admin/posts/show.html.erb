@@ -13,6 +13,8 @@
   <dt class="col-sm-2 text-right"><%= t "activerecord.attributes.post.by.name" %></dt><dd class="col-sm-10"><%= @post.front_user.name %></dd>
 </dl>
 
+<%= @post.body %>
+
 <div class="controls text-right">
   <p>
     <%= link_to (t "views.posts.show.edit_button"), edit_admin_post_path(@post), :class => "btn btn-primary" %>
