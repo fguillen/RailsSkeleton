@@ -1,19 +1,19 @@
 
-<%= form_for [:front, @appreciation] do |f| %>
+<%= form_for [:front, @post] do |f| %>
   <%= render "/shared/form_errors", :object => f.object %>
   <div class="row justify-content-md-center">
     <div class="col-md-6">
-      <div class="card appreciation <%= appreciation_custom_style(@appreciation) %>">
-        <% if @appreciation.persisted? && @appreciation.pic.attached? %>
+      <div class="card post <%= post_custom_style(@post) %>">
+        <% if @post.persisted? && @post.pic.attached? %>
           <div class="card-img-top text-center">
-            <%= image_tag @appreciation.pic, class: "" %>
+            <%= image_tag @post.pic, class: "" %>
           </div>
         <% end %>
         <div class="card-body">
 
           <p class="static">
             <span>
-              <span class="font-weight-bold">I, <%= @appreciation.by.name %></span>
+              <span class="font-weight-bold">I, <%= @post.by.name %></span>
               want to appreciate to
             </span>
           </p>
@@ -25,7 +25,7 @@
           <p class="static"><span>because</span></p>
 
           <div class="card-text message">
-            <%= f.text_area :message, class: "form-control", rows: 10, placeholder: t("activerecord.attributes.appreciation.message") %>
+            <%= f.text_area :message, class: "form-control", rows: 10, placeholder: t("activerecord.attributes.post.message") %>
           </div>
 
           <p class="static"><span>and I want to pump it up with this image</span></p>
@@ -46,7 +46,7 @@
 
 <script type="text/javascript">
   $( function() {
-    var availableTags = <%= AppreciableUser.order_by_name.map(&:name).to_json.html_safe %>;
+    var availableTags = <%= FrontUser.order_by_name.map(&:name).to_json.html_safe %>;
 
     function split( val ) {
       return val.split( /,\s*/ );

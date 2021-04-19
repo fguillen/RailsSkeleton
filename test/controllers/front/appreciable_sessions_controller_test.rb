@@ -1,10 +1,10 @@
 require "test_helper"
 
-class Front::AppreciableSessionsControllerTest < ActionController::TestCase
+class Front::FrontSessionsControllerTest < ActionController::TestCase
   def test_new
     get :new
     assert_response :success
-    assert_template "front/appreciable_sessions/new"
+    assert_template "front/front_sessions/new"
   end
 
   def test_destroy

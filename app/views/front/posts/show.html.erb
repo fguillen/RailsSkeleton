@@ -1,0 +1,34 @@
+<% title (t "views.posts.show.title", :post_uuid => @post.uuid) %>
+
+<div class="row justify-content-md-center">
+  <div class="col-md-6">
+    <div class="card post <%= post_custom_style(@post) %>">
+      <% if @post.pic.attached? %>
+        <div class="card-img-top text-center">
+          <%= image_tag @post.pic, class: "" %>
+        </div>
+      <% end %>
+      <div class="card-body">
+
+        <p class="static">
+          <span>
+            <span class="font-weight-bold"><%= @post.by.name %></span>
+            wants to appreciate to
+          </span>
+        </p>
+        <h5 class="card-title by"><%= @post.to_formatted %></h5>
+        <p class="static"><span>because</span></p>
+        <div class="card-text message"><%= render_markdown(@post.message) %></div>
+      </div>
+    </div>
+
+    <% if @post.by == current_appreciable_user %>
+      <div class="controls text-right">
+        <p>
+          <%= link_to (t "views.posts.show.edit_button"), edit_front_post_path(@post), :class => "btn btn-primary" %>
+          <%= link_to (t "views.posts.show.delete_button"), [:front, @post], :data => { :confirm => (t "views.posts.show.delete_confirmation") }, :method => :delete, :class => "btn btn-danger" %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+</div>
