@@ -1,5 +1,5 @@
-class AdminSession < Authlogic::Session::Base
-  authenticate_with AdminUser
+class FrontSession < Authlogic::Session::Base
+  authenticate_with FrontUser
 
   def to_key
     new_record? ? nil : [ self.send(self.class.primary_key) ]

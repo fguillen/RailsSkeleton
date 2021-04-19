@@ -41,7 +41,7 @@ class Front::AppreciationsController < Front::BaseController
   end
 
   def update
-    if @appreciation.update_attributes(appreciation_params)
+    if @appreciation.update(appreciation_params)
       redirect_to [:front, @appreciation], :notice  => t("controllers.appreciations.update.success")
     else
       flash.now[:alert] = t("controllers.appreciations.update.error")

@@ -18,3 +18,17 @@ Style/GuardClause:
 
 Style/Documentation:
   Enabled: false
+
+Naming/VariableNumber:
+  EnforcedStyle: snake_case
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+
+Metrics/MethodLength:
+  Max: 20
+  CountAsOne: ["array", "hash"]
+
+Metrics/ClassLength:
+  Max: 150
+  CountAsOne: ["array", "hash"]

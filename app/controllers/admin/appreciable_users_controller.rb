@@ -27,7 +27,7 @@ class Admin::AppreciableUsersController < Admin::BaseController
   end
 
   def update
-    if @appreciable_user.update_attributes(appreciable_user_params)
+    if @appreciable_user.update(appreciable_user_params)
       redirect_to [:admin, @appreciable_user], :notice  => t("controllers.appreciable_users.update.success")
     else
       flash.now[:alert] = t("controllers.appreciable_users.update.error")

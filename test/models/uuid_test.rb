@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UUIDTest < ActiveSupport::TestCase
 
-  #test that all models the have a uuid column included the HasUuid module
+  # test that all models the have a uuid column included the HasUuid module
   def test_has_uuid_with_database
     Rails.application.eager_load!
     ApplicationRecord.descendants.each do |model|

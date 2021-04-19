@@ -25,7 +25,7 @@ class ActiveSupport::TestCase
   end
 
   def write_fixture(fixture_path, content)
-    puts "ATENTION: fixture: '#{fixture_path}' been written"
+    puts "ATTENTION: fixture: '#{fixture_path}' been written"
     File.open(fixture(fixture_path), "w") { |f| f.write content }
   end
 
@@ -39,11 +39,11 @@ class ActiveSupport::TestCase
     @controller.stubs(:current_appreciable_user).returns(@appreciable_user)
   end
 
-  def assert_ids(array_1, array_2, message = nil)
+  def assert_ids(array_1, array_2, _message = nil)
     assert_equal(array_1.ids, array_2.ids)
   end
 
-  def assert_primary_keys(array_1, array_2, message = nil)
+  def assert_primary_keys(array_1, array_2, _message = nil)
     array_1_keys = array_1.map { |e| e.send(e.class.primary_key) }
     array_2_keys = array_2.map { |e| e.send(e.class.primary_key) }
     assert_equal(array_1_keys, array_2_keys)

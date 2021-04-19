@@ -1,7 +1,7 @@
-class AdminAuthorization < ApplicationRecord
-  belongs_to :admin_user
+class FrontAuthorization < ApplicationRecord
+  belongs_to :front_user
 
-  validates_presence_of :admin_user_id, :uid, :provider
+  validates_presence_of :front_user_id, :uid, :provider
   validates_uniqueness_of :uid, scope: :provider
 
   def self.find_from_omniauth_data(hash)
