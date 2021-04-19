@@ -39,9 +39,9 @@ class Api::Admin::AdminUsersControllerTest < ActionController::TestCase
     assert_response :success
 
     expected_result = [
-      { "name" => "ADMIN_USER_1" },
+      { "name" => "ADMIN_USER_3" },
       { "name" => "ADMIN_USER_2" },
-      { "name" => "ADMIN_USER_3" }
+      { "name" => "ADMIN_USER_1" }
     ]
     assert_equal expected_result, JSON.parse(response.body)
   end

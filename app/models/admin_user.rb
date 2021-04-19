@@ -15,7 +15,7 @@ class AdminUser < ApplicationRecord
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: RubyRegex::Email }
   validates :password, confirmation: true
 
-  scope :order_by_recent, -> { order("created_at asc") }
+  scope :order_by_recent, -> { order("created_at desc") }
 
   def send_reset_password_email
     reset_perishable_token!

@@ -30,12 +30,12 @@ class ActiveSupport::TestCase
   end
 
   def setup_admin_user
-    @admin_user = FactoryBot.create(:admin_user, uuid: "ADMIN_USER_UUID")
+    @admin_user = FactoryBot.create(:admin_user, uuid: "ADMIN_USER_UUID", created_at: "2000-01-01")
     @controller.stubs(:current_admin_user).returns(@admin_user)
   end
 
   def setup_front_user
-    @front_user = FactoryBot.create(:front_user)
+    @front_user = FactoryBot.create(:front_user, uuid: "FRONT_USER_UUID", created_at: "2000-01-01")
     @controller.stubs(:current_front_user).returns(@front_user)
   end
 

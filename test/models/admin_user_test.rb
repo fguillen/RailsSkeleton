@@ -19,10 +19,10 @@ class AdminUserTest < ActiveSupport::TestCase
   end
 
   def test_scope_order_by_recent
-    admin_user_1 = FactoryBot.create(:admin_user, uuid: "1002", created_at: "2021-04-19")
-    admin_user_2 = FactoryBot.create(:admin_user, uuid: "1003", created_at: "2021-04-20")
-    admin_user_3 = FactoryBot.create(:admin_user, uuid: "1001", created_at: "2021-04-21")
+    admin_user_1 = FactoryBot.create(:admin_user, uuid: "1001", created_at: "2021-04-19")
+    admin_user_2 = FactoryBot.create(:admin_user, uuid: "1002", created_at: "2021-04-20")
+    admin_user_3 = FactoryBot.create(:admin_user, uuid: "1003", created_at: "2021-04-21")
 
-    assert_primary_keys([admin_user_1, admin_user_2, admin_user_3], AdminUser.order_by_recent)
+    assert_primary_keys([admin_user_3, admin_user_2, admin_user_1], AdminUser.order_by_recent)
   end
 end

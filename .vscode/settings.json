@@ -1,5 +1,6 @@
 {
     "cSpell.ignoreWords": [
+        "activerecord",
         "authlogic",
         "crypted",
         "omniauth",

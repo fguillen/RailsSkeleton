@@ -9,8 +9,8 @@
 
 <dl class="row">
   <dt class="col-sm-2 text-right"><%= t "activerecord.attributes.post.uuid" %></dt><dd class="col-sm-10"><%= @post.uuid %></dd>
-  <dt class="col-sm-2 text-right"><%= t "activerecord.attributes.post.message" %></dt><dd class="col-sm-10"><%= @post.title %></dd>
-  <dt class="col-sm-2 text-right"><%= t "activerecord.attributes.post.by.name" %></dt><dd class="col-sm-10"><%= @post.front_user.name %></dd>
+  <dt class="col-sm-2 text-right"><%= t "activerecord.attributes.post.title" %></dt><dd class="col-sm-10"><%= @post.title %></dd>
+  <dt class="col-sm-2 text-right"><%= t "activerecord.attributes.post.front_user.name" %></dt><dd class="col-sm-10"><%= @post.front_user.name %></dd>
 </dl>
 
 <%= @post.body %>

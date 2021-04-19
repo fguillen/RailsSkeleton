@@ -12,7 +12,7 @@ class Admin::AdminUsersControllerTest < ActionController::TestCase
     get :index
 
     assert_template "admin/admin_users/index"
-    assert_primary_keys([admin_user_1, admin_user_2, @admin_user], assigns(:admin_users))
+    assert_primary_keys([admin_user_2, admin_user_1, @admin_user], assigns(:admin_users))
   end
 
   def test_show
@@ -60,7 +60,7 @@ class Admin::AdminUsersControllerTest < ActionController::TestCase
       }
     )
 
-    admin_user = AdminUser.last
+    admin_user = AdminUser.order_by_recent.first
     assert_redirected_to [:admin, admin_user]
 
     assert_equal("Admin Wadus", admin_user.name)
