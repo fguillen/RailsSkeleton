@@ -1,8 +1,10 @@
 <% title (t "views.admin_users.index.title") %>
 
-<ol class="breadcrumb">
-  <li class="active"><%= t "layouts.breadcrumbs.admin_users" %></li>
-</ol>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active"><%= t "layouts.breadcrumbs.admin_users" %></li>
+  </ol>
+</nav>
 
 <p><%= link_to "New Admin User", new_admin_admin_user_path, :class => "btn btn-outline-primary" %></p>
 
@@ -23,4 +25,3 @@
     </tr>
   <% end %>
 </table>
-

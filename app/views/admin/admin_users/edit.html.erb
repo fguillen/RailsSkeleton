@@ -1,9 +1,9 @@
 <% title (t "views.admin_users.edit.title", :admin_user_name => @admin_user.name) %>
 
 <ol class="breadcrumb">
-  <li><%= link_to (t "layouts.breadcrumbs.admin_users"), :admin_admin_users %></li>
-  <li><%= link_to @admin_user.name, [:admin, @admin_user] %></li>
-  <li class="active"><%= t "layouts.breadcrumbs.edit" %></li>
+  <li class="breadcrumb-item"><%= link_to (t "layouts.breadcrumbs.admin_users"), :admin_admin_users %></li>
+  <li class="breadcrumb-item"><%= link_to @admin_user.name, [:admin, @admin_user] %></li>
+  <li class="breadcrumb-item active"><%= t "layouts.breadcrumbs.edit" %></li>
 </ol>
 
 <p class="lead">
