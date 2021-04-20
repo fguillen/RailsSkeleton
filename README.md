@@ -1,14 +1,96 @@
 # RailsSkeleton
 
-Simple application to deliver some appreciation to your colleges
+## Usage
 
-# Set up the development environment
+This application is meant to be
+the basis for a new Rails application
+
+### Includes
+
+- front/admin scopes
+- login in front and admin (authlogic)
+- google oauth integration (in front and admin)
+- bootstrap
+- structure to manage a simple entity (blog posts)
+- test suite (minitest)
+- factory_bot
+- faker
+
+
+### Creating a new App
+
+Clone and renaming:
+
+    mkdir MyNewAwesomeApp
+    cd MyNewAwesomeApp
+    git init
+    git remote add skeleton git@github.com:fguillen/RailsSkeleton.git
+    git pull skeleton master
+
+    rake "railsskeleton:utils:renaming_project[MyNewAwesomeApp]"
+    git add .
+    git commit -m "Renaming Project"
+
+Setting up App:
+
+    bin/setup
+
+#### Set up Rollbar
+
+TODO
+
+### Adding something to the Skeleton
+
+Keep in mind that this project
+should only host code that
+is to be used by all Rails apps.
+
+If one changes something in this project
+the "based on this" apps can benefit from
+those changes using:
+
+  - `$ cd MyNewAwesomeApp`
+  - `$ git fetch skeleton`
+  - `$ git merge skeleton/master`
+
+#### ⚠️⚠️ Conflicts Happen! ⚠️⚠️
+
+When merging with `skeleton/master`
+you are probably going to face conflicts on files
+that you don't expect.
+Mainly the files that have the `RailsSekelton` placeholder.
+
+Let's think about great ways of
+making this better for everyone! \o/
+
+## Security and Code Style checks
+
+We have these tasks to check these things:
 
 ```
-bundle
-rake db:setup
-rake test
+> bundle exec rails -T checks
+rails checks:all           # Run all checks
+rails checks:brakeman      # Check for vulns using brakeman
+rails checks:bundle_audit  # Check for vulns using bundle_audit
+rails checks:rubocop       # Check rubocop styles
 ```
+
+The main one is:
+
+    rails checks:all
+
+It is already integrated with git hook and travis, check the configuration in:
+
+    lefthook.yml
+    .travis.yml
+
+You need to install lefhook in you local dev:
+
+    lefthook install -f
+
+You can overpass the lefthook on commit:
+
+    git commit -m "MESSAGE" --no-verify
 
 
 # Production configuration
