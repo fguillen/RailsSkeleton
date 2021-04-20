@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     get "reset_password/:reset_password_code", to: "admin_users#reset_password", as: :reset_password
     patch "reset_password/:reset_password_code", to: "admin_users#reset_password_submit", as: :reset_password_submit
 
-    resources :admin_sessions, only: %i[new create destroy]
+    resources :admin_sessions, only: [:new, :create, :destroy]
     resources :admin_users
     resources :posts
     resources :front_users
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :admin do
-      resources :admin_users, only: %i[index show create update destroy], param: :uuid
+      resources :admin_users, only: [:index, :show, :create, :update, :destroy], param: :uuid
     end
   end
 
@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     get "reset_password/:reset_password_code", to: "front_users#reset_password", as: :reset_password
     patch "reset_password/:reset_password_code", to: "front_users#reset_password_submit", as: :reset_password_submit
 
-    resources :front_sessions, only: %i[new create destroy]
+    resources :front_sessions, only: [:new, :create, :destroy]
 
     resources :posts
     resources :pages, only: [:show]

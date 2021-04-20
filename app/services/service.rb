@@ -1,10 +1,10 @@
 class Service
   def self.perform(*args)
-    instance = self.new
+    instance = new
     instance.perform(*args)
   end
 
-  def perform(args)
+  def perform(_args)
     raise 'You need to overwrite this method in actual service'
   end
 end

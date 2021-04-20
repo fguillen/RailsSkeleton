@@ -1,6 +1,6 @@
 class Admin::PostsController < Admin::BaseController
   before_action :require_admin_user
-  before_action :load_post, only: %i[show edit update destroy]
+  before_action :load_post, only: [:show, :edit, :update, :destroy]
 
   def index
     @posts = Post.order_by_recent

@@ -78,7 +78,8 @@ class AdminPasswordValidatorTest < Minitest::Test
       admin_password_validator.require_password = true
 
       refute admin_password_validator.valid?
-      assert_equal ["must use at least three of the four available character types: lowercase letters, uppercase letters, numbers, and symbols."], admin_password_validator.errors[:password]
+      assert_equal ["must use at least three of the four available character types: lowercase letters, uppercase letters, numbers, and symbols."],
+                   admin_password_validator.errors[:password]
     end
   end
 end

@@ -4,7 +4,8 @@ class Share::AuthorizationsController < ApplicationController
     redirect_to root_url
   end
 
-  def blank # omniauth needs this method to handle the authentication process
-    render :text => "Not Found", :status => 404
+  # omniauth needs this method to handle the authentication process
+  def blank
+    render text: "Not Found", status: 404
   end
 end

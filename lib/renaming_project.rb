@@ -13,13 +13,10 @@ class RenamingProject
       file_content = file_content.gsub("RailsSkeleton", new_name)
       file_content = file_content.gsub("railsskeleton", new_name.downcase)
 
-      FileUtils.mkdir(File.dirname(new_filepath)) unless Dir.exists?(File.dirname(new_filepath))
+      FileUtils.mkdir(File.dirname(new_filepath)) unless Dir.exist?(File.dirname(new_filepath))
       File.write(new_filepath, file_content)
 
-      if new_filepath != filepath
-        `git rm "#{filepath}"`
-      end
-
+      `git rm "#{filepath}"` if new_filepath != filepath
     end
   end
 end

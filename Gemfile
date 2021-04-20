@@ -49,7 +49,7 @@ group :test do
 end
 
 group :development, :test do
-  gem "byebug", platforms: %i[mri mingw x64_mingw]
+  gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "capybara"
   gem "faker"
   gem "selenium-webdriver"

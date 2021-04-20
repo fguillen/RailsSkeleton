@@ -58,7 +58,7 @@ class Admin::PostsControllerTest < ActionController::TestCase
         post: {
           front_user_id: front_user_1,
           title: "The Title Wadus",
-          body: "Wadus Message longer than 20 chars",
+          body: "Wadus Message longer than 20 chars"
         }
       }
     )

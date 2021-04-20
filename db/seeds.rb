@@ -24,7 +24,6 @@ unless FrontUser.where(email: email).exists?
   puts "FrontUser created #{email}/#{password}"
 end
 
-
 Post.create!(
   front_user: FrontUser.find_by(email: email),
   title: "The title",

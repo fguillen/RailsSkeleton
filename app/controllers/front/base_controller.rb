@@ -32,7 +32,7 @@ class Front::BaseController < ApplicationController
     session[:front_return_to] = request.url
   end
 
-  def redirect_back_or_default( default )
+  def redirect_back_or_default(default)
     redirect_to(session[:front_return_to] || default)
     session[:front_return_to] = nil
   end

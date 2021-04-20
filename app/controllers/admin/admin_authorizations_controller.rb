@@ -1,5 +1,5 @@
 class Admin::AdminAuthorizationsController < Admin::BaseController
-  before_action :require_admin_user, :only => [:destroy]
+  before_action :require_admin_user, only: [:destroy]
 
   def create
     omniauth_data = request.env['omniauth.auth'] # Google response with user data
@@ -13,7 +13,7 @@ class Admin::AdminAuthorizationsController < Admin::BaseController
       admin_user = AdminUser.find_by_email omniauth_data[:info][:email]
 
       if admin_user # Admin with Google email found, create authentication record and log the user in
-        admin_user.authorizations.create({ :provider => omniauth_data['provider'], :uid => omniauth_data['uid'] })
+        admin_user.authorizations.create({ provider: omniauth_data['provider'], uid: omniauth_data['uid'] })
         AdminSession.create(admin_user, true)
         flash[:notice] = "Welcome #{admin_user.name}"
         redirect_back_or_default admin_root_path

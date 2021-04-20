@@ -3,7 +3,7 @@ module Front::BaseHelper
 
   def front_menu_class(actual_menu_name)
     menus = {
-      :appreciations => ["/front/appreciations.*"],
+      appreciations: ["/front/appreciations.*"]
     }
 
     menu_class(menus, actual_menu_name)
@@ -13,7 +13,7 @@ module Front::BaseHelper
     return "style_no_saved" if appreciation.uuid.nil?
 
     styles = ["style_fish", "style_snell", "style_waterfly"]
-    index = appreciation.uuid.each_byte.inject( &:+ )
+    index = appreciation.uuid.each_byte.inject(&:+)
 
     styles[index % styles.length]
   end
@@ -30,4 +30,3 @@ module Front::BaseHelper
     Redcarpet::Markdown.new(renderer).render(text).html_safe
   end
 end
-

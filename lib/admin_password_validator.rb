@@ -1,5 +1,5 @@
 class AdminPasswordValidator < ActiveModel::Validator
-  PASSWORD_CHARS = [/[a-z]/, /[A-Z]/, /[0-9]/, /[\W]/]
+  PASSWORD_CHARS = [/[a-z]/, /[A-Z]/, /[0-9]/, /\W/]
 
   def validate(record)
     password_size(record)
@@ -14,8 +14,8 @@ class AdminPasswordValidator < ActiveModel::Validator
 
     validator =
       ActiveModel::Validations::LengthValidator.new(
-        :minimum => 8,
-        :attributes => :password
+        minimum: 8,
+        attributes: :password
       )
 
     validator.validate(record)

@@ -32,3 +32,15 @@ Metrics/MethodLength:
 Metrics/ClassLength:
   Max: 150
   CountAsOne: ["array", "hash"]
+
+Style/SymbolArray:
+  EnforcedStyle: brackets
+
+Style/WordArray:
+  EnforcedStyle: brackets
+
+Style/RedundantReturn:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
