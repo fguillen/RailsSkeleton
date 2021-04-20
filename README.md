@@ -9,6 +9,7 @@ the basis for a new Rails application
 
 - front/admin scopes
 - login in front and admin (authlogic)
+- table index based on UUID field
 - google oauth integration (in front and admin)
 - bootstrap
 - structure to manage a simple entity (blog posts)
