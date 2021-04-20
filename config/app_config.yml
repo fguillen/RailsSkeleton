@@ -1,7 +1,7 @@
 ---
 test:
   hosts: <%= ENV.fetch('SECRET_HOSTS').split(",").to_s %>
-  admin_email: it@scrapstats.com
+  admin_email: it@railsskeleton.com
   google_auth:
     client_id: "GOOGLE_CLIENT_ID"
     client_secret: "<%= ENV.fetch('SECRET_GOOGLE_AUTH_CLIENT_SECRET') %>"
@@ -17,14 +17,10 @@ test:
     token:
       - TEST_TOKEN_1
       - TEST_TOKEN_2
-  slack_notifier:
-    enabled: true
-    debug: false
-    webhook_url: https://hooks.slack.com/services/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
 
 development:
   hosts: <%= ENV.fetch('SECRET_HOSTS').split(",").to_s %>
-  admin_email: it@scrapstats.com
+  admin_email: it@railsskeleton.com
   google_auth:
     client_id: "193465454284-apigmm255ti8n2rb9ov2obtir6s2cdin.apps.googleusercontent.com"
     client_secret: "<%= ENV.fetch('SECRET_GOOGLE_AUTH_CLIENT_SECRET') %>"
@@ -38,14 +34,10 @@ development:
       - "<%= ENV.fetch('SECRET_API_ADMIN_TOKEN') %>"
     token:
       - "<%= ENV.fetch('SECRET_APP_TOKEN') %>"
-  slack_notifier:
-    enabled: true
-    debug: true
-    webhook_url: <%= ENV.fetch('SECRET_SLACK_WEBHOOK_URL') %>
 
 staging:
   hosts: <%= ENV.fetch('SECRET_HOSTS').split(",").to_s %>
-  admin_email: it@scrapstats.com
+  admin_email: it@railsskeleton.com
   google_auth:
     client_id: "193465454284-apigmm255ti8n2rb9ov2obtir6s2cdin.apps.googleusercontent.com"
     client_secret: "<%= ENV.fetch('SECRET_GOOGLE_AUTH_CLIENT_SECRET') %>"
@@ -60,7 +52,7 @@ staging:
     enabled: true
     server: smtp.sendgrid.net
     port: 587
-    domain: scrapstats.staging.scrapstats.com
+    domain: railsskeleton.staging.railsskeleton.com
     user: apikey
     pass: "<%= ENV.fetch('SECRET_SMTP_PASS') %>"
   api:
@@ -68,14 +60,10 @@ staging:
       - "<%= ENV.fetch('SECRET_API_ADMIN_TOKEN') %>"
     token:
       - "<%= ENV.fetch('SECRET_APP_TOKEN') %>"
-  slack_notifier:
-    enabled: true
-    debug: false
-    webhook_url: <%= ENV.fetch('SECRET_SLACK_WEBHOOK_URL') %>
 
 production:
   hosts: <%= ENV.fetch('SECRET_HOSTS').split(",").to_s %>
-  admin_email: it@scrapstats.com
+  admin_email: it@railsskeleton.com
   google_auth:
     client_id: "193465454284-apigmm255ti8n2rb9ov2obtir6s2cdin.apps.googleusercontent.com"
     client_secret: "<%= ENV.fetch('SECRET_GOOGLE_AUTH_CLIENT_SECRET') %>"
@@ -90,7 +78,7 @@ production:
     enabled: true
     server: smtp.sendgrid.net
     port: 587
-    domain: scrapstats.scrapstats.com
+    domain: railsskeleton.com
     user: apikey
     pass: "<%= ENV.fetch('SECRET_SMTP_PASS') %>"
   api:
@@ -98,7 +86,3 @@ production:
       - "<%= ENV.fetch('SECRET_API_ADMIN_TOKEN') %>"
     token:
       - "<%= ENV.fetch('SECRET_APP_TOKEN') %>"
-  slack_notifier:
-    enabled: true
-    debug: false
-    webhook_url: <%= ENV.fetch('SECRET_SLACK_WEBHOOK_URL') %>

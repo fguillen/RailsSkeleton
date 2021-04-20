@@ -8,8 +8,8 @@ class Api::ApiController < ApplicationController
   private
 
   def authenticate_via_token
-    if request.headers["Authorization"].to_s.start_with?("ScrapStats ")
-      token = request.headers["Authorization"]["ScrapStats ".length..-1].to_s.strip
+    if request.headers["Authorization"].to_s.start_with?("RailsSkeleton ")
+      token = request.headers["Authorization"]["RailsSkeleton ".length..-1].to_s.strip
       return if token.present? && supported_tokens.include?(token)
     end
 

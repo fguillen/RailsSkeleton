@@ -8,9 +8,16 @@ class FrontUser < ApplicationRecord
   end
 
   has_many :authorizations, class_name: "FrontAuthorization", dependent: :destroy
+
   has_many :posts, dependent: :destroy
   validates :name, presence: true
-  validates :email, presence: true, uniqueness: true, format: { with: RubyRegex::Email }
+  validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: RubyRegex::Email }
+  validates :password, confirmation: true
 
   scope :order_by_recent, -> { order("created_at desc") }
+
+  def send_reset_password_email
+    reset_perishable_token!
+    Notifier.front_user_reset_password(self).deliver
+  end
 end

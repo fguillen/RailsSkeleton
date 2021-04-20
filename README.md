@@ -1,4 +1,4 @@
-# ScrapStats
+# RailsSkeleton
 
 Simple application to deliver some appreciation to your colleges
 
@@ -23,13 +23,13 @@ Check this post for the special envvar `DATABASE_URL`:
 
 You can set all ENVVARS at once in heroku:
 
-    heroku config:push -a scrapstats -f .env.production -o
+    heroku config:push -a railsskeleton -f .env.production -o
 
 ## Google Auth
 
 We have to add the callbacks, check here:
 
-- https://asktheteam.scrapstats.com/t/cant-login-with-google-oauth-on-my-development-environment/425/2
+- https://asktheteam.railsskeleton.com/t/cant-login-with-google-oauth-on-my-development-environment/425/2
 
 ## Amazon S3
 

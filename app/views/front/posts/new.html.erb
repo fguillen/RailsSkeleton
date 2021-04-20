@@ -1,9 +1,11 @@
 <% title (t "views.posts.new.title") %>
 
-<ol class="breadcrumb">
-  <li><%= link_to (t "layouts.breadcrumbs.posts"), :front_posts %></li>
-  <li class="active"><%= t "layouts.breadcrumbs.new" %></li>
-</ol>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to (t "layouts.breadcrumbs.posts"), :front_posts %></li>
+    <li class="breadcrumb-item active"><%= t "layouts.breadcrumbs.new" %></li>
+  </ol>
+</nav>
 
 <p class="lead">
   <%= (t "views.posts.new.text") %>

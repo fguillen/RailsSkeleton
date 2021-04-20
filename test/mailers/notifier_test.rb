@@ -8,9 +8,9 @@ class NotifierTest < ActionMailer::TestCase
     email = Notifier.admin_user_reset_password(admin_user).deliver_now
     assert !ActionMailer::Base.deliveries.empty?
 
-    assert_equal ["it@scrapstats.com"], email.from
+    assert_equal ["it@railsskeleton.com"], email.from
     assert_equal ["admin@email.com"], email.to
-    assert_equal "[ScrapStats] Password reset", email.subject
+    assert_equal "[RailsSkeleton] Password reset", email.subject
 
     # write_fixture("/notifier/admin_user_reset_password.txt", email.body.encoded)
     assert_equal(File.read(fixture("/notifier/admin_user_reset_password.txt")), email.body.encoded)

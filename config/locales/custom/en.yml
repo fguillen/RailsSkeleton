@@ -16,6 +16,7 @@ en:
         email: Email
         name: Name
         one: FrontUser
+        password: Password
         uuid: Uuid
       post:
         body: Body
@@ -56,26 +57,32 @@ en:
       access_not_authorized: Access not authorized
       authentication_required: Authentication required
     front_sessions:
+      authenticate:
+        error: Authentication Failure
+        success: Front User Authenticated
       logout:
-        success: Success
+        success: Successfully logged out
+      reset_password:
+        error: Sorry, %{email} can't be found in our database
+        success: Password reset instructions have been sent to your email
     front_users:
       create:
-        error: Error
-        success: Success
+        error: Errors were encountered when trying to create Front User
+        success: Successfully created Front User
       destroy:
-        success: Success
+        success: Successfully deleted Front User
       update:
-        error: Error
-        success: Success
+        error: Errors were encountered when trying to update Front User
+        success: Successfully updated Front User
     posts:
       create:
-        error: Error
-        success: Success
+        error: Errors were encountered when trying to create Post
+        success: Successfully created Post
       destroy:
-        success: Success
+        success: Successfully deleted Post
       update:
-        error: Error
-        success: Success
+        error: Errors were encountered when trying to update Post
+        success: Successfully updated Post
   date:
     formats:
       ymd: "%Y-%d-%m"
@@ -85,7 +92,8 @@ en:
       admin_users: Admin Users
       edit: Edit
       forgot_password: Forgotten Password
-      front_users: Appreciable users
+      front_sessions: Front sessions
+      front_users: Front users
       login_admin: Admin Login
       login_front: Login front
       new: New
@@ -94,11 +102,11 @@ en:
     menu:
       admin_users: Admin Users
       edit_profile: Edit Profile
-      front_users: Appreciable users
+      front_users: Front users
       login: Login
       logout: Logout
       my_posts: See my posts
-      new_post: Write a new Appreciation
+      new_post: Write a new Post
       posts: See all posts
   views:
     admin_sessions:
@@ -107,7 +115,7 @@ en:
         text: Please provide your email address to receive the password reset link
         title: Forgotten Password
       new:
-        title: Title
+        title: Login page
     admin_users:
       edit:
         text: Here you can modify the Admin User details
@@ -130,8 +138,12 @@ en:
         edit_button: Edit
         title: Admin Users | %{admin_user_name}
     front_sessions:
+      forgot_password:
+        reset_password_button: Reset Password
+        text: Please provide your email address to receive the password reset link
+        title: Forgotten Password
       new:
-        title: Title
+        title: Login page
     front_user:
       sections:
         posts: Posts

@@ -20,6 +20,7 @@ FactoryBot.define do
   factory :front_user do
     name { Faker::Name.unique.name }
     email { Faker::Internet.unique.email }
+    password { "Pass$$$!" }
   end
 
   factory :post do

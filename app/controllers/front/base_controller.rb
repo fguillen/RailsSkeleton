@@ -19,7 +19,7 @@ class Front::BaseController < ApplicationController
   def current_front_user_session
     return @current_front_user_session if defined?(@current_front_user_session)
 
-    @current_front_user_session = AppreciableSession.find
+    @current_front_user_session = FrontSession.find
   end
 
   def current_front_user

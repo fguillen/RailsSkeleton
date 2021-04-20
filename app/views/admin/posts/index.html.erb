@@ -1,8 +1,10 @@
 <% title (t "views.posts.index.title") %>
 
-<ol class="breadcrumb">
-  <li class="active"><%= t "layouts.breadcrumbs.posts" %></li>
-</ol>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active"><%= t "layouts.breadcrumbs.posts" %></li>
+  </ol>
+</nav>
 
 <p><%= link_to "New Post", new_admin_post_path, :class => "btn btn-outline-primary" %></p>
 

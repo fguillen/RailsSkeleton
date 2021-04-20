@@ -21,14 +21,14 @@ class Api::Admin::AdminUsersControllerTest < ActionController::TestCase
     get :index
     assert_unauthorized
 
-    request.env["HTTP_AUTHORIZATION"] = "ScrapStats invalid-token-#{SecureRandom.uuid}"
+    request.env["HTTP_AUTHORIZATION"] = "RailsSkeleton invalid-token-#{SecureRandom.uuid}"
 
     get :index
     assert_unauthorized
   end
 
   def test_index
-    request.env["HTTP_AUTHORIZATION"] = "ScrapStats TEST_ADMIN_TOKEN_2"
+    request.env["HTTP_AUTHORIZATION"] = "RailsSkeleton TEST_ADMIN_TOKEN_2"
 
     FactoryBot.create(:admin_user, created_at: "2021-04-01", name: "ADMIN_USER_1")
     FactoryBot.create(:admin_user, created_at: "2021-04-02", name: "ADMIN_USER_2")

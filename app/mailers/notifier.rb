@@ -6,7 +6,16 @@ class Notifier < ActionMailer::Base
 
     mail(
       :to => admin_user.email,
-      :subject => "[ScrapStats] Password reset"
+      :subject => "[RailsSkeleton] Password reset"
+    )
+  end
+
+  def front_user_reset_password(front_user)
+    @reset_password_link = front_reset_password_url(front_user.perishable_token, :host => APP_CONFIG[:hosts].first)
+
+    mail(
+      :to => front_user.email,
+      :subject => "[RailsSkeleton] Password reset"
     )
   end
 end

@@ -24,10 +24,17 @@ Rails.application.routes.draw do
   end
 
   namespace :front do
+    root to: redirect("front/posts")
+
     get "login", to: "front_sessions#new", as: :login
     get "logout", to: "front_sessions#destroy", as: :logout
+    get "forgot_password", to: "front_sessions#forgot_password", as: :forgot_password
+    post "forgot_password", to: "front_sessions#forgot_password_submit", as: :forgot_password_submit
+    get "reset_password/:reset_password_code", to: "front_users#reset_password", as: :reset_password
+    patch "reset_password/:reset_password_code", to: "front_users#reset_password_submit", as: :reset_password_submit
 
-    root to: redirect("front/posts")
+    resources :front_sessions, only: %i[new create destroy]
+
     resources :posts
     resources :pages, only: [:show]
   end

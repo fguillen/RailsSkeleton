@@ -13,15 +13,15 @@ class Admin::AdminSessionsController < Admin::BaseController
       redirect_back_or_default admin_root_path
     else
       flash[:alert] = t("controllers.admin_sessions.authenticate.error")
-      render :action => :new
+      render action: :new
     end
   end
 
   def destroy
     @admin_session = AdminSession.find
-    @admin_session.destroy if @admin_session
+    @admin_session&.destroy
 
-    redirect_to admin_login_path, :notice => t("controllers.admin_sessions.logout.success")
+    redirect_to admin_login_path, notice: t("controllers.admin_sessions.logout.success")
   end
 
   def forgot_password
@@ -33,9 +33,9 @@ class Admin::AdminSessionsController < Admin::BaseController
 
     if admin_user
       admin_user.send_reset_password_email
-      redirect_to admin_forgot_password_path, :notice => t("controllers.admin_sessions.reset_password.success")
+      redirect_to admin_forgot_password_path, notice: t("controllers.admin_sessions.reset_password.success")
     else
-      redirect_to admin_forgot_password_path, :alert => t("controllers.admin_sessions.reset_password.error", :email => params[:admin_session][:email])
+      redirect_to admin_forgot_password_path, alert: t("controllers.admin_sessions.reset_password.error", email: params[:admin_session][:email])
     end
   end
 
@@ -44,5 +44,4 @@ class Admin::AdminSessionsController < Admin::BaseController
   def admin_session_params
     params.require(:admin_session).permit(:email, :password)
   end
-
 end

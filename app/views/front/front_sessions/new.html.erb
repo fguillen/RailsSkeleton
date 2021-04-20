@@ -1,8 +1,52 @@
-<% title t("views.front_sessions.new.title") %>
+<% title (t "views.front_sessions.new.title") %>
 
-<div class="jumbotron login">
-  <h1 class="display-4">Authentication</h1>
-  <p class="lead">Only the very priviledged ScrapStats's crew can access to this site</p>
-  <hr class="my-4">
-  <%= link_to "Login with your ScrapStats's Account", "/auth/google_oauth2?from=front", :class=> "btn btn-outline-primary btn-lg" %>
-</div>
+<ol class="breadcrumb push_down">
+  <li class="active"><%= (t "layouts.breadcrumbs.login_front") %></li>
+</ol>
+
+<%= form_for [:front, @front_session] do |f| %>
+  <%= render "/shared/form_errors", :object => f.object %>
+
+  <fieldset>
+    <legend><%= "Use your credentials" %></legend>
+    <hr>
+    <div class="form-group row">
+      <%= f.label :email, :class => "col-sm-2 col-form-label text-right" %>
+
+      <div class="col-sm-10">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroupPrepend2">
+              <i class="fas fa-envelope"></i>
+            </span>
+          </div>
+          <%= f.text_field :email, :class => "form-control", :type => "email", :placeholder => t("activerecord.attributes.front_user.email") %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :password, :class => "col-sm-2 col-form-label text-right" %>
+
+      <div class="col-sm-10">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroupPrepend2">
+              <i class="fas fa-lock"></i>
+            </span>
+          </div>
+          <%= f.text_field :password, :class => "form-control", :type => "password", :placeholder => t("activerecord.attributes.front_user.password") %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="offset-sm-2 col-sm-10">
+        <%= f.submit "Sign in", :class => "btn btn-primary" %> &nbsp; or
+          &nbsp; <%= link_to "Login with Google", "/auth/google_oauth2?from=front", :class=> "btn btn-primary" %>
+      </div>
+    </div>
+  </fieldset>
+
+  <p><%= link_to "Forgot password", front_forgot_password_path %></p>
+<% end %>

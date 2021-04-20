@@ -28,5 +28,5 @@ end
 Post.create!(
   front_user: FrontUser.find_by(email: email),
   title: "The title",
-  body: "The body"
+  body: "The body with more than 20 characters"
 )

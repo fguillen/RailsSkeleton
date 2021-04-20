@@ -9,7 +9,7 @@
       <%= f.label :front_user, class: "col-sm-2 col-form-label text-right"%>
 
       <div class="col-sm-10">
-        <%= f.select(:front_user, FrontUser.all.map { |e| [e.name, e.uuid] }, {}, class: "form-control") %>
+        <%= f.select(:front_user_id, FrontUser.all.map { |e| [e.name, e.uuid] }, {}, class: "form-control") %>
       </div>
     </div>
 
