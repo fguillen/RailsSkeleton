@@ -25,7 +25,7 @@ Clone and renaming:
     cd MyNewAwesomeApp
     git init
     git remote add skeleton git@github.com:fguillen/RailsSkeleton.git
-    git pull skeleton master
+    git pull skeleton main
 
     rake "railsskeleton:utils:renaming_project[MyNewAwesomeApp]"
     git add .
