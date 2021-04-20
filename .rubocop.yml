@@ -49,6 +49,7 @@ Metrics/AbcSize:
   Enabled: true
   Exclude:
     - "test/**/*"
+    - "lib/renaming_project.rb"
     - "app/controllers/admin/admin_authorizations_controller.rb"
     - "app/controllers/front/front_authorizations_controller.rb"
 
