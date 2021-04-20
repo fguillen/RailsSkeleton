@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   layout "application/layout"
 
   def health
-    raise "No DB connection" unless ActiveRecord::Base.connection && ActiveRecord::Base.connection.active?
+    raise "No DB connection" unless ActiveRecord::Base.connection&.active?
 
     render :health
   end

@@ -13,7 +13,7 @@ require 'authlogic/test_case'
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-  FIXTURES_PATH = "#{File.dirname(__FILE__)}/fixtures"
+  FIXTURES_PATH = "#{File.dirname(__FILE__)}/fixtures".freeze
 
   def fixture(fixture_path)
     File.expand_path "#{FIXTURES_PATH}/#{fixture_path}"

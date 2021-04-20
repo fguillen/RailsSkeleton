@@ -23,7 +23,7 @@ Naming/VariableNumber:
   EnforcedStyle: snake_case
 
 Style/ClassAndModuleChildren:
-  EnforcedStyle: compact
+  Enabled: false
 
 Metrics/MethodLength:
   Max: 20

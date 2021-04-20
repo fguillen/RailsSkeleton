@@ -25,7 +25,7 @@ class Front::BaseController < ApplicationController
   def current_front_user
     return @current_front_user if defined?(@current_front_user)
 
-    @current_front_user = current_front_user_session && current_front_user_session.record
+    @current_front_user = current_front_user_session&.record
   end
 
   def store_location

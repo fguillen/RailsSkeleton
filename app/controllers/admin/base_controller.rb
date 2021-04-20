@@ -25,7 +25,7 @@ class Admin::BaseController < ApplicationController
   def current_admin_user
     return @current_admin_user if defined?(@current_admin_user)
 
-    @current_admin_user = current_admin_session && current_admin_session.record
+    @current_admin_user = current_admin_session&.record
   end
 
   def store_location
