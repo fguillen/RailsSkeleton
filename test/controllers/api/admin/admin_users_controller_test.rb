@@ -12,17 +12,14 @@ class Api::Admin::AdminUsersControllerTest < ActionController::TestCase
     assert_unauthorized
 
     request.env["HTTP_AUTHORIZATION"] = "Token TEST_ADMIN_TOKEN_2"
-
     get :index
     assert_unauthorized
 
     request.env["HTTP_AUTHORIZATION"] = "TEST_ADMIN_TOKEN_2"
-
     get :index
     assert_unauthorized
 
     request.env["HTTP_AUTHORIZATION"] = "RailsSkeleton invalid-token-#{SecureRandom.uuid}"
-
     get :index
     assert_unauthorized
   end

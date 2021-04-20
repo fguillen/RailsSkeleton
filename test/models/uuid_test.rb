@@ -8,8 +8,15 @@ class UUIDTest < ActiveSupport::TestCase
       table_uuid_column_exists = model.column_names.include?("uuid")
       model_include_has_uuid = model.included_modules.include?(HasUuid)
 
-      assert_equal(table_uuid_column_exists, model_include_has_uuid,
-                   "table #{model.table_name} #{table_uuid_column_exists ? 'has' : "doesn't have"} uuid column, but model #{model_include_has_uuid ? 'includes' : "doesn't include"} HasUuid module")
+      error_message =
+        "table #{model.table_name} #{table_uuid_column_exists ? 'has' : "doesn't have"} uuid column," \
+        "but model #{model_include_has_uuid ? 'includes' : "doesn't include"} HasUuid module"
+
+      assert_equal(
+        table_uuid_column_exists,
+        model_include_has_uuid,
+        error_message
+      )
     end
   end
 

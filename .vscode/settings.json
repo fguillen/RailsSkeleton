@@ -3,8 +3,12 @@
         "activerecord",
         "authlogic",
         "crypted",
+        "datetime",
+        "downcase",
+        "mkdir",
         "omniauth",
         "password",
+        "railsskeleton",
         "unprocessable",
         "wadus"
     ]

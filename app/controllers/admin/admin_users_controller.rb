@@ -39,13 +39,13 @@ class Admin::AdminUsersController < Admin::BaseController
   end
 
   def reset_password
-    @admin_user = AdminUser.find_using_perishable_token!(params[:reset_password_code], 1.week)
+    load_admin_user_from_perishable_token
 
     render :reset_password, layout: "admin/base_basic"
   end
 
   def reset_password_submit
-    @admin_user = AdminUser.find_using_perishable_token!(params[:reset_password_code], 1.week)
+    load_admin_user_from_perishable_token
 
     if @admin_user.update(admin_user_params)
       AdminSession.create(@admin_user)
@@ -67,5 +67,9 @@ class Admin::AdminUsersController < Admin::BaseController
 
   def load_admin_user
     @admin_user = AdminUser.find(params[:id])
+  end
+
+  def load_admin_user_from_perishable_token
+    @admin_user = AdminUser.find_using_perishable_token!(params[:reset_password_code], 1.week)
   end
 end

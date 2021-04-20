@@ -3,11 +3,12 @@ class RenamingProject
     Dir.glob("#{Rails.root}/**/*.*").each do |filepath|
       next unless File.file? filepath
 
-      new_filepath = if filepath =~ /rails_skeleton/
-                       filepath.gsub("rails_skeleton", new_name.underscore)
-                     else
-                       filepath
-                     end
+      new_filepath =
+        if filepath =~ /rails_skeleton/
+          filepath.gsub("rails_skeleton", new_name.underscore)
+        else
+          filepath
+        end
 
       file_content = File.read(filepath)
       file_content = file_content.gsub("RailsSkeleton", new_name)

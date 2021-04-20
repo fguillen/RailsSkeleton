@@ -17,7 +17,7 @@ class Admin::FrontUsersControllerTest < ActionController::TestCase
 
   def test_show
     front_user = FactoryBot.create(:front_user)
-    post = FactoryBot.create(:post, front_user: front_user)
+    FactoryBot.create(:post, front_user: front_user)
 
     get :show, params: { id: front_user }
 
