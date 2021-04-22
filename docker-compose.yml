@@ -1,0 +1,45 @@
+# From: https://gist.github.com/satendra02/1b335b06bfc5921df486f26bd98e0e89
+
+version: '3'
+services:
+  db:
+    image: mysql:8.0
+    volumes:
+      - ./db/data:/var/lib/mysql
+    restart: always
+    ports:
+      - 127.0.0.1:13306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    command: [--default-authentication-plugin=mysql_native_password]
+
+  app:
+    build:
+      context: .
+      dockerfile: ./docker/app/DockerFile
+    volumes:
+      - .:/var/www/app
+    restart: always
+    depends_on:
+      - db
+  web:
+    build:
+      context: .
+      dockerfile: ./docker/web/DockerFile
+    depends_on:
+      - app
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - .:/var/www/app
+    restart: always
+  cron:
+    build:
+      context: .
+      dockerfile: ./docker/cron/DockerFile
+    volumes:
+      - .:/var/www/app
+    restart: always
+    depends_on:
+      - db

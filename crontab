@@ -1,0 +1,2 @@
+* * * * * root date >> /var/log/test_cron.log # for testing
+* * * * * root /bin/bash -l -c 'cd $RAILS_ROOT && bundle exec rake railsskeleton:test' >> /var/log/app_cron.log 2>&1

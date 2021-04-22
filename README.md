@@ -16,6 +16,8 @@ the basis for a new Rails application
 - test suite (minitest)
 - factory_bot
 - faker
+- cronjobs
+- dokerization
 
 
 ### Creating a new App
@@ -119,3 +121,66 @@ We have to add the callbacks, check here:
 We have to create the bucket, the IAM User, the Policy and the Group:
 
 - https://medium.com/@shamnad.p.s/how-to-create-an-s3-bucket-and-aws-access-key-id-and-secret-access-key-for-accessing-it-5653b6e54337
+
+
+## Docker and deploy
+
+### Configure SSL certificates
+
+Download the certificates
+and put them on
+
+- etc/secret/ssl_certificates/certificate.crt
+- etc/secret/ssl_certificates/certificate.key
+
+### Install server basics
+    ./server_setup.sh
+
+### Start the app
+
+(Included in the server_setup.sh script)
+
+cd /var/apps/RailsSkeleton
+docker-compose build
+docker-compose up -d
+docker-compose exec app bundle exec rake db:create db:schema:load
+(docker-compose exec app bundle exec rake db:seed) # Optional
+
+
+### Restore backups
+
+Go to S3 to get the backups
+
+    docker-compose exec app bundle exec rake db:create
+    docker exec -i DOCKER_PS mysql -uroot -proot railsskeleton < /tmp/cc_members.20180629.daily.sql
+    # mv /tmp/public/paperclip/production/* /var/apps/RailsSkeleton/public/paperclip/production/
+
+### Activate SweetyBacky
+
+    vim /root/secret/.s3.passwd # set the S3 credentials
+    chmod -R 600 /root/secret/
+    apt-get install ruby-all-dev build-essential zlib1g-dev mysql-client
+    gem install "sweety_backy"
+    crontab -l | { cat; echo "50 22 * * * /bin/bash -l -c '/usr/local/bin/sweety_backy /var/apps/RailsSkeleton/config/sweety_backy.conf >> /tmp/sweety_backy.RailsSkeleton.log 2>&1'"; } | crontab -
+
+
+### Redeploy
+
+    cd /var/apps/RailsSkeleton
+    git pull
+
+Restart the app:
+
+    docker-compose restart app
+    docker-compose restart cron
+    docker-compose restart web
+
+Or maybe
+
+    docker-compose down
+    docker-compose up -d
+
+### Consoling
+
+    docker-compose exec app bundle exec rails c
+    docker-compose exec db mysql -uroot -proot

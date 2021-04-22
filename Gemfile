@@ -12,7 +12,6 @@ gem "active_storage_validations"
 gem "authlogic"
 gem "aws-sdk-s3", require: false
 gem "bluecloth"
-gem "bootsnap", require: false
 gem "data_migrate"
 gem "dotenv-rails"
 gem "fast_blank"

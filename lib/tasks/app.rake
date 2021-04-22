@@ -5,4 +5,9 @@ namespace :railsskeleton do
       RenamingProject.perform(args.new_project_name)
     end
   end
+
+  desc "This is a task for testing"
+  task test: :environment do
+    Rails.logger.info("[#{Time.now}] This is the test task")
+  end
 end

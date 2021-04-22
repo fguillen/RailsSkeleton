@@ -1,37 +1,22 @@
-test:
+default: &default
   adapter: mysql2
   encoding: utf8mb4
   collation: utf8mb4_bin
-  database: railsskeleton_test
   username: root
   password: <%= ENV.fetch('SECRET_RAILS_DB_PASSWORD') %>
   host: 127.0.0.1
+  port: 3306
 
 development:
-  adapter: mysql2
-  encoding: utf8mb4
-  collation: utf8mb4_bin
+  <<: *default
   database: railsskeleton_development
-  username: root
-  password: <%= ENV.fetch('SECRET_RAILS_DB_PASSWORD') %>
-  host: 127.0.0.1
+
+test:
+  <<: *default
+  database: railsskeleton_test
 
 production:
-  adapter: mysql2
-  encoding: utf8mb4
-  collation: utf8mb4_bin
-  host: db-railsskeleton-production.network
-  port: 3306
-  database: railsskeleton_production
-  username: root
-  password: <%= ENV.fetch('SECRET_RAILS_DB_PASSWORD') %>
-
-staging:
-  adapter: mysql2
-  encoding: utf8mb4
-  collation: utf8mb4_bin
-  host: db-railsskeleton-staging.network
-  port: 3306
-  database: railsskeleton_staging
-  username: root
-  password: <%= ENV.fetch('SECRET_RAILS_DB_PASSWORD') %>
+  <<: *default
+  host: db
+  database: railsskeleton
+  password: root
