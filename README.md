@@ -49,9 +49,9 @@ If one changes something in this project
 the "based on this" apps can benefit from
 those changes using:
 
-  - `$ cd MyNewAwesomeApp`
-  - `$ git fetch skeleton`
-  - `$ git merge skeleton/master`
+    cd MyNewAwesomeApp
+    git fetch skeleton
+    git merge skeleton/main
 
 #### ⚠️⚠️ Conflicts Happen! ⚠️⚠️
 
