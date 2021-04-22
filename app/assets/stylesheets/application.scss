@@ -13,34 +13,3 @@
  *= require_tree .
  *= require_self
  */
-
-.environment_badge {
-  position: absolute;
-  left: -52px;
-  top: 30px;
-  display: block;
-  width: 200px;
-  background: darkorange;
-  background: -moz-linear-gradient(top, darkorange 0%, darken(darkorange, 20) 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, darkorange), color-stop(100%, darken(darkorange, 20)));
-  text-align: center;
-  padding: 4px 15px 4px 3px;
-  text-shadow: darken(darkorange, 20) 1px 1px 0;
-  -webkit-transform: rotate(-45deg);  /* Saf3.1+, Chrome */
-  -moz-transform: rotate(-45deg);  /* FF3.5+ */
-  -ms-transform: rotate(-45deg);  /* IE9 */
-  -o-transform: rotate(-45deg);  /* Opera 10.5 */
-  transform: rotate(-45deg);
-  box-shadow: rgba(0,0,0, 0.2) 0px 0px 6px;
-  -moz-box-shadow: rgba(0,0,0, 0.2) 0px 0px 6px;
-  -webkit-box-shadow: rgba(0,0,0, 0.2) 0px 0px 6px;
-  z-index: 1035;
-  letter-spacing: 1px;
-  font-style: normal;
-  font-size: 12px !important;
-  color: white;
-  text-transform: uppercase;
-  line-height: 12px;
-  display: block;
-  font-family: Verdana;
-}

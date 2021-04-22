@@ -14,9 +14,11 @@
 /.bundle
 /coverage/
 /db/*.sqlite3*
+/db/data
 /etc/secret
 /log/*
 /node_modules
+/public/assets
 /public/system/*
 /spec/tmp/*
 /test/reports

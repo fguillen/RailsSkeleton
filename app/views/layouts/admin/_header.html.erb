@@ -2,7 +2,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>RailsSekleton (admin) <%= "| #{yield(:title)}" if content_for?(:title) %></title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="shortcut icon" href="/assets/app/shared/logo.png">
+<link rel="shortcut icon" href="<%= image_path("shared/images/logo.png") %>">
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
@@ -16,9 +16,9 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
 <!-- application -->
-<%= stylesheet_link_tag "/assets/app/shared/application.css", :media => "all" %>
-<%= stylesheet_link_tag "/assets/app/admin/css/admin.css", :media => "all" %>
-<%= javascript_include_tag "/assets/vendor/rails/jquery_ujs.js" %>
+<%= stylesheet_link_tag "shared/application.css", :media => "all" %>
+<%= stylesheet_link_tag "admin/css/admin.css", :media => "all" %>
+<%= javascript_include_tag "jquery_ujs.js" %>
 
 <script>
    window.App = {};
