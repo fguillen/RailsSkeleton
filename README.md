@@ -139,6 +139,12 @@ Copy the `./server_setup.sh` on your server and execute it
 
     ./server_setup.sh
 
+### Add the ENVVARS
+
+You can take them from the `.env.development` and create the production file:
+
+    .env.production
+
 ### Start the app
 
 (Included in the server_setup.sh script)
