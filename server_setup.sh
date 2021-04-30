@@ -24,17 +24,17 @@ apt-get install docker-ce
 
 # Docker compose
 # From here: https://docs.docker.com/compose/install/
-sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 
 # Download the App
 mkdir -p /var/apps
 cd /var/apps
-git clone https://fguillen@github.com/fguillen/CineCiutatMemberManagement.git
+git clone https://fguillen@github.com/fguillen/RailsSkeleton.git
 
 # Start the App
-cd /var/apps/CineCiutatMemberManagement
+cd /var/apps/RailsSkeleton
 docker-compose build
 docker-compose up -d
 docker-compose exec app bundle exec rake db:create db:schema:load

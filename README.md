@@ -130,10 +130,13 @@ We have to create the bucket, the IAM User, the Policy and the Group:
 Download the certificates
 and put them on
 
-- etc/secret/ssl_certificates/certificate.crt
-- etc/secret/ssl_certificates/certificate.key
+- /etc/ssl/certificate.crt
+- /etc/ssl/certificate.key
 
 ### Install server basics
+
+Copy the `./server_setup.sh` on your server and execute it
+
     ./server_setup.sh
 
 ### Start the app
