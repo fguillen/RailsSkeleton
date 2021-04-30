@@ -132,8 +132,8 @@ We have to create the bucket, the IAM User, the Policy and the Group:
 Download the certificates
 and put them on
 
-- /etc/ssl/certificate.crt
-- /etc/ssl/certificate.key
+- /etc/ssl/RailsSkeleton.crt
+- /etc/ssl/RailsSkeleton.key
 
 ### Install server basics
 
