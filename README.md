@@ -18,6 +18,8 @@ the basis for a new Rails application
 - faker
 - cronjobs
 - dokerization
+- integration with SendGrid
+- integration with Rollbar
 
 
 ### Creating a new App

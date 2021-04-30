@@ -48,13 +48,6 @@ staging:
     statsd_port: 8125
     mock_mode: false
     debug_mode: true
-  smtp:
-    enabled: true
-    server: smtp.sendgrid.net
-    port: 587
-    domain: railsskeleton.staging.railsskeleton.com
-    user: apikey
-    pass: "<%= ENV.fetch('SECRET_SMTP_PASS') %>"
   api:
     admin_token:
       - "<%= ENV.fetch('SECRET_API_ADMIN_TOKEN') %>"
@@ -74,13 +67,6 @@ production:
     statsd_port: 8125
     mock_mode: false
     debug_mode: false
-  smtp:
-    enabled: true
-    server: smtp.sendgrid.net
-    port: 587
-    domain: railsskeleton.com
-    user: apikey
-    pass: "<%= ENV.fetch('SECRET_SMTP_PASS') %>"
   api:
     admin_token:
       - "<%= ENV.fetch('SECRET_API_ADMIN_TOKEN') %>"
