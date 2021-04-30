@@ -14,6 +14,9 @@ WORKDIR $RAILS_ROOT
 ENV RAILS_ENV="production"
 ENV RACK_ENV="production"
 
+# Basic folders (required by puma)
+RUN mkdir -p tmp/pids
+
 # Adding gems
 COPY Gemfile Gemfile
 COPY Gemfile.lock Gemfile.lock
