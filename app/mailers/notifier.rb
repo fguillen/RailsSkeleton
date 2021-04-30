@@ -18,4 +18,11 @@ class Notifier < ActionMailer::Base
       subject: "[RailsSkeleton] Password reset"
     )
   end
+
+  def simple_test_email(subject, to)
+    mail(
+      to: to,
+      subject: "[RailsSkeleton] #{subject}"
+    )
+  end
 end

@@ -30,4 +30,16 @@ class NotifierTest < ActionMailer::TestCase
     # write_fixture("/notifier/front_user_reset_password.txt", email.body.encoded)
     assert_equal(File.read(fixture("/notifier/front_user_reset_password.txt")), email.body.encoded)
   end
+
+  def test_simple_test_email
+    email = Notifier.simple_test_email("Wadus", "wadus@example.com").deliver_now
+    assert !ActionMailer::Base.deliveries.empty?
+
+    assert_equal ["it@railsskeleton.com"], email.from
+    assert_equal ["wadus@example.com"], email.to
+    assert_equal "[RailsSkeleton] Wadus", email.subject
+
+    # write_fixture("/notifier/simple_test_email.txt", email.body.encoded)
+    assert_equal(File.read(fixture("/notifier/simple_test_email.txt")), email.body.encoded)
+  end
 end
