@@ -19,8 +19,8 @@ COPY public public/
 COPY docker/web/nginx.conf /tmp/docker.nginx
 
 # Get certificates
-COPY /etc/ssl/RailsSkeleton.crt /etc/ssl/RailsSkeleton.crt
-COPY /etc/ssl/RailsSkeleton.key /etc/ssl/RailsSkeleton.key
+COPY etc/secret/certificate.crt /etc/ssl/certificate.crt
+COPY etc/secret/certificate.key /etc/ssl/certificate.key
 
 # substitute variable references in the Nginx config template for real values from the environment
 # put the final config in its place
