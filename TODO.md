@@ -2,3 +2,4 @@
 - Add Upload images
 - Add required envs: https://github.com/bkeepers/dotenv#required-keys
 - integrate style palette
+- Add Data Migrate example

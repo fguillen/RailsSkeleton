@@ -16,10 +16,12 @@ the basis for a new Rails application
 - test suite (minitest)
 - factory_bot
 - faker
+- data_migrate
 - cronjobs
 - dokerization
 - integration with SendGrid
 - integration with Rollbar
+
 
 
 ### Creating a new App
