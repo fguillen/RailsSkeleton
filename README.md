@@ -182,6 +182,10 @@ Go to S3 to get the backups
     cd /var/apps/RailsSkeleton
     git pull
 
+Running migrations:
+
+    docker-compose exec app bundle exec rake db:migrate data:migrate
+
 Restart the app:
 
     docker-compose restart app
