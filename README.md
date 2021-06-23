@@ -165,7 +165,7 @@ docker-compose exec app bundle exec rake db:create db:schema:load
 Go to S3 to get the backups
 
     docker-compose exec app bundle exec rake db:create
-    docker exec -i DOCKER_PS mysql -uroot -proot railsskeleton < /tmp/cc_members.20180629.daily.sql
+    docker exec -i DOCKER_PS mysql -uroot -proot railsskeleton < /tmp/mysql_dump.sql
     # mv /tmp/public/paperclip/production/* /var/apps/RailsSkeleton/public/paperclip/production/
 
 ### Activate SweetyBacky
@@ -185,7 +185,7 @@ Go to S3 to get the backups
 Running migrations:
 
     docker-compose exec app bundle exec rake db:migrate data:migrate assets:precompile
-    
+
 Restart the app:
 
     docker-compose restart app
