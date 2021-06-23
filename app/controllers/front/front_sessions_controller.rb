@@ -1,6 +1,4 @@
 class Front::FrontSessionsController < Front::BaseController
-  layout "front/base_basic"
-
   def new
     @front_session = FrontSession.new
   end

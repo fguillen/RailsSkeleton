@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <%= render "layouts/front/header" %>
+    <%= render "/layouts/front/header" %>
   </head>
 
   <body>
@@ -9,8 +9,8 @@
       <div class="environment_badge"><%= Rails.env %></div>
     <% end %>
 
-    <div class="container-xl">
-      <% if @current_front_user %>
+    <div class="container">
+      <% if current_front_user %>
         <%= render "layouts/front/menu" %>
       <% else %>
         <%= render "layouts/front/menu_basic" %>
@@ -26,5 +26,7 @@
 
       <%= render "layouts/front/footer" %>
     </div>
+
+
   </body>
 </html>
