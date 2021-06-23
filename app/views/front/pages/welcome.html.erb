@@ -1,18 +1,13 @@
-<div class="jumbotron welcome">
-  <h1 class="display-4">RailsSkeleton</h1>
-  <p class="lead">A simple multi blog manager</p>
-  <hr class="my-4">
-  <p class="railsskeleton-logo">
-    <%= image_tag "shared/images/logo.png" %>
-  </p>
-
-  <p class="heart">
-    ❤️
-  </p>
-
-  <p class="logo">
-    <%= image_tag "shared/images/logo.png" %>
-  </p>
-
-  <%= link_to t("layouts.menu.posts"), :front_posts %>
+<div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+  <div class="col-10 col-sm-8 col-lg-6">
+    <%= image_tag "shared/images/logo.png", width:"500", height:"500", class:"d-block mx-lg-auto img-fluid" %>
+  </div>
+  <div class="col-lg-6">
+    <h1 class="display-5 fw-bold lh-1 mb-3">RailsSkeleton</h1>
+    <p class="lead">This application is meant to be the basis for a new Rails application</p>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+      <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Primary</button>
+      <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button>
+    </div>
+  </div>
 </div>

@@ -10,7 +10,11 @@
     <% end %>
 
     <div class="container">
-      <%= render "layouts/front/menu_basic" %>
+      <% if @current_front_user %>
+        <%= render "layouts/front/menu" %>
+      <% else %>
+        <%= render "layouts/front/menu_basic" %>
+      <% end %>
 
       <div id="content">
         <% flash.each do |type, message| %>
@@ -19,8 +23,10 @@
 
         <%= yield %>
       </div>
+
+      <%= render "layouts/front/footer" %>
     </div>
 
-    <%= render "layouts/front/footer" %>
+
   </body>
 </html>
