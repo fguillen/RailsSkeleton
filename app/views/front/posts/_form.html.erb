@@ -28,6 +28,14 @@
       </div>
     </div>
 
+    <div class="row mb-3">
+      <%= f.label :pic, class: "col-sm-2 col-form-label text-end"%>
+      <div class="col-sm-10">
+        <%= f.file_field :pic, class: "form-control", placeholder: t("activerecord.attributes.post.pic") %>
+        <div class="form-text">You can upload an image.</div>
+      </div>
+    </div>
+
     <div class="row">
       <div class="offset-sm-2 col">
         <%= f.submit class: "btn btn-primary" %>

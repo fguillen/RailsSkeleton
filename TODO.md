@@ -1,5 +1,3 @@
-- Add Upload images
 - Add has_many form: https://learn.co/lessons/has-many-through-forms-rails
-- elements sub menu Show / Comments / History
 - integrate LogBook
 - pagination

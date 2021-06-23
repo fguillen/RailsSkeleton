@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   self.primary_key = :uuid
   include HasUuid
   acts_as_taggable_on :tags
+  has_one_attached :pic
 
   belongs_to :front_user
 

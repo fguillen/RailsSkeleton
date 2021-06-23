@@ -27,6 +27,7 @@ en:
           name: FrontUser Name
           one: FrontUser
         one: Post
+        pic: Pic
         tag_list: Tags
         tags: Tags
         title: Title
