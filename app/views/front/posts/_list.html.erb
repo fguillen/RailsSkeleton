@@ -10,6 +10,7 @@
     <tr>
       <td><%= link_to post.uuid, [:front, post] %></td>
       <td><%= post.title %></td>
+      <td><%= render_labels(post.tag_list.sort, :tags) %></td>
       <td><%= post.created_at.to_s(:datetimedb) %></td>
       <td><%= post.front_user.name %></td>
     </tr>

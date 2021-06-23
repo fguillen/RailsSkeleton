@@ -24,8 +24,12 @@ unless FrontUser.where(email: email).exists?
   puts "FrontUser created #{email}/#{password}"
 end
 
-Post.create!(
-  front_user: FrontUser.find_by(email: email),
-  title: "The title",
-  body: "The body with more than 20 characters"
-)
+tags_example = ["shopping", "cooking", "hang-out", "love", "passion"]
+10.times do
+  Post.create!(
+    front_user: FrontUser.find_by(email: email),
+    title: Faker::Lorem.sentence,
+    body: Faker::Lorem.paragraph(sentence_count: 6, supplemental: true, random_sentences_to_add: 10),
+    tag_list: tags_example.sample(rand(0..3))
+  )
+end

@@ -15,6 +15,7 @@ gem "aws-sdk-s3", require: false
 gem "bluecloth"
 gem "data_migrate"
 gem "dotenv-rails"
+gem "faker"
 gem "fast_blank"
 gem "i18n-tasks"
 gem "image_processing"
@@ -52,7 +53,6 @@ end
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "capybara"
-  gem "faker"
   gem "selenium-webdriver"
   gem "timecop"
   gem "webdrivers"
