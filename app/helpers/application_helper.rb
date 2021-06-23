@@ -25,4 +25,8 @@ module ApplicationHelper
   def render_labels(words, palette_name)
     words.map { |e| render_label e, palette_name }.join(" ").html_safe
   end
+
+  def markdown(text)
+    MarkdownRenderer.render(text).html_safe
+  end
 end

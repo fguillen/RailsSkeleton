@@ -12,7 +12,7 @@
   <dt class="col-sm-2 text-right"><%= t "activerecord.attributes.post.title" %></dt><dd class="col-sm-10"><%= @post.title %></dd>
 </dl>
 
-<%= @post.body %>
+<%= markdown(@post.body) %>
 
 <%= render_labels(@post.tag_list.sort, :tags) %>
 

@@ -29,7 +29,7 @@ tags_example = ["shopping", "cooking", "hang-out", "love", "passion"]
   Post.create!(
     front_user: FrontUser.find_by(email: email),
     title: Faker::Lorem.sentence,
-    body: Faker::Lorem.paragraph(sentence_count: 6, supplemental: true, random_sentences_to_add: 10),
+    body: Faker::Lorem.paragraphs(number: rand(10..20)).join("\n\n"),
     tag_list: tags_example.sample(rand(0..3))
   )
 end
