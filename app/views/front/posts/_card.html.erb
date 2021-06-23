@@ -1,0 +1,16 @@
+<div class="col mb-2">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-8">
+          <h5 class="card-title"><%= post.title %></h5>
+        </div>
+        <div class="col text-end">
+          <%= render_labels(post.tag_list, :tags) %>
+        </div>
+      </div>
+      <p class="card-text"><%= truncate(post.body, length: 300) %></p>
+      <%= link_to "Read Post", [:front, post], class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>

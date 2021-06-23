@@ -17,7 +17,7 @@
     <div class="mb-3">
       <%= f.label :password, class: "form-label" %>
       <%= f.text_field :password, :class => "form-control", :type => "password", :placeholder => t("activerecord.attributes.front_user.password"), ariaDescribedby: "passwordHelp" %>
-      <div id="passwordHelp" class="form-text">Introduce your password.</div>
+      <div id="passwordHelp" class="form-text">Introduce your password. <%= link_to "Forgot password?", front_forgot_password_path %></div>
     </div>
     <div class="mb-3 form-check">
       <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -27,5 +27,4 @@
   </fieldset>
 <% end %>
 
-<p><%= link_to "Forgot password", front_forgot_password_path %></p>
-<p>You don't have an account yet? <%= link_to "Sign up", "To Register page" %></p>
+<p class="mt-2">You don't have an account yet? <%= link_to "Sign up", "To Register page" %></p>
