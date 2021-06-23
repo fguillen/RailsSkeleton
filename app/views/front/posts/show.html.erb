@@ -3,22 +3,35 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><%= link_to (t "layouts.breadcrumbs.posts"), :front_posts %></li>
-    <li class="breadcrumb-item active"><%= @post.uuid %></li>
+    <li class="breadcrumb-item active"><%= @post.title %></li>
   </ol>
 </nav>
 
-<dl class="row">
-  <dt class="col-sm-2 text-right"><%= t "activerecord.attributes.post.uuid" %></dt><dd class="col-sm-10"><%= @post.uuid %></dd>
-  <dt class="col-sm-2 text-right"><%= t "activerecord.attributes.post.title" %></dt><dd class="col-sm-10"><%= @post.title %></dd>
-</dl>
+<div class="row">
+  <div class="col-3">
+    <p>
+      <%= link_to (t "views.posts.show.edit_button"), edit_front_post_path(@post), :class => "btn btn-primary" %>
+      <%= link_to (t "views.posts.show.delete_button"), [:front, @post], :data => { :confirm => (t "views.posts.show.delete_confirmation") }, :method => :delete, :class => "btn btn-danger" %>
+    </p>
+  </div>
 
-<%= markdown(@post.body) %>
-
-<%= render_labels(@post.tag_list.sort, :tags) %>
-
-<div class="controls text-right">
-  <p>
-    <%= link_to (t "views.posts.show.edit_button"), edit_front_post_path(@post), :class => "btn btn-primary" %>
-    <%= link_to (t "views.posts.show.delete_button"), [:front, @post], :data => { :confirm => (t "views.posts.show.delete_confirmation") }, :method => :delete, :class => "btn btn-danger" %>
-  </p>
+  <div class="col">
+    <div class="col mb-2">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-8">
+              <h5 class="card-title"><%= @post.title %></h5>
+            </div>
+            <div class="col text-end">
+              <%= render_labels(@post.tag_list, :tags) %>
+            </div>
+          </div>
+          <div class="card-text">
+            <%= markdown(@post.body) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
