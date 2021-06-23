@@ -1,4 +1,3 @@
-- Remove NewRelic
 - Add Upload images
 - Add required envs: https://github.com/bkeepers/dotenv#required-keys
 - integrate style palette
