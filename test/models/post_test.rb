@@ -53,4 +53,19 @@ class PostTest < ActiveSupport::TestCase
 
     assert_equal(front_user, post.front_user)
   end
+
+  def test_tags
+    post = FactoryBot.create(:post, tag_list: ["one", "two"])
+    assert_equal(2, post.tags.count)
+    assert_equal(["one", "two"], post.tag_list)
+    assert_equal(["one", "two"], post.tags.map(&:name))
+
+    post = FactoryBot.create(:post, tag_list: "one, two")
+    assert_equal(2, post.tags.count)
+    assert_equal(["one", "two"], post.tag_list)
+    assert_equal(["one", "two"], post.tags.map(&:name))
+
+    post = FactoryBot.create(:post, tag_list: "One, Two")
+    assert_equal(["one", "two"], post.tag_list)
+  end
 end

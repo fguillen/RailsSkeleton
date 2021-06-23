@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_18_141558) do
+ActiveRecord::Schema.define(version: 2021_06_23_095154) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.string "name", null: false
@@ -54,6 +54,9 @@ ActiveRecord::Schema.define(version: 2020_04_18_141558) do
     t.index ["uuid"], name: "index_admin_users_on_uuid", unique: true
   end
 
+  create_table "data_migrations", primary_key: "version", id: :string, charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
+  end
+
   create_table "front_authorizations", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.string "provider"
     t.string "uid"
@@ -94,6 +97,34 @@ ActiveRecord::Schema.define(version: 2020_04_18_141558) do
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
   end
 
+  create_table "taggings", id: :integer, charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
+    t.integer "tag_id"
+    t.string "taggable_type"
+    t.string "taggable_id", limit: 36
+    t.string "tagger_type"
+    t.integer "tagger_id"
+    t.string "context", limit: 128
+    t.datetime "created_at"
+    t.index ["context"], name: "index_taggings_on_context"
+    t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+    t.index ["taggable_id", "taggable_type", "context"], name: "taggings_taggable_context_idx"
+    t.index ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy"
+    t.index ["taggable_id"], name: "index_taggings_on_taggable_id"
+    t.index ["taggable_type"], name: "index_taggings_on_taggable_type"
+    t.index ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type"
+    t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
+  end
+
+  create_table "tags", id: :integer, charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
+    t.string "name", collation: "utf8_bin"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer "taggings_count", default: 0
+    t.index ["name"], name: "index_tags_on_name", unique: true
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "posts", "front_users", primary_key: "uuid"
+  add_foreign_key "taggings", "tags"
 end

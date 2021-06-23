@@ -25,6 +25,7 @@ en:
           name: FrontUser Name
           one: FrontUser
         one: Post
+        tag_list: Tags
         title: Title
         uuid: Uuid
     models:

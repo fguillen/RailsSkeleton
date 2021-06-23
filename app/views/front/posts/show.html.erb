@@ -14,7 +14,7 @@
 
 <%= @post.body %>
 
-<%= render_label("published", :states) %>
+<%= render_labels(@post.tag_list.sort, :tags) %>
 
 <div class="controls text-right">
   <p>

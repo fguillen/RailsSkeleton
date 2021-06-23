@@ -44,7 +44,7 @@ class Front::PostsController < Front::BaseController
   protected
 
   def post_params
-    params.require(:post).permit(:front_user_id, :title, :body)
+    params.require(:post).permit(:front_user_id, :title, :body, :tag_list)
   end
 
   private

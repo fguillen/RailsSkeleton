@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
   self.primary_key = :uuid
   include HasUuid
+  acts_as_taggable_on :tags
 
   belongs_to :front_user
 

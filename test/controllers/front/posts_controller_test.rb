@@ -55,7 +55,8 @@ class Front::PostsControllerTest < ActionController::TestCase
       params: {
         post: {
           title: "The Title Wadus",
-          body: "The Body Wadus Wadus Wadus Wadus"
+          body: "The Body Wadus Wadus Wadus Wadus",
+          tag_list: "one, two"
         }
       }
     )
@@ -66,6 +67,7 @@ class Front::PostsControllerTest < ActionController::TestCase
     assert_equal("The Title Wadus", post.title)
     assert_equal("The Body Wadus Wadus Wadus Wadus", post.body)
     assert_equal(@front_user, post.front_user)
+    assert_equal(["one", "two"], post.tag_list)
   end
 
   def test_edit

@@ -1,3 +1,2 @@
 - Add Upload images
 - Add has_many form: https://learn.co/lessons/has-many-through-forms-rails
-- Add tags/categories

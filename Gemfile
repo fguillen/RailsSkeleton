@@ -9,6 +9,7 @@ end
 # Please: keep the gem declarations sorted.
 #   This will make future mergings MUCH easier. <3
 gem "active_storage_validations"
+gem "acts-as-taggable-on", "~> 7.0"
 gem "authlogic"
 gem "aws-sdk-s3", require: false
 gem "bluecloth"
