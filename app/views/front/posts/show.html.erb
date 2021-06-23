@@ -14,6 +14,8 @@
 
 <%= @post.body %>
 
+<%= render_label("published", :states) %>
+
 <div class="controls text-right">
   <p>
     <%= link_to (t "views.posts.show.edit_button"), edit_front_post_path(@post), :class => "btn btn-primary" %>

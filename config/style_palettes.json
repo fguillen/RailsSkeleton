@@ -1,0 +1,52 @@
+{
+    "states": [
+        { "style": "background-color: #cd8745; color: #000;" },
+        { "style": "background-color: #82d37c; color: #000;" },
+        { "style": "background-color: #81dbde; color: #000;" },
+        { "style": "background-color: #90a26b; color: #000;" },
+        { "style": "background-color: #c2b19d; color: #000;" },
+        { "style": "background-color: #c1e0a3; color: #000;" },
+        { "style": "background-color: #afaa78; color: #000;" },
+        { "style": "background-color: #C2BB68; color: #000;" },
+        { "style": "background-color: #63E17C; color: #000;" },
+        { "style": "background-color: #34B4C8; color: #000;" }
+    ],
+
+    "number": [
+        { "style": "background-color: #CCCCCC; color: #000;", "regex": "^0$" },
+        { "style": "background-color: #91E391; color: #000;", "regex": "^[^-]" },
+        { "style": "background-color: #E68585; color: #000;", "regex": "^-" }
+    ],
+
+    "boolean": [
+        { "style": "background-color: #91E391; color: #000;", "regex": "^(yes|1|true)$" },
+        { "style": "background-color: #E68585; color: #000;", "regex": "^(no|0|false)$" }
+    ],
+
+    "tags": [
+        { "style": "background-color: #f5acb0; color: #000;" },
+        { "style": "background-color: #f5abd5; color: #000;" },
+        { "style": "background-color: #e7abf5; color: #000;" },
+        { "style": "background-color: #b2a6f5; color: #000;" },
+        { "style": "background-color: #abc9f6; color: #000;" },
+        { "style": "background-color: #acf5ea; color: #000;" },
+        { "style": "background-color: #acf5c5; color: #000;" },
+        { "style": "background-color: #adf6ac; color: #000;" },
+        { "style": "background-color: #caf5ac; color: #000;" },
+        { "style": "background-color: #f5f1a7; color: #000;" },
+        { "style": "background-color: #f5caab; color: #000;" },
+        { "style": "background-color: #ff85a8; color: #000;" },
+        { "style": "background-color: #ffd685; color: #000;" },
+        { "style": "background-color: #fff385; color: #000;" },
+        { "style": "background-color: #85ffd0; color: #000;" },
+        { "style": "background-color: #85c2ff; color: #000;" },
+        { "style": "background-color: #ff85f3; color: #000;" }
+    ],
+
+    "ranges": [
+        { "style": "background-color: #fff385; color: #000;", "range": "..0" },
+        { "style": "background-color: #85ffd0; color: #000;", "range": "0..20" },
+        { "style": "background-color: #85c2ff; color: #000;", "range": "20..80" },
+        { "style": "background-color: #ff85f3; color: #000;", "range": "80.." }
+    ]
+}

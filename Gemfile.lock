@@ -353,6 +353,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    style_palette (0.0.7)
     systemu (2.6.5)
     terminal-table (3.0.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
@@ -441,6 +442,7 @@ DEPENDENCIES
   simplecov
   spring
   spring-watcher-listen
+  style_palette
   timecop
   turbolinks
   uglifier
