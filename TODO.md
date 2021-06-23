@@ -1,5 +1,4 @@
 - Add Upload images
-- Add required envs: https://github.com/bkeepers/dotenv#required-keys
 - integrate style palette
 - Add Data Migrate example
 - Add has_many form: https://learn.co/lessons/has-many-through-forms-rails
