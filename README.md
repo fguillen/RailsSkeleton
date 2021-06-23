@@ -21,7 +21,7 @@ the basis for a new Rails application
 - dokerization
 - integration with SendGrid
 - integration with Rollbar
-
+- Upload images (Storage/S3)
 
 
 ### Creating a new App
