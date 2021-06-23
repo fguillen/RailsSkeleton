@@ -117,4 +117,18 @@ class Admin::FrontUsersControllerTest < ActionController::TestCase
 
     assert !FrontUser.exists?(front_user.id)
   end
+
+  def test_posts
+    front_user = FactoryBot.create(:front_user)
+    post = FactoryBot.create(:post, front_user: front_user)
+
+    get(
+      :posts,
+      params: {
+        id: front_user
+      }
+    )
+
+    assert_primary_keys([post], assigns(:posts))
+  end
 end

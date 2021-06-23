@@ -1,13 +1,10 @@
-<% title (t "views.front_users.new.title") %>
+<% title t("views.front_users.new.title") %>
 
-<ol class="breadcrumb">
-  <li><%= link_to (t "layouts.breadcrumbs.front_users"), :admin_front_users %></li>
-  <li class="active"><%= t "layouts.breadcrumbs.new" %></li>
-</ol>
-
-<p class="lead">
-  <%= (t "views.front_users.new.text") %>
-</p>
-
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to t("layouts.breadcrumbs.front_users"), :admin_front_users %></li>
+    <li class="breadcrumb-item active"><%= t("layouts.breadcrumbs.new") %></li>
+  </ol>
+</nav>
 
 <%= render "form" %>

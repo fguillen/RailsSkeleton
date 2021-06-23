@@ -1,0 +1,23 @@
+<% title t("views.front_users.show.title", :front_user_name => @front_user.name) %>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to t("layouts.breadcrumbs.front_users"), :admin_front_users %></li>
+    <li class="breadcrumb-item"><%= link_to @front_user.name, [:admin, @front_user] %></li>
+    <li class="breadcrumb-item active"><%= t("layouts.breadcrumbs.posts") %></li>
+  </ol>
+</nav>
+
+<%= render partial: "menu", locals: { active: "posts" }  %>
+
+<section class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      <%= t "views.front_user.sections.posts" %>
+    </h3>
+  </div>
+
+  <div class="panel-body">
+    <%= render partial: "admin/posts/list", locals: { posts: @posts } %>
+  </div>
+</section>

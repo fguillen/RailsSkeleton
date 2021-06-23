@@ -15,6 +15,8 @@ class FrontUser < ApplicationRecord
   validates :password, presence: true, on: :create
   validates :password, confirmation: true, allow_blank: true
 
+  validates_with PasswordValidator, unless: -> { password.blank? }
+
   scope :order_by_recent, -> { order("created_at desc") }
 
   def send_reset_password_email

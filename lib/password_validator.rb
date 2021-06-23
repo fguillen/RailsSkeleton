@@ -1,4 +1,4 @@
-class AdminPasswordValidator < ActiveModel::Validator
+class PasswordValidator < ActiveModel::Validator
   PASSWORD_CHARS = [/[a-z]/, /[A-Z]/, /[0-9]/, /\W/].freeze
 
   def validate(record)

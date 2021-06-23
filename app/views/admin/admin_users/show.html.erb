@@ -1,8 +1,8 @@
-<% title (t "views.admin_users.show.title", :admin_user_name => @admin_user.name) %>
+<% title t("views.admin_users.show.title", :admin_user_name => @admin_user.name) %>
 
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><%= link_to (t "layouts.breadcrumbs.admin_users"), :admin_admin_users %></li>
+    <li class="breadcrumb-item"><%= link_to t("layouts.breadcrumbs.admin_users"), :admin_admin_users %></li>
     <li class="breadcrumb-item active"><%= @admin_user.name %></li>
   </ol>
 </nav>
@@ -16,7 +16,7 @@
 
 <div class="controls text-right">
   <p>
-    <%= link_to (t "views.admin_users.show.edit_button"), edit_admin_admin_user_path(@admin_user), :class => "btn btn-primary" %>
-    <%= link_to (t "views.admin_users.show.delete_button"), [:admin, @admin_user], :data => { :confirm => (t "views.admin_users.show.delete_confirmation") }, :method => :delete, :class => "btn btn-danger" %>
+    <%= link_to t("views.admin_users.show.edit_button"), edit_admin_admin_user_path(@admin_user), :class => "btn btn-primary" %>
+    <%= link_to t("views.admin_users.show.delete_button"), [:admin, @admin_user], :data => { :confirm => t("views.admin_users.show.delete_confirmation") }, :method => :delete, :class => "btn btn-danger" %>
   </p>
 </div>

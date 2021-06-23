@@ -1,8 +1,8 @@
 require "test_helper"
 
-class AdminPasswordValidatable
+class PasswordValidatable
   include ActiveModel::Validations
-  validates_with AdminPasswordValidator
+  validates_with PasswordValidator
   attr_accessor :password, :name, :require_password
 
   def require_password?
@@ -10,9 +10,9 @@ class AdminPasswordValidatable
   end
 end
 
-class AdminPasswordValidatorTest < Minitest::Test
+class PasswordValidatorTest < Minitest::Test
   def test_success_when_require_password_false
-    admin_password_validator = AdminPasswordValidatable.new
+    admin_password_validator = PasswordValidatable.new
     admin_password_validator.name = "John Doe"
     admin_password_validator.password = "Johnpasswordnoanyrules"
     admin_password_validator.require_password = false
@@ -21,7 +21,7 @@ class AdminPasswordValidatorTest < Minitest::Test
   end
 
   def test_password_does_not_contain_name_success
-    admin_password_validator = AdminPasswordValidatable.new
+    admin_password_validator = PasswordValidatable.new
     admin_password_validator.name = "John Doe"
     admin_password_validator.password = "ValidPasswordNotName!"
     admin_password_validator.require_password = true
@@ -30,7 +30,7 @@ class AdminPasswordValidatorTest < Minitest::Test
   end
 
   def test_password_does_not_contain_name_fail
-    admin_password_validator = AdminPasswordValidatable.new
+    admin_password_validator = PasswordValidatable.new
     admin_password_validator.name = "John Doe"
     admin_password_validator.password = "PasswordWithJohn!"
     admin_password_validator.require_password = true
@@ -51,7 +51,7 @@ class AdminPasswordValidatorTest < Minitest::Test
     ]
 
     valid_passwords.each do |pass|
-      admin_password_validator = AdminPasswordValidatable.new
+      admin_password_validator = PasswordValidatable.new
       admin_password_validator.name = "John Doe"
       admin_password_validator.password = pass
       admin_password_validator.require_password = true
@@ -72,7 +72,7 @@ class AdminPasswordValidatorTest < Minitest::Test
     ]
 
     invalid_passwords.each do |pass|
-      admin_password_validator = AdminPasswordValidatable.new
+      admin_password_validator = PasswordValidatable.new
       admin_password_validator.name = "John Doe"
       admin_password_validator.password = pass
       admin_password_validator.require_password = true

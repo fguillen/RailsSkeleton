@@ -1,11 +1,13 @@
-<% title (t "views.front_users.show.title", :front_user_name => @front_user.name) %>
+<% title t("views.front_users.show.title", :front_user_name => @front_user.name) %>
 
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><%= link_to (t "layouts.breadcrumbs.front_users"), :admin_front_users %></li>
+    <li class="breadcrumb-item"><%= link_to t("layouts.breadcrumbs.front_users"), :admin_front_users %></li>
     <li class="breadcrumb-item active"><%= @front_user.name %></li>
   </ol>
 </nav>
+
+<%= render partial: "menu", locals: { active: "show" }  %>
 
 <dl class="row">
   <dt class="col-sm-2 text-right"><%= t "activerecord.attributes.front_user.uuid" %></dt><dd class="col-sm-10"><%= @front_user.uuid %></dd>
@@ -15,20 +17,7 @@
 
 <div class="controls text-right">
   <p>
-    <%= link_to (t "views.front_users.show.edit_button"), edit_admin_front_user_path(@front_user), :class => "btn btn-primary" %>
-    <%= link_to (t "views.front_users.show.delete_button"), [:admin, @front_user], :data => { :confirm => (t "views.front_users.show.delete_confirmation") }, :method => :delete, :class => "btn btn-danger" %>
+    <%= link_to t("views.front_users.show.edit_button"), edit_admin_front_user_path(@front_user), :class => "btn btn-primary" %>
+    <%= link_to t("views.front_users.show.delete_button"), [:admin, @front_user], :data => { :confirm => t("views.front_users.show.delete_confirmation") }, :method => :delete, :class => "btn btn-danger" %>
   </p>
 </div>
-
-
-<section class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">
-      <%= t "views.front_user.sections.posts" %>
-    </h3>
-  </div>
-
-  <div class="panel-body">
-    <%= render partial: "admin/posts/list", locals: { posts: @front_user.posts } %>
-  </div>
-</section>

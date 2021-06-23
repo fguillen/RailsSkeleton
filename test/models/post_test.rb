@@ -21,7 +21,7 @@ class PostTest < ActiveSupport::TestCase
     post = FactoryBot.build(:post, body: "A" * 6)
     refute(post.valid?)
 
-    post = FactoryBot.build(:post, body: "A" * 501)
+    post = FactoryBot.build(:post, body: "A" * 65_536)
     refute(post.valid?)
 
     post = FactoryBot.build(:post, body: "A" * 30)

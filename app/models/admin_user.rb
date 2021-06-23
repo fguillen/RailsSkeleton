@@ -7,13 +7,15 @@ class AdminUser < ApplicationRecord
     config.session_class = AdminSession
   end
 
-  validates_with AdminPasswordValidator
 
   has_many :authorizations, dependent: :destroy, class_name: "AdminAuthorization"
 
   validates :name, presence: true
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: RubyRegex::Email }
-  validates :password, confirmation: true
+  validates :password, presence: true, on: :create
+  validates :password, confirmation: true, allow_blank: true
+
+  validates_with PasswordValidator, unless: -> { password.blank? }
 
   scope :order_by_recent, -> { order("created_at desc") }
 

@@ -13,7 +13,9 @@ Rails.application.routes.draw do
 
     resources :admin_sessions, only: [:new, :create, :destroy]
     resources :admin_users
-    resources :front_users
+    resources :front_users do
+      get "posts", on: :member
+    end
     resources :posts
   end
 

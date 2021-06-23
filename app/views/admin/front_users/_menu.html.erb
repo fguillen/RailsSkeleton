@@ -1,0 +1,8 @@
+<ul class="nav nav-tabs mb-2">
+  <li class="nav-item">
+    <%= link_to "Info", [:admin, @front_user], class: "nav-link #{"active" if active == "show"}" %>
+  </li>
+  <li class="nav-item <%= "active" if active == "posts" %>">
+    <%= link_to "Posts", posts_admin_front_user_path(@front_user), class: "nav-link #{"active" if active == "posts"}" %>
+  </li>
+</ul>
