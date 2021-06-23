@@ -1,5 +1,4 @@
 - Add Upload images
 - integrate style palette
-- Add Data Migrate example
 - Add has_many form: https://learn.co/lessons/has-many-through-forms-rails
 - Add tags/categories
