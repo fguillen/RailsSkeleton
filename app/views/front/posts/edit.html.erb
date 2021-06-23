@@ -1,15 +1,11 @@
-<% title (t "views.posts.edit.title", :post_uuid => @post.uuid) %>
+<% title (t "views.posts.edit.title", :title => @post.title) %>
 
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><%= link_to (t "layouts.breadcrumbs.posts"), :front_posts %></li>
-    <li class="breadcrumb-item"><%= link_to @post.uuid, [:front, @post] %></li>
+    <li class="breadcrumb-item"><%= link_to @post.title, [:front, @post] %></li>
     <li class="breadcrumb-item active"><%= t "layouts.breadcrumbs.edit" %></li>
   </ol>
 </nav>
-
-<p class="lead">
-  <%= t "views.posts.edit.text" %>
-</p>
 
 <%= render "form" %>
