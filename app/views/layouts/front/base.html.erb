@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
   <head>
     <%= render "layouts/front/header" %>
   </head>
@@ -9,7 +9,7 @@
       <div class="environment_badge"><%= Rails.env %></div>
     <% end %>
 
-    <div class="container-fluid">
+    <div class="container-xl">
       <% if @current_front_user %>
         <%= render "layouts/front/menu" %>
       <% else %>
