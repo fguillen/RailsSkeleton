@@ -13,8 +13,8 @@ Rails.application.routes.draw do
 
     resources :admin_sessions, only: [:new, :create, :destroy]
     resources :admin_users
-    resources :posts
     resources :front_users
+    resources :posts
   end
 
   namespace :api do

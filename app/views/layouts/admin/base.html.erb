@@ -1,7 +1,7 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
   <head>
-    <%= render "layouts/admin/header" %>
+    <%= render "/layouts/admin/header" %>
   </head>
 
   <body>
@@ -9,10 +9,12 @@
       <div class="environment_badge"><%= Rails.env %></div>
     <% end %>
 
-    <div class="container-fluid">
-      <%= render "layouts/admin/menu" %>
-
-      <div id="loading"><img src="/assets/app/admin/img/spinner_min.gif" /></div>
+    <div class="container">
+      <% if current_admin_user %>
+        <%= render "layouts/admin/menu" %>
+      <% else %>
+        <%= render "layouts/admin/menu_basic" %>
+      <% end %>
 
       <div id="content">
         <% flash.each do |type, message| %>
@@ -21,7 +23,8 @@
 
         <%= yield %>
       </div>
-    </div>
 
+      <%= render "layouts/admin/footer" %>
+    </div>
   </body>
 </html>

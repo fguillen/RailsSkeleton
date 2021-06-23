@@ -1,41 +1,19 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <%= link_to Rails.application.class.module_parent_name, :admin_root, :class => "navbar-brand" %>
+<header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+  <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+    <%= image_tag "shared/images/logo.png", width:"40", height:"40", class:"bi me-2" %>
+    <span class="fs-4">RailsSkeleton | Admin</span>
+  </a>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <ul class="nav nav-pills">
+    <li class="nav-item"><%= link_to t("layouts.menu.admin_users"), :admin_admin_users, class: "nav-link" %></li>
+    <li class="nav-item"><%= link_to t("layouts.menu.front_users"), :admin_front_users, class: "nav-link" %></li>
+    <li class="nav-item"><%= link_to t("layouts.menu.posts"), :admin_posts, class: "nav-link" %></li>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item <%= admin_menu_class(:admin_users) %>">
-        <%= link_to t("layouts.menu.admin_users"), :admin_admin_users, :class => "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to t("layouts.menu.posts"), :admin_posts, :class => "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to t("layouts.menu.front_users"), :admin_front_users, :class => "nav-link" %>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
-    </ul>
-    <span class="navbar-text">
-      <%= current_admin_user.name %>
-      <%= link_to t("layouts.menu.logout"), admin_logout_path %>
-    </span>
-  </div>
-</nav>
-
-<br>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><%= current_admin_user.name %></a>
+      <ul class="dropdown-menu">
+        <li class="nav-item"><%= link_to t("layouts.menu.logout"), admin_logout_path, class: "nav-link" %></li>
+      </ul>
+    </li>
+  </ul>
+</header>
