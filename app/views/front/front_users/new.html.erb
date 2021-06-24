@@ -1,0 +1,21 @@
+<% title t("views.front_users.new.title") %>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to t("layouts.breadcrumbs.front_users"), :front_front_users %></li>
+    <li class="breadcrumb-item active"><%= t("layouts.breadcrumbs.new") %></li>
+  </ol>
+</nav>
+
+<div class="signup-header p-3 pb-md-4 mx-auto text-center">
+  <h1 class="display-4 fw-normal">Sign up</h1>
+  <p class="fs-5 text-muted">Register and start bloging.</p>
+</div>
+
+<%= render "form" %>
+
+<style>
+.signup-header {
+    max-width: 700px;
+}
+</style>

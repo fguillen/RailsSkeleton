@@ -19,7 +19,7 @@ class Front::FrontSessionsController < Front::BaseController
     @front_session = FrontSession.find
     @front_session&.destroy
 
-    redirect_to front_login_path, notice: t("controllers.front_sessions.logout.success")
+    redirect_to :front_root, notice: t("controllers.front_sessions.logout.success")
   end
 
   def forgot_password

@@ -1,0 +1,21 @@
+<% title t("views.front_users.show.title", :front_user_name => @front_user.name) %>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to t("layouts.breadcrumbs.front_users"), :front_front_users %></li>
+    <li class="breadcrumb-item active"><%= @front_user.name %></li>
+  </ol>
+</nav>
+
+<dl class="row">
+  <dt class="col-sm-2 text-right"><%= t "activerecord.attributes.front_user.uuid" %></dt><dd class="col-sm-10"><%= @front_user.uuid %></dd>
+  <dt class="col-sm-2 text-right"><%= t "activerecord.attributes.front_user.name" %></dt><dd class="col-sm-10"><%= @front_user.name %></dd>
+  <dt class="col-sm-2 text-right"><%= t "activerecord.attributes.front_user.email" %></dt><dd class="col-sm-10"><%= @front_user.email %></dd>
+</dl>
+
+<div class="controls text-right">
+  <p>
+    <%= link_to t("views.front_users.show.edit_button"), edit_front_front_user_path(@front_user), :class => "btn btn-primary" %>
+    <%= link_to t("views.front_users.show.delete_button"), [:front, @front_user], :data => { :confirm => t("views.front_users.show.delete_confirmation") }, :method => :delete, :class => "btn btn-danger" %>
+  </p>
+</div>

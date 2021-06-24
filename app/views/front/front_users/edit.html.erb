@@ -1,0 +1,11 @@
+<% title t("views.front_users.edit.title", :front_user_name => @front_user.name) %>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to t("layouts.breadcrumbs.front_users"), :front_front_users %></li>
+    <li class="breadcrumb-item"><%= link_to @front_user.name, [:front, @front_user] %></li>
+    <li class="breadcrumb-item active"><%= t("layouts.breadcrumbs.edit") %></li>
+  </ol>
+</nav>
+
+<%= render "form" %>
