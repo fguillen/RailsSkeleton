@@ -35,6 +35,25 @@ class Front::FrontUsersController < Front::BaseController
     redirect_to :front_root, notice: t("controllers.front_users.destroy.success")
   end
 
+  def reset_password
+    load_front_user_from_perishable_token
+
+    render :reset_password
+  end
+
+  def reset_password_submit
+    load_front_user_from_perishable_token
+
+    if @front_user.update(front_user_params)
+      AdminSession.create(@front_user)
+      flash[:notice] = t("controllers.front_users.reset_password.success")
+      redirect_back_or_default front_root_path
+    else
+      flash.now[:alert] = t("controllers.front_users.reset_password.error")
+      render :reset_password
+    end
+  end
+
   protected
 
   def front_user_params
@@ -52,5 +71,9 @@ class Front::FrontUsersController < Front::BaseController
       redirect_to :front_root, alert: t("controllers.front.access_not_authorized")
       false
     end
+  end
+
+  def load_front_user_from_perishable_token
+    @front_user = FrontUser.find_using_perishable_token!(params[:reset_password_code], 1.week)
   end
 end

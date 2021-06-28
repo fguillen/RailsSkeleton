@@ -99,4 +99,34 @@ class Front::FrontUsersControllerTest < ActionController::TestCase
 
     assert !FrontUser.exists?(@front_user.id)
   end
+
+  def test_reset_password
+    front_user = FactoryBot.create(:front_user)
+    get(
+      :reset_password,
+      params: { reset_password_code: front_user.perishable_token }
+    )
+
+    assert_template "reset_password"
+  end
+
+  def test_reset_password_submit
+    front_user = FactoryBot.create(:front_user, email: "email@email.com")
+
+    put(
+      :reset_password_submit,
+      params: {
+        reset_password_code: front_user.perishable_token,
+        front_user: {
+          password: "Password!",
+          password_confirmation: "Password!"
+        }
+      }
+    )
+
+    assert_redirected_to front_root_path
+    assert_not_nil(flash[:notice])
+
+    # assert_equal front_user, AdminSession.new(:email => "email@email.com", :password => "PASS").record
+  end
 end

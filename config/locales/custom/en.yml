@@ -76,6 +76,9 @@ en:
         success: Successfully created Front User
       destroy:
         success: Successfully deleted Front User
+      reset_password:
+        error: Sorry, %{email} can't be found in our database
+        success: Password reset instructions have been sent to your email
       update:
         error: Errors were encountered when trying to update Front User
         success: Successfully updated Front User
@@ -165,6 +168,9 @@ en:
       new:
         text: Text
         title: Title
+      reset_password:
+        text: Please enter your new password
+        title: Reset your password
       show:
         delete_button: Delete button
         delete_confirmation: Delete confirmation
