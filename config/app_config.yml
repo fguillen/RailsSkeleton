@@ -1,6 +1,6 @@
 ---
 test:
-  hosts: <%= ENV.fetch('SECRET_HOSTS').split(",").to_s %>
+  host: railsskeleton.com.test
   admin_email: it@railsskeleton.com
   google_auth:
     client_id: "GOOGLE_CLIENT_ID"
@@ -19,7 +19,7 @@ test:
       - TEST_TOKEN_2
 
 development:
-  hosts: <%= ENV.fetch('SECRET_HOSTS').split(",").to_s %>
+  host: railsskeleton.com.pizza
   admin_email: it@railsskeleton.com
   google_auth:
     client_id: "193465454284-apigmm255ti8n2rb9ov2obtir6s2cdin.apps.googleusercontent.com"
@@ -36,7 +36,7 @@ development:
       - "<%= ENV.fetch('SECRET_APP_TOKEN') %>"
 
 staging:
-  hosts: <%= ENV.fetch('SECRET_HOSTS').split(",").to_s %>
+  host: staging.railsskeleton.com
   admin_email: it@railsskeleton.com
   google_auth:
     client_id: "193465454284-apigmm255ti8n2rb9ov2obtir6s2cdin.apps.googleusercontent.com"
@@ -55,7 +55,7 @@ staging:
       - "<%= ENV.fetch('SECRET_APP_TOKEN') %>"
 
 production:
-  hosts: <%= ENV.fetch('SECRET_HOSTS').split(",").to_s %>
+  host: railsskeleton.com
   admin_email: it@railsskeleton.com
   google_auth:
     client_id: "193465454284-apigmm255ti8n2rb9ov2obtir6s2cdin.apps.googleusercontent.com"
