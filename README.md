@@ -30,7 +30,7 @@ Clone and renaming:
 
     mkdir MyNewAwesomeApp
     cd MyNewAwesomeApp
-    git init
+    git init -b main
     git remote add skeleton git@github.com:fguillen/RailsSkeleton.git
     git pull skeleton main
 
