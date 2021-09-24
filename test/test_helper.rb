@@ -7,7 +7,7 @@ end
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 require 'rails/test_help'
-require "mocha/setup"
+require "mocha/minitest"
 require_relative "factories"
 require 'authlogic/test_case'
 

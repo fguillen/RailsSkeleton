@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-ruby "3.0.1"
+ruby "3.0.2"
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -26,7 +26,7 @@ gem "oj"
 gem "omniauth-google-oauth2"
 gem "omniauth"
 gem "puma"
-gem "rails", "~> 6.1.3"
+gem "rails", "~> 6.1.4.1"
 gem "redcarpet"
 gem "rexml"
 gem "rollbar"
