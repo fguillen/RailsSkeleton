@@ -2,3 +2,4 @@
 - integrate LogBook
 - pagination
 - integrate https://github.com/rmm5t/strip_attributes
+- controller test with attached image (pic)
