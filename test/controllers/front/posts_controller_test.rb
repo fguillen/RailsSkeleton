@@ -56,7 +56,8 @@ class Front::PostsControllerTest < ActionController::TestCase
         post: {
           title: "The Title Wadus",
           body: "The Body Wadus Wadus Wadus Wadus",
-          tag_list: "one, two"
+          tag_list: "one, two",
+          pic: fixture_file_upload("yourule.png")
         }
       }
     )
@@ -68,6 +69,7 @@ class Front::PostsControllerTest < ActionController::TestCase
     assert_equal("The Body Wadus Wadus Wadus Wadus", post.body)
     assert_equal(@front_user, post.front_user)
     assert_equal(["one", "two"], post.tag_list)
+    assert post.pic.attached?
   end
 
   def test_edit
