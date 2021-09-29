@@ -2,3 +2,7 @@
 - integrate LogBook
 - pagination
 - integrate https://github.com/rmm5t/strip_attributes
+- Implement "loging as (front user)" in admin menu
+- Posts controller only allow the creator to access to its own Posts
+- Post is not a good name for the renamable main object
+
