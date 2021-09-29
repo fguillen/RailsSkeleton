@@ -156,7 +156,38 @@ We have to add the callbacks, check here:
 
 We have to create the bucket, the IAM User, the Policy and the Group:
 
-- https://medium.com/@shamnad.p.s/how-to-create-an-s3-bucket-and-aws-access-key-id-and-secret-access-key-for-accessing-it-5653b6e54337
+- Create the bucket
+- Create the IAM Group
+- Create the IAM User
+
+Group permissions:
+
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Action": [
+                    "s3:GetBucketLocation",
+                    "s3:ListAllMyBuckets"
+                ],
+                "Resource": "arn:aws:s3:::*"
+            },
+            {
+                "Effect": "Allow",
+                "Action": "s3:*",
+                "Resource": [
+                    "arn:aws:s3:::my-s3-bucket",
+                    "arn:aws:s3:::my-s3-bucket/*"
+                ]
+            }
+        ]
+    }
+
+Get the API credentials from the IAM User and set them in the envvars:
+
+- SECRET_AWS_S3_ACCESS_KEY_ID
+- SECRET_AWS_S3_SECRET_ACCESS_KEY
 
 
 ## OVH server setup
