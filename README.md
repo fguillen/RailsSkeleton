@@ -42,9 +42,7 @@ Setting up App:
 
     bin/setup
 
-#### Set up Rollbar
 
-TODO
 
 ### Adding something to the Skeleton
 
@@ -104,6 +102,40 @@ You can overpass the lefthook on commit:
 
 Check all the ENVARS in `.env.development` all of them have to be in your production envvars
 
+## Set API Tokens
+
+For the envvars:
+
+- SECRET_API_FRONT_TOKEN
+- SECRET_API_ADMIN_TOKEN
+- SECRET_APP_TOKEN
+
+You can run
+
+    rails secret
+
+For each one of the envvars and set the values
+
+## Set the secret key
+
+Run
+
+    rails secret
+
+and set the value for the `SECRET_RAILS_SECRET_KEY_BASE` envvar.
+
+## Set up Rollbar
+
+- https://rollbar.com/settings/accounts/fguillen.mail/projects/#create-new-project-container
+- Set the access token in the `SECRET_ROLLBAR_TOKEN` envvar
+
+#### Set up Sendgrid
+
+- https://app.sendgrid.com/settings/api_keys
+- Set partial permission > Email Sent
+- Copy the API key
+- Set it in the `SECRET_SENDGRID_API_KEY` envvar
+
 ## Heroku ClearDB
 
 Check this post for the special envvar `DATABASE_URL`:
@@ -127,15 +159,23 @@ We have to create the bucket, the IAM User, the Policy and the Group:
 - https://medium.com/@shamnad.p.s/how-to-create-an-s3-bucket-and-aws-access-key-id-and-secret-access-key-for-accessing-it-5653b6e54337
 
 
-## Docker and deploy
+## OVH server setup
 
-### Configure SSL certificates
+- https://docs.google.com/document/d/1i5uJkdxm-eFWEkSnYMbDHrND9Se0L-4fryQzv9zbWDM/edit#
+
+## Configure SSL certificates
+
+Create the certificate: https://docs.google.com/document/d/1i5uJkdxm-eFWEkSnYMbDHrND9Se0L-4fryQzv9zbWDM/edit#
 
 Download the certificates
 and put them on
 
 - ./etc/secret/certificate.crt
 - ./etc/secret/certificate.key
+
+
+# Docker and deploy
+
 
 ### Install server basics
 
