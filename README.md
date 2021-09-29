@@ -153,11 +153,11 @@ You can take them from the `.env.development` and create the production file:
 
 (Included in the server_setup.sh script)
 
-cd /var/apps/RailsSkeleton
-docker-compose build
-docker-compose up -d
-docker-compose exec app bundle exec rake db:create db:schema:load
-(docker-compose exec app bundle exec rake db:seed) # Optional
+    cd /var/apps/RailsSkeleton
+    docker-compose build
+    docker-compose up -d
+    docker-compose exec app bundle exec rake db:create db:schema:load
+    (docker-compose exec app bundle exec rake db:seed) # Optional
 
 
 ### Restore backups
