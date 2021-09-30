@@ -189,6 +189,8 @@ Get the API credentials from the IAM User and set them in the envvars:
 - SECRET_AWS_S3_ACCESS_KEY_ID
 - SECRET_AWS_S3_SECRET_ACCESS_KEY
 
+Check that the _region_ is properly set in `storage.yml` config file
+
 
 ## OVH server setup
 
@@ -271,4 +273,5 @@ Or maybe
 ### Consoling
 
     docker-compose exec app bundle exec rails c
+    docker-compose exec app bash
     docker-compose exec db mysql -uroot -proot
