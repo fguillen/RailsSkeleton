@@ -68,4 +68,17 @@ class PostTest < ActiveSupport::TestCase
     post = FactoryBot.create(:post, tag_list: "One, Two")
     assert_equal(["one", "two"], post.tag_list)
   end
+
+  def test_log_book_events
+    front_user = FactoryBot.create(:front_user)
+    post = FactoryBot.build(:post, title: "TITLE", front_user: front_user)
+
+    assert_difference("LogBook::Event.count", 1) do
+      post.save!
+    end
+
+    assert_difference("LogBook::Event.count", 1) do
+      post.update!(title: "NEW_TITLE")
+    end
+  end
 end

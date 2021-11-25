@@ -1,0 +1,9 @@
+<% title t("views.log_book_events.index.title") %>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active"><%= t "layouts.breadcrumbs.log_book_events" %></li>
+  </ol>
+</nav>
+
+<%= render partial: "list", locals: { log_book_events: @log_book_events } %>

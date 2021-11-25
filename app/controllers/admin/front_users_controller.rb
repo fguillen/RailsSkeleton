@@ -1,6 +1,6 @@
 class Admin::FrontUsersController < Admin::BaseController
   before_action :require_admin_user
-  before_action :load_front_user, only: [:show, :edit, :update, :destroy, :posts]
+  before_action :load_front_user, only: [:show, :edit, :update, :destroy, :posts, :log_book_events]
 
   def index
     @front_users = FrontUser.order_by_recent
@@ -40,6 +40,10 @@ class Admin::FrontUsersController < Admin::BaseController
 
   def posts
     @posts = @front_user.posts
+  end
+
+  def log_book_events
+    @log_book_events = @front_user.log_book_events.by_recent
   end
 
   protected

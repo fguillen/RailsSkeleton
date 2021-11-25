@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+  log_book
+
   self.primary_key = :uuid
   include HasUuid
   acts_as_taggable_on :tags

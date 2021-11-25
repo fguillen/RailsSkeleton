@@ -20,6 +20,13 @@ en:
         password: Password
         password_confirmation: Password confirmation
         uuid: Uuid
+      log_book_event:
+        created_at: Created at
+        differences: Differences
+        historian: Historian
+        historizable: Historizable
+        tags: Tags
+        uuid: Uuid
       post:
         body: Body
         created_at: Created at
@@ -102,6 +109,7 @@ en:
       forgot_password: Forgotten Password
       front_sessions: Front sessions
       front_users: Front users
+      log_book_events: LogBook Events
       login_admin: Admin Login
       login_front: Login front
       new: New
@@ -113,6 +121,7 @@ en:
       features: Features
       front_users: Front users
       home: Home
+      log_book_events: LogBook Events
       login: Login
       logout: Logout
       my_posts: See my posts
@@ -158,6 +167,7 @@ en:
         title: Login page
     front_user:
       sections:
+        log_book_events: LogBook Events
         posts: Posts
     front_users:
       edit:
@@ -176,6 +186,9 @@ en:
         delete_confirmation: Delete confirmation
         edit_button: Edit button
         title: Title
+    log_book_events:
+      index:
+        title: LogBook Events
     posts:
       edit:
         body: Body

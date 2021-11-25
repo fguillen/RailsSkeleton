@@ -1,4 +1,6 @@
 class FrontUser < ApplicationRecord
+  log_book ignore: [:password]
+
   self.primary_key = :uuid
   include HasUuid
 

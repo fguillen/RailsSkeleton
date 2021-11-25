@@ -28,4 +28,9 @@ FactoryBot.define do
     body { Faker::Lorem.sentence(word_count: 20) }
     front_user
   end
+
+  factory :log_book_event, :class => LogBook::Event  do
+    differences { "Wadus Event" }
+    association :historizable, factory: :post
+  end
 end

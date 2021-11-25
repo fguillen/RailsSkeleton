@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_23_185645) do
+ActiveRecord::Schema.define(version: 2021_11_25_173815) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.string "name", null: false
@@ -83,6 +83,18 @@ ActiveRecord::Schema.define(version: 2021_06_23_185645) do
     t.index ["perishable_token"], name: "index_front_users_on_perishable_token", unique: true
     t.index ["persistence_token"], name: "index_front_users_on_persistence_token", unique: true
     t.index ["uuid"], name: "index_front_users_on_uuid", unique: true
+  end
+
+  create_table "log_book_events", id: :integer, charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
+    t.string "historian_id", limit: 36
+    t.string "historian_type"
+    t.string "historizable_id", limit: 36
+    t.string "historizable_type"
+    t.text "differences", size: :medium
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["created_at"], name: "index_log_book_events_on_created_at"
+    t.index ["historizable_id", "historizable_type", "created_at"], name: "index_log_book_events_on_historizable_and_created_at"
   end
 
   create_table "posts", primary_key: "uuid", id: { type: :string, limit: 36 }, charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|

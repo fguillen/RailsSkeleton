@@ -20,5 +20,10 @@ module RailsSkeleton
     config.i18n.default_locale = :en
     config.i18n.available_locales = [:en]
     I18n.enforce_available_locales = true
+
+    # log_book
+    config.after_initialize do
+      require "log_book/event"
+    end
   end
 end

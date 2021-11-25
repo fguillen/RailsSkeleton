@@ -131,4 +131,19 @@ class Admin::FrontUsersControllerTest < ActionController::TestCase
 
     assert_primary_keys([post], assigns(:posts))
   end
+
+  def test_log_book_events
+    front_user = FactoryBot.create(:front_user)
+    log_book_event = FactoryBot.create(:log_book_event, historizable: front_user)
+
+    get(
+      :log_book_events,
+      params: {
+        id: front_user
+      }
+    )
+
+    assert_equal(log_book_event.id, assigns(:log_book_events).first.id)
+    assert_template "log_book_events"
+  end
 end

@@ -9,7 +9,7 @@ end
 # Please: keep the gem declarations sorted.
 #   This will make future mergings MUCH easier. <3
 gem "active_storage_validations"
-gem "acts-as-taggable-on", "~> 7.0"
+gem "acts-as-taggable-on"
 gem "authlogic"
 gem "aws-sdk-s3", require: false
 gem "bluecloth"
@@ -21,6 +21,7 @@ gem "i18n-tasks"
 gem "image_processing"
 gem "jbuilder"
 gem "jquery-rails"
+gem "log_book"
 gem "mysql2"
 gem "oj"
 gem "omniauth-google-oauth2"

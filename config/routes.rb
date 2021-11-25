@@ -13,8 +13,10 @@ Rails.application.routes.draw do
 
     resources :admin_sessions, only: [:new, :create, :destroy]
     resources :admin_users
+    resources :log_book_events, only: [:index]
     resources :front_users do
       get "posts", on: :member
+      get "log_book_events", on: :member
     end
     resources :posts
   end
