@@ -175,6 +175,8 @@ en:
         title: Title
       index:
         title: Title
+      log_book_events:
+        title: Front User | %{name} | LogBook Events
       new:
         text: Text
         title: Title
