@@ -31,9 +31,9 @@ class Admin::AdminSessionsController < Admin::BaseController
 
     if admin_user
       admin_user.send_reset_password_email
-      redirect_to admin_forgot_password_path, notice: t("controllers.admin_sessions.reset_password.success")
+      redirect_to admin_forgot_password_path, notice: t("controllers.admin_sessions.forgot_password_submit.success")
     else
-      redirect_to admin_forgot_password_path, alert: t("controllers.admin_sessions.reset_password.error", email: params[:admin_session][:email])
+      redirect_to admin_forgot_password_path, alert: t("controllers.admin_sessions.forgot_password_submit.error", email: params[:admin_session][:email])
     end
   end
 

@@ -31,9 +31,9 @@ class Front::FrontSessionsController < Front::BaseController
 
     if front_user
       front_user.send_reset_password_email
-      redirect_to front_forgot_password_path, notice: t("controllers.front_sessions.reset_password.success")
+      redirect_to front_forgot_password_path, notice: t("controllers.front_sessions.forgot_password_submit.success")
     else
-      redirect_to front_forgot_password_path, alert: t("controllers.front_sessions.reset_password.error", email: params[:front_session][:email])
+      redirect_to front_forgot_password_path, alert: t("controllers.front_sessions.forgot_password_submit.error", email: params[:front_session][:email])
     end
   end
 

@@ -48,11 +48,11 @@ en:
       authenticate:
         error: Authentication Failure
         success: Admin User Authenticated
-      logout:
-        success: Successfully logged out
-      reset_password:
+      forgot_password_submit:
         error: Sorry, %{email} can't be found in our database
         success: Password reset instructions have been sent to your email
+      logout:
+        success: Successfully logged out
     admin_users:
       create:
         error: Errors were encountered when trying to create Admin User
@@ -72,11 +72,11 @@ en:
       authenticate:
         error: Authentication Failure
         success: Front User Authenticated
-      logout:
-        success: Successfully logged out
-      reset_password:
+      forgot_password_submit:
         error: Sorry, %{email} can't be found in our database
         success: Password reset instructions have been sent to your email
+      logout:
+        success: Successfully logged out
     front_users:
       create:
         error: Errors were encountered when trying to create Front User
@@ -84,8 +84,8 @@ en:
       destroy:
         success: Successfully deleted Front User
       reset_password:
-        error: Sorry, %{email} can't be found in our database
-        success: Password reset instructions have been sent to your email
+        error: Errors were encountered when trying to reset password
+        success: Successfully reset password
       update:
         error: Errors were encountered when trying to update Front User
         success: Successfully updated Front User
