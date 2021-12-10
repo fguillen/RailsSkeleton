@@ -2,11 +2,12 @@
   <li class="nav-item">
     <%= link_to "Info", [:admin, @front_user], class: "nav-link #{"active" if active == "show"}" %>
   </li>
-  <li class="nav-item <%= "active" if active == "posts" %>">
+
+  <li class="nav-item">
     <%= link_to "Posts", posts_admin_front_user_path(@front_user), class: "nav-link #{"active" if active == "posts"}" %>
   </li>
 
-  <li class="nav-item position-relative <%= "active" if active == "posts" %>">
+  <li class="nav-item position-relative">
     <%= link_to log_book_events_admin_front_user_path(@front_user), class: "nav-link #{"active" if active == "log_book_events"}" do %>
       Log Book
       <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
