@@ -7,3 +7,4 @@
 - Post is not a good name for the renamable main object
 - Make APP_CONFIG deep symbolized (not only the root level)
 - Aggregate view helpers in one. Use only one Markdown. Add unit test to helpers
+- Integrate gem "nilify_blanks" (or similar)
