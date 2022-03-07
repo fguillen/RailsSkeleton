@@ -6,7 +6,7 @@ class Front::FrontUsersControllerTest < ActionController::TestCase
   end
 
   def test_show
-    FactoryBot.create(:post, front_user: @front_user)
+    FactoryBot.create(:article, front_user: @front_user)
 
     get :show, params: { id: @front_user }
 

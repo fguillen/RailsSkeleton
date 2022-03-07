@@ -23,7 +23,7 @@ FactoryBot.define do
     password { "Pass$$$!" }
   end
 
-  factory :post do
+  factory :article do
     title { Faker::Lorem.sentence(word_count: 20) }
     body { Faker::Lorem.sentence(word_count: 20) }
     front_user
@@ -31,6 +31,6 @@ FactoryBot.define do
 
   factory :log_book_event, :class => LogBook::Event  do
     differences { "Wadus Event" }
-    association :historizable, factory: :post
+    association :historizable, factory: :article
   end
 end

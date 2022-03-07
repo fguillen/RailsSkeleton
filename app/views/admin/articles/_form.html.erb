@@ -1,8 +1,8 @@
-<%= form_for [:admin, @post] do |f| %>
+<%= form_for [:admin, @article] do |f| %>
   <%= render "/shared/form_errors", :object => f.object %>
 
   <fieldset>
-    <legend><%= "Post attributes" %></legend>
+    <legend><%= "article attributes" %></legend>
     <hr>
 
     <div class="form-group row">
@@ -17,7 +17,7 @@
       <%= f.label :title, class: "col-sm-2 col-form-label text-right"%>
 
       <div class="col-sm-10">
-        <%= f.text_field :title, class: "form-control", placeholder: t("activerecord.attributes.post.title") %>
+        <%= f.text_field :title, class: "form-control", placeholder: t("activerecord.attributes.article.title") %>
       </div>
     </div>
 
@@ -25,7 +25,7 @@
       <%= f.label :body, class: "col-sm-2 col-form-label text-right"%>
 
       <div class="col-sm-10">
-        <%= f.text_area :body, class: "form-control", rows: 4, placeholder: t("activerecord.attributes.post.body") %>
+        <%= f.text_area :body, class: "form-control", rows: 4, placeholder: t("activerecord.attributes.article.body") %>
       </div>
     </div>
 

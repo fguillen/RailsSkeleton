@@ -17,7 +17,7 @@ class Admin::FrontUsersControllerTest < ActionController::TestCase
 
   def test_show
     front_user = FactoryBot.create(:front_user)
-    FactoryBot.create(:post, front_user: front_user)
+    FactoryBot.create(:article, front_user: front_user)
 
     get :show, params: { id: front_user }
 
@@ -118,18 +118,18 @@ class Admin::FrontUsersControllerTest < ActionController::TestCase
     assert !FrontUser.exists?(front_user.id)
   end
 
-  def test_posts
+  def test_articles
     front_user = FactoryBot.create(:front_user)
-    post = FactoryBot.create(:post, front_user: front_user)
+    article = FactoryBot.create(:article, front_user: front_user)
 
     get(
-      :posts,
+      :articles,
       params: {
         id: front_user
       }
     )
 
-    assert_primary_keys([post], assigns(:posts))
+    assert_primary_keys([article], assigns(:articles))
   end
 
   def test_log_book_events

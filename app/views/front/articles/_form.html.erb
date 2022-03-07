@@ -1,21 +1,21 @@
-<%= form_for [:front, @post] do |f| %>
+<%= form_for [:front, @article] do |f| %>
   <%= render "/shared/form_errors", :object => f.object %>
   <fieldset>
-    <legend><%= "Post attributes" %></legend>
+    <legend><%= "article attributes" %></legend>
     <hr>
 
     <div class="row mb-3">
       <%= f.label :title, class: "col-sm-2 col-form-label text-end"%>
       <div class="col-sm-10">
-        <%= f.text_field :title, class: "form-control", placeholder: t("activerecord.attributes.post.title") %>
-        <div class="form-text">Give a title to your post.</div>
+        <%= f.text_field :title, class: "form-control", placeholder: t("activerecord.attributes.article.title") %>
+        <div class="form-text">Give a title to your article.</div>
       </div>
     </div>
 
     <div class="row mb-3">
       <%= f.label :body, class: "col-sm-2 col-form-label text-end"%>
       <div class="col-sm-10">
-        <%= f.text_area :body, class: "form-control", rows: 20, placeholder: t("activerecord.attributes.post.body") %>
+        <%= f.text_area :body, class: "form-control", rows: 20, placeholder: t("activerecord.attributes.article.body") %>
         <div id="emailHelp" class="form-text">What do you want to say?</div>
       </div>
     </div>
@@ -23,7 +23,7 @@
     <div class="row mb-3">
       <%= f.label :tag_list, class: "col-sm-2 col-form-label text-end"%>
       <div class="col-sm-10">
-        <%= f.text_field :tag_list, class: "form-control", value: @post.tag_list.join(", "), placeholder: t("activerecord.attributes.post.tag_list") %>
+        <%= f.text_field :tag_list, class: "form-control", value: @article.tag_list.join(", "), placeholder: t("activerecord.attributes.article.tag_list") %>
         <div class="form-text">You can give it some tags like <code>love, work, family</code>.</div>
       </div>
     </div>
@@ -31,7 +31,7 @@
     <div class="row mb-3">
       <%= f.label :pic, class: "col-sm-2 col-form-label text-end"%>
       <div class="col-sm-10">
-        <%= f.file_field :pic, class: "form-control", placeholder: t("activerecord.attributes.post.pic") %>
+        <%= f.file_field :pic, class: "form-control", placeholder: t("activerecord.attributes.article.pic") %>
         <div class="form-text">You can upload an image.</div>
       </div>
     </div>

@@ -15,10 +15,10 @@ Rails.application.routes.draw do
     resources :admin_users
     resources :log_book_events, only: [:index]
     resources :front_users do
-      get "posts", on: :member
+      get "articles", on: :member
       get "log_book_events", on: :member
     end
-    resources :posts
+    resources :articles
   end
 
   namespace :api do
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   end
 
   namespace :front do
-    root to: redirect("front/posts")
+    root to: redirect("front/articles")
 
     get "login", to: "front_sessions#new", as: :login
     get "logout", to: "front_sessions#destroy", as: :logout
@@ -39,7 +39,7 @@ Rails.application.routes.draw do
 
     resources :front_sessions, only: [:new, :create, :destroy]
 
-    resources :posts
+    resources :articles
     resources :pages, only: [:show]
     resources :front_users, only: [:show, :new, :create, :edit, :update, :destroy]
   end

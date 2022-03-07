@@ -1,0 +1,11 @@
+<% title t("views.articles.index.title") %>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active"><%= t "layouts.breadcrumbs.articles" %></li>
+  </ol>
+</nav>
+
+<p><%= link_to "New article", new_admin_article_path, :class => "btn btn-outline-primary" %></p>
+
+<%= render partial: "list", locals: { articles: @articles } %>

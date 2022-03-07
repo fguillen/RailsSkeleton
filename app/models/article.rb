@@ -1,4 +1,4 @@
-class Post < ApplicationRecord
+class Article < ApplicationRecord
   log_book
 
   self.primary_key = :uuid

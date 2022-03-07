@@ -1,6 +1,6 @@
 class Admin::FrontUsersController < Admin::BaseController
   before_action :require_admin_user
-  before_action :load_front_user, only: [:show, :edit, :update, :destroy, :posts, :log_book_events]
+  before_action :load_front_user, only: [:show, :edit, :update, :destroy, :articles, :log_book_events]
 
   def index
     @front_users = FrontUser.order_by_recent
@@ -38,8 +38,8 @@ class Admin::FrontUsersController < Admin::BaseController
     redirect_to :admin_front_users, notice: t("controllers.front_users.destroy.success")
   end
 
-  def posts
-    @posts = @front_user.posts
+  def articles
+    @articles = @front_user.articles
   end
 
   def log_book_events

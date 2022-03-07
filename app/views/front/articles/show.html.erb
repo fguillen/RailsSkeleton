@@ -1,0 +1,41 @@
+<% title t("views.articles.show.title", :article_uuid => @article.uuid) %>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to t("layouts.breadcrumbs.articles"), :front_articles %></li>
+    <li class="breadcrumb-item active"><%= @article.title %></li>
+  </ol>
+</nav>
+
+<div class="row">
+  <div class="col-3">
+    <p>
+      <%= link_to t("views.articles.show.edit_button"), edit_front_article_path(@article), :class => "btn btn-primary" %>
+      <%= link_to t("views.articles.show.delete_button"), [:front, @article], :data => { :confirm => t("views.articles.show.delete_confirmation") }, :method => :delete, :class => "btn btn-danger" %>
+    </p>
+  </div>
+
+  <div class="col">
+    <div class="col mb-2">
+      <div class="card">
+        <% if @article.pic.attached? %>
+          <%= image_tag @article.pic, style: "width: 100%" %>
+        <% end %>
+
+        <div class="card-body">
+          <div class="row">
+            <div class="col-8">
+              <h5 class="card-title"><%= @article.title %></h5>
+            </div>
+            <div class="col text-end">
+              <%= render_labels(@article.tag_list, :tags) %>
+            </div>
+          </div>
+          <div class="card-text">
+            <%= markdown(@article.body) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

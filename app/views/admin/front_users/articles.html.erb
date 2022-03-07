@@ -4,20 +4,20 @@
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><%= link_to t("layouts.breadcrumbs.front_users"), :admin_front_users %></li>
     <li class="breadcrumb-item"><%= link_to @front_user.name, [:admin, @front_user] %></li>
-    <li class="breadcrumb-item active"><%= t("layouts.breadcrumbs.posts") %></li>
+    <li class="breadcrumb-item active"><%= t("layouts.breadcrumbs.articles") %></li>
   </ol>
 </nav>
 
-<%= render partial: "menu", locals: { active: "posts" }  %>
+<%= render partial: "menu", locals: { active: "articles" }  %>
 
 <section class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">
-      <%= t "views.front_user.sections.posts" %>
+      <%= t "views.front_user.sections.articles" %>
     </h3>
   </div>
 
   <div class="panel-body">
-    <%= render partial: "admin/posts/list", locals: { posts: @posts } %>
+    <%= render partial: "admin/articles/list", locals: { articles: @articles } %>
   </div>
 </section>

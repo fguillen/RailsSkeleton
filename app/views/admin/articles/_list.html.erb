@@ -1,0 +1,19 @@
+<table class="table table-striped table-hover">
+  <tr>
+    <th><%= t "activerecord.attributes.article.uuid" %></th>
+    <th><%= t "activerecord.attributes.article.title" %></th>
+    <th><%= t "activerecord.attributes.article.tags" %></th>
+    <th><%= t "activerecord.attributes.article.created_at" %> At</th>
+    <th><%= t "activerecord.attributes.article.front_user.name" %></th>
+  </tr>
+
+  <% articles.each do |article| %>
+    <tr>
+      <td><%= link_to article.uuid, [:front, article] %></td>
+      <td><%= article.title %></td>
+      <td><%= render_labels(article.tag_list.sort, :tags) %></td>
+      <td><%= article.created_at.to_s(:datetimedb) %></td>
+      <td><%= article.front_user.name %></td>
+    </tr>
+  <% end %>
+</table>

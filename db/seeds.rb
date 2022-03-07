@@ -26,7 +26,7 @@ end
 
 tags_example = ["shopping", "cooking", "hang-out", "love", "passion"]
 10.times do
-  Post.create!(
+  Article.create!(
     front_user: FrontUser.find_by(email: email),
     title: Faker::Lorem.sentence,
     body: Faker::Lorem.paragraphs(number: rand(10..20)).join("\n\n"),

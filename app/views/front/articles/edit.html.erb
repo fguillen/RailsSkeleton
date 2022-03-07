@@ -1,0 +1,11 @@
+<% title t("views.articles.edit.title", :title => @article.title) %>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to t("layouts.breadcrumbs.articles"), :front_articles %></li>
+    <li class="breadcrumb-item"><%= link_to @article.title, [:front, @article] %></li>
+    <li class="breadcrumb-item active"><%= t "layouts.breadcrumbs.edit" %></li>
+  </ol>
+</nav>
+
+<%= render "form" %>

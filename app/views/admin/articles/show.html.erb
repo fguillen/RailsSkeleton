@@ -1,0 +1,23 @@
+<% title t("views.articles.show.title", :article_uuid => @article.uuid) %>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to t("layouts.breadcrumbs.articles"), :admin_articles %></li>
+    <li class="breadcrumb-item active"><%= @article.uuid %></li>
+  </ol>
+</nav>
+
+<dl class="row">
+  <dt class="col-sm-2 text-right"><%= t "activerecord.attributes.article.uuid" %></dt><dd class="col-sm-10"><%= @article.uuid %></dd>
+  <dt class="col-sm-2 text-right"><%= t "activerecord.attributes.article.title" %></dt><dd class="col-sm-10"><%= @article.title %></dd>
+  <dt class="col-sm-2 text-right"><%= t "activerecord.attributes.article.front_user.name" %></dt><dd class="col-sm-10"><%= @article.front_user.name %></dd>
+</dl>
+
+<%= @article.body %>
+
+<div class="controls text-right">
+  <p>
+    <%= link_to t("views.articles.show.edit_button"), edit_admin_article_path(@article), :class => "btn btn-primary" %>
+    <%= link_to t("views.articles.show.delete_button"), [:admin, @article], :data => { :confirm => t("views.articles.show.delete_confirmation") }, :method => :delete, :class => "btn btn-danger" %>
+  </p>
+</div>

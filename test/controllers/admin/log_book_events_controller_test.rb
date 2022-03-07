@@ -7,11 +7,11 @@ class Admin::LogBookEventsControllerTest < ActionController::TestCase
 
   def test_index
     LogBook.muted = true
-    post = FactoryBot.create(:post)
+    article = FactoryBot.create(:article)
     LogBook.muted = false
 
-    log_book_event_1 = FactoryBot.create(:log_book_event, historizable: post)
-    log_book_event_2 = FactoryBot.create(:log_book_event, historizable: post)
+    log_book_event_1 = FactoryBot.create(:log_book_event, historizable: article)
+    log_book_event_2 = FactoryBot.create(:log_book_event, historizable: article)
 
     get :index
 
