@@ -1,5 +1,5 @@
 class Front::BaseController < ApplicationController
-  include Front::BaseHelper
+  include ApplicationHelper
 
   layout "front/base"
 
