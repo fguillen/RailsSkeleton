@@ -4,7 +4,7 @@ class Front::ArticlesController < Front::BaseController
   before_action :validate_current_front_user, only: [:edit, :update, :destroy]
 
   def index
-    @articles = Article.order_by_recent
+    @articles = current_front_user.articles.order_by_recent.paginate(page: params[:page], per_page: 10)
   end
 
   def show; end

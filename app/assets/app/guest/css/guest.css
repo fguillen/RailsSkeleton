@@ -1,0 +1,16 @@
+#loading {
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    position: fixed;
+    top: -70px;
+    right: 200px;
+    background: black;
+    color: white;
+    padding: 20px;
+    z-index: 1001;
+}
+
+.footer {
+    margin-top: 100px;
+    background: #ccc;
+}

@@ -1,6 +1,6 @@
 require "test_helper"
 
-class Front::PagesControllerTest < ActionController::TestCase
+class Guest::PagesControllerTest < ActionController::TestCase
   def test_show_welcome
     get(
       :show,
@@ -9,6 +9,6 @@ class Front::PagesControllerTest < ActionController::TestCase
       }
     )
 
-    assert_template "front/pages/welcome"
+    assert_template "guest/pages/welcome"
   end
 end

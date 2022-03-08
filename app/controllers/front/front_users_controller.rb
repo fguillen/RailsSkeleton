@@ -7,6 +7,7 @@ class Front::FrontUsersController < Front::BaseController
 
   def new
     @front_user = FrontUser.new
+    render layout: "front/base_login"
   end
 
   def create
@@ -15,7 +16,7 @@ class Front::FrontUsersController < Front::BaseController
       redirect_to [:front, @front_user], notice: t("controllers.front_users.create.success")
     else
       flash.now[:alert] = t("controllers.front_users.create.error")
-      render action: :new
+      render action: :new, layout: "front/base_login"
     end
   end
 

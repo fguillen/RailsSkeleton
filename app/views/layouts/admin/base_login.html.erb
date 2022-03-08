@@ -10,8 +10,6 @@
     <% end %>
 
     <div class="container">
-      <%= render "layouts/admin/menu" %>
-
       <div id="content">
         <% flash.each do |type, message| %>
           <%= content_tag :div, markdown(message).html_safe, :id => "flash_#{type}", :class => bootstrap_alert_class(type.to_sym) %>

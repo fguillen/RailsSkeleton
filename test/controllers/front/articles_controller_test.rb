@@ -6,8 +6,9 @@ class Front::ArticlesControllerTest < ActionController::TestCase
   end
 
   def test_index
-    article_1 = FactoryBot.create(:article, created_at: "2020-04-25")
-    article_2 = FactoryBot.create(:article, created_at: "2020-04-26")
+    article_1 = FactoryBot.create(:article, created_at: "2020-04-25", front_user: @front_user)
+    article_2 = FactoryBot.create(:article, created_at: "2020-04-26", front_user: @front_user)
+    article_3 = FactoryBot.create(:article, created_at: "2020-04-27")
 
     get :index
 

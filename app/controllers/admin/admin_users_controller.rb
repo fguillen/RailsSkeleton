@@ -10,6 +10,7 @@ class Admin::AdminUsersController < Admin::BaseController
 
   def new
     @admin_user = AdminUser.new
+    render layout: "admin/base_login"
   end
 
   def create
@@ -18,7 +19,7 @@ class Admin::AdminUsersController < Admin::BaseController
       redirect_to [:admin, @admin_user], notice: t("controllers.admin_users.create.success")
     else
       flash.now[:alert] = t("controllers.admin_users.create.error")
-      render action: :new
+      render action: :new, layout: "admin/base_login"
     end
   end
 

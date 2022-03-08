@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "front/pages#show", id: "welcome"
+  root to: "guest/pages#show", id: "welcome"
 
   namespace :admin do
     root to: redirect("admin/admin_users")
@@ -40,8 +40,13 @@ Rails.application.routes.draw do
     resources :front_sessions, only: [:new, :create, :destroy]
 
     resources :articles
-    resources :pages, only: [:show]
     resources :front_users, only: [:show, :new, :create, :edit, :update, :destroy]
+  end
+
+  namespace :guest do
+    root to: redirect("guest/articles")
+    resources :pages, only: [:show]
+    resources :articles, only: [:show, :index]
   end
 
   get '/auth/:provider/callback' => 'admin/admin_authorizations#create', constraints: ->(request) { request.env['omniauth.params']['from'] == 'admin' }

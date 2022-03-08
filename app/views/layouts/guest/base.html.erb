@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <%= render "/layouts/admin/header" %>
+    <%= render "/layouts/guest/header" %>
   </head>
 
   <body>
@@ -10,7 +10,7 @@
     <% end %>
 
     <div class="container">
-      <%= render "layouts/admin/menu" %>
+      <%= render "layouts/guest/menu" %>
 
       <div id="content">
         <% flash.each do |type, message| %>
@@ -20,7 +20,7 @@
         <%= yield %>
       </div>
 
-      <%= render "layouts/admin/footer" %>
+      <%= render "layouts/guest/footer" %>
     </div>
   </body>
 </html>

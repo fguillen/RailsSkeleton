@@ -1,0 +1,13 @@
+<% title t("views.articles.index.title") %>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active"><%= t "layouts.breadcrumbs.articles" %></li>
+  </ol>
+</nav>
+
+<div class="row">
+  <div class="col-12">
+    <%= render partial: "list", locals: { articles: @articles } %>
+  </div>
+</div>

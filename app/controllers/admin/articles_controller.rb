@@ -3,7 +3,7 @@ class Admin::ArticlesController < Admin::BaseController
   before_action :load_article, only: [:show, :edit, :update, :destroy]
 
   def index
-    @articles = Article.order_by_recent
+    @articles = Article.order_by_recent.paginate(page: params[:page], per_page: 10)
   end
 
   def show; end

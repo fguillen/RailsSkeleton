@@ -1,8 +1,8 @@
-class Front::PagesController < Front::BaseController
+class Guest::PagesController < Guest::BaseController
   def show
     raise ActionController::RoutingError, "Not Found" if params[:id].nil?
 
-    render "front/pages/#{show_params[:id]}"
+    render "guest/pages/#{show_params[:id]}"
   end
 
   private
