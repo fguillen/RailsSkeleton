@@ -1,7 +1,7 @@
 class Admin::BaseController < ApplicationController
   include Admin::BaseHelper
 
-  layout "/admin/base"
+  layout "admin/base"
 
   helper_method :current_admin_user, :namespace
 

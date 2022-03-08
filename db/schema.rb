@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[6.1].define(version: 2021_11_25_173815) do
-
+ActiveRecord::Schema[7.0].define(version: 2022_03_07_192020) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_id", null: false
     t.string "record_type", null: false
     t.bigint "blob_id", null: false
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
@@ -28,8 +27,8 @@ ActiveRecord::Schema[6.1].define(version: 2021_11_25_173815) do
     t.string "content_type"
     t.text "metadata"
     t.bigint "byte_size", null: false
-    t.string "checksum", null: false
-    t.datetime "created_at", null: false
+    t.string "checksum"
+    t.datetime "created_at", precision: nil, null: false
     t.string "service_name", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
@@ -54,8 +53,8 @@ ActiveRecord::Schema[6.1].define(version: 2021_11_25_173815) do
     t.string "password_salt"
     t.string "perishable_token"
     t.string "persistence_token"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["perishable_token"], name: "index_admin_users_on_perishable_token", unique: true
     t.index ["persistence_token"], name: "index_admin_users_on_persistence_token", unique: true
     t.index ["uuid"], name: "index_admin_users_on_uuid", unique: true
@@ -65,8 +64,8 @@ ActiveRecord::Schema[6.1].define(version: 2021_11_25_173815) do
     t.string "title", null: false
     t.text "body", null: false
     t.string "front_user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["front_user_id"], name: "fk_rails_1451c23bee"
     t.index ["uuid"], name: "index_articles_on_uuid", unique: true
   end
@@ -85,8 +84,8 @@ ActiveRecord::Schema[6.1].define(version: 2021_11_25_173815) do
     t.string "password_salt"
     t.string "perishable_token"
     t.string "persistence_token"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["perishable_token"], name: "index_front_users_on_perishable_token", unique: true
     t.index ["persistence_token"], name: "index_front_users_on_persistence_token", unique: true
     t.index ["uuid"], name: "index_front_users_on_uuid", unique: true
@@ -98,8 +97,8 @@ ActiveRecord::Schema[6.1].define(version: 2021_11_25_173815) do
     t.string "historizable_id", limit: 36
     t.string "historizable_type"
     t.text "differences", size: :medium
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["created_at"], name: "index_log_book_events_on_created_at"
     t.index ["historizable_id", "historizable_type", "created_at"], name: "index_log_book_events_on_historizable_and_created_at"
   end
@@ -107,8 +106,8 @@ ActiveRecord::Schema[6.1].define(version: 2021_11_25_173815) do
   create_table "sessions", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.string "session_id", null: false
     t.text "data"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["session_id"], name: "index_sessions_on_session_id"
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
   end
@@ -120,10 +119,9 @@ ActiveRecord::Schema[6.1].define(version: 2021_11_25_173815) do
     t.string "tagger_type"
     t.integer "tagger_id"
     t.string "context", limit: 128
-    t.datetime "created_at"
+    t.datetime "created_at", precision: nil
     t.index ["context"], name: "index_taggings_on_context"
     t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
-    t.index ["tag_id"], name: "index_taggings_on_tag_id"
     t.index ["taggable_id", "taggable_type", "context"], name: "taggings_taggable_context_idx"
     t.index ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy"
     t.index ["taggable_id"], name: "index_taggings_on_taggable_id"
@@ -134,8 +132,8 @@ ActiveRecord::Schema[6.1].define(version: 2021_11_25_173815) do
 
   create_table "tags", id: :integer, charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.string "name", collation: "utf8_bin"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true
   end

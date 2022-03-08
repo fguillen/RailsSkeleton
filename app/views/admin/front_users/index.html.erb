@@ -19,7 +19,7 @@
       <td><%= link_to front_user.uuid, [:admin, front_user] %></td>
       <td><%= link_to front_user.name, [:admin, front_user] %></td>
       <td><%= front_user.email %></td>
-      <td><%= front_user.created_at.to_s(:datetimedb) %></td>
+      <td><%= front_user.created_at.to_fs(:datetimedb) %></td>
     </tr>
   <% end %>
 </table>

@@ -12,7 +12,7 @@
       <td><%= link_to article.uuid, [:front, article] %></td>
       <td><%= article.title %></td>
       <td><%= render_labels(article.tag_list.sort, :tags) %></td>
-      <td><%= article.created_at.to_s(:datetimedb) %></td>
+      <td><%= article.created_at.to_fs(:datetimedb) %></td>
       <td><%= article.front_user.name %></td>
     </tr>
   <% end %>

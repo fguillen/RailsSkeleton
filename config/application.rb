@@ -9,7 +9,7 @@ Bundler.require(*Rails.groups)
 module RailsSkeleton
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults "6.0"
+    config.load_defaults "7.0"
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -20,6 +20,8 @@ module RailsSkeleton
     config.i18n.default_locale = :en
     config.i18n.available_locales = [:en]
     I18n.enforce_available_locales = true
+
+    config.legacy_connection_handling = false
 
     # log_book
     config.after_initialize do

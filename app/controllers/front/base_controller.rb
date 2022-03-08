@@ -1,7 +1,7 @@
 class Front::BaseController < ApplicationController
   include Front::BaseHelper
 
-  layout "/front/base"
+  layout "front/base"
 
   helper_method :current_front_user, :namespace
 
