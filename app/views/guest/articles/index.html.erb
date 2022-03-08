@@ -6,8 +6,6 @@
   </ol>
 </nav>
 
-<div class="row">
-  <div class="col-12">
-    <%= render partial: "list", locals: { articles: @articles } %>
-  </div>
-</div>
+<%= render partial: "list", locals: { articles: @articles } %>
+
+<%= paginate @articles %>

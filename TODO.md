@@ -1,5 +1,4 @@
 - Add has_many form: https://learn.co/lessons/has-many-through-forms-rails
-- pagination
-- Implement "loging as (front user)" in admin menu
+- Implement "login as (front user)" in admin menu
 - Posts controller only allow the creator to access to its own Posts
 - Login "Remember me" functionality

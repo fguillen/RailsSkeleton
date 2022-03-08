@@ -17,7 +17,7 @@ class Front::ArticlesControllerTest < ActionController::TestCase
   end
 
   def test_show
-    article = FactoryBot.create(:article)
+    article = FactoryBot.create(:article, front_user: @front_user)
 
     get :show, params: { id: article }
 

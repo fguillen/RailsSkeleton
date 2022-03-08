@@ -2,7 +2,7 @@ class Guest::ArticlesController < Guest::BaseController
   before_action :load_article, only: [:show]
 
   def index
-    @articles = Article.order_by_recent.paginate(page: params[:page], per_page: 10)
+    @articles = Article.order_by_recent.page(params[:page]).per(10)
   end
 
   def show; end
