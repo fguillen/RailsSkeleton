@@ -1,0 +1,5 @@
+log/
+storage/
+db/
+tmp/backup/
+_data/
