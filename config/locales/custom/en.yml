@@ -128,6 +128,7 @@ en:
       my_articles: See my articles
       new_article: Write a new Article
       pricing: Pricing
+      profile: Profile
       signup: Signup
   views:
     admin_sessions:

@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-ruby "3.0.2"
+ruby "~> 3.1.1"
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -41,6 +41,7 @@ gem "uglifier"
 gem "uuid"
 gem "virtus-relations"
 gem "virtus"
+gem "will_paginate", "~> 3.3"
 
 group :test do
   gem "database_cleaner"

@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/fguillen/ruby_regex.git
-  revision: 4a6b332da007aeb252465fd2a1697d6ca324bc63
+  revision: fddb65579850b49e4ef95a95959d6b83fadbd158
   specs:
-    ruby_regex (0.1.1)
+    ruby_regex (0.1.3)
       rake
       test-unit
 
@@ -422,6 +422,7 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    will_paginate (3.3.1)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.5.4)
@@ -483,9 +484,10 @@ DEPENDENCIES
   virtus-relations
   web-console
   webdrivers
+  will_paginate (~> 3.3)
 
 RUBY VERSION
-   ruby 3.0.2p107
+   ruby 3.1.1p18
 
 BUNDLED WITH
-   2.2.22
+   2.3.8
