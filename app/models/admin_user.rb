@@ -1,4 +1,6 @@
 class AdminUser < ApplicationRecord
+  strip_attributes
+
   self.primary_key = :uuid
   include HasUuid
 

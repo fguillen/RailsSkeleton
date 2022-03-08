@@ -1,5 +1,6 @@
 class Article < ApplicationRecord
   log_book
+  strip_attributes
 
   self.primary_key = :uuid
   include HasUuid

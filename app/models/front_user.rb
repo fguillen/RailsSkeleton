@@ -1,4 +1,5 @@
 class FrontUser < ApplicationRecord
+  strip_attributes
   log_book ignore: [:password]
 
   self.primary_key = :uuid
