@@ -17,25 +17,23 @@
       <div class="card-body">
         <%= form_for [:admin, @admin_session] do |f| %>
           <%= render "/shared/form_errors", :object => f.object %>
-          <fieldset>
-            <legend><%= "Use your credentials" %></legend>
-            <hr>
-            <div class="mb-3">
-              <%= f.label :email, class: "form-label" %>
-              <%= f.text_field :email, :class => "form-control", :type => "email", :placeholder => t("activerecord.attributes.admin_user.email"), ariaDescribedby: "emailHelp" %>
-              <div id="emailHelp" class="form-text">Introduce your email.</div>
-            </div>
-            <div class="mb-3">
-              <%= f.label :password, class: "form-label" %>
-              <%= f.text_field :password, :class => "form-control", :type => "password", :placeholder => t("activerecord.attributes.admin_user.password"), ariaDescribedby: "passwordHelp" %>
-              <div id="passwordHelp" class="form-text">Introduce your password. <%= link_to "Forgot password?", admin_forgot_password_path %></div>
-            </div>
-            <div class="mb-3 form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Remember me</label>
-            </div>
-            <%= f.submit "Sign in", :class => "btn btn-primary" %>
-          </fieldset>
+          <legend><%= "Use your credentials" %></legend>
+          <hr>
+          <div class="mb-3">
+            <%= f.label :email, class: "form-label" %>
+            <%= f.text_field :email, :class => "form-control", :type => "email", :placeholder => t("activerecord.attributes.admin_user.email"), ariaDescribedby: "emailHelp" %>
+            <div id="emailHelp" class="form-text">Introduce your email.</div>
+          </div>
+          <div class="mb-3">
+            <%= f.label :password, class: "form-label" %>
+            <%= f.text_field :password, :class => "form-control", :type => "password", :placeholder => t("activerecord.attributes.admin_user.password"), ariaDescribedby: "passwordHelp" %>
+            <div id="passwordHelp" class="form-text">Introduce your password. <%= link_to "Forgot password?", admin_forgot_password_path %></div>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Remember me</label>
+          </div>
+          <%= f.submit "Sign in", :class => "btn btn-primary" %>
         <% end %>
       </div>
     </div>

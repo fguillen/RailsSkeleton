@@ -1,6 +1,5 @@
 <%= form_for [:front, @front_user] do |f| %>
   <%= render "/shared/form_errors", :object => f.object %>
-  <fieldset>
     <legend><%= "FrontUser attributes" %></legend>
     <hr>
 
@@ -36,9 +35,9 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="offset-sm-2 col">
-        <%= f.submit class: "btn btn-primary" %>
-      </div>
-  </fieldset>
+  <div class="row">
+    <div class="offset-sm-2 col">
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+  </div>
 <% end %>

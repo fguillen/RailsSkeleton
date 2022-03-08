@@ -39,7 +39,7 @@ class Front::FrontUsersController < Front::BaseController
   def reset_password
     load_front_user_from_perishable_token
 
-    render :reset_password
+    render :reset_password, layout: "front/base_login"
   end
 
   def reset_password_submit
@@ -51,7 +51,7 @@ class Front::FrontUsersController < Front::BaseController
       redirect_back_or_default front_root_path
     else
       flash.now[:alert] = t("controllers.front_users.reset_password.error")
-      render :reset_password
+      render :reset_password, layout: "front/base_login"
     end
   end
 

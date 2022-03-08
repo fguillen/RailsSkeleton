@@ -42,7 +42,7 @@ class Admin::AdminUsersController < Admin::BaseController
   def reset_password
     load_admin_user_from_perishable_token
 
-    render :reset_password
+    render :reset_password, layout: "admin/base_login"
   end
 
   def reset_password_submit
@@ -54,7 +54,7 @@ class Admin::AdminUsersController < Admin::BaseController
       redirect_back_or_default admin_root_path
     else
       flash.now[:alert] = t("controllers.admin_users.reset_password.error")
-      render :reset_password
+      render :reset_password, layout: "admin/base_login"
     end
   end
 

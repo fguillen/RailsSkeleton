@@ -1,38 +1,36 @@
 <%= form_for [:admin, @article] do |f| %>
   <%= render "/shared/form_errors", :object => f.object %>
 
-  <fieldset>
-    <legend><%= "article attributes" %></legend>
-    <hr>
+  <legend><%= "article attributes" %></legend>
+  <hr>
 
-    <div class="form-group row">
-      <%= f.label :front_user, class: "col-sm-2 col-form-label text-right"%>
+  <div class="form-group row">
+    <%= f.label :front_user, class: "col-sm-2 col-form-label text-right"%>
 
-      <div class="col-sm-10">
-        <%= f.select(:front_user_id, FrontUser.all.map { |e| [e.name, e.uuid] }, {}, class: "form-control") %>
-      </div>
+    <div class="col-sm-10">
+      <%= f.select(:front_user_id, FrontUser.all.map { |e| [e.name, e.uuid] }, {}, class: "form-control") %>
     </div>
+  </div>
 
-    <div class="form-group row">
-      <%= f.label :title, class: "col-sm-2 col-form-label text-right"%>
+  <div class="form-group row">
+    <%= f.label :title, class: "col-sm-2 col-form-label text-right"%>
 
-      <div class="col-sm-10">
-        <%= f.text_field :title, class: "form-control", placeholder: t("activerecord.attributes.article.title") %>
-      </div>
+    <div class="col-sm-10">
+      <%= f.text_field :title, class: "form-control", placeholder: t("activerecord.attributes.article.title") %>
     </div>
+  </div>
 
-    <div class="form-group row">
-      <%= f.label :body, class: "col-sm-2 col-form-label text-right"%>
+  <div class="form-group row">
+    <%= f.label :body, class: "col-sm-2 col-form-label text-right"%>
 
-      <div class="col-sm-10">
-        <%= f.text_area :body, class: "form-control", rows: 4, placeholder: t("activerecord.attributes.article.body") %>
-      </div>
+    <div class="col-sm-10">
+      <%= f.text_area :body, class: "form-control", rows: 4, placeholder: t("activerecord.attributes.article.body") %>
     </div>
+  </div>
 
-    <div class="form-group row">
-      <div class="offset-sm-2 col-sm-10">
-        <%= f.submit class: "btn btn-primary" %>
-      </div>
+  <div class="form-group row">
+    <div class="offset-sm-2 col-sm-10">
+      <%= f.submit class: "btn btn-primary" %>
     </div>
-  </fieldset>
+  </div>
 <% end %>
