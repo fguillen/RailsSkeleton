@@ -7,14 +7,17 @@ the basis for a new Rails application
 
 ### Includes
 
-- front/admin scopes
+- Rails 7.0
+- admin/front/guest scopes
 - login in front and admin (authlogic)
 - table index based on UUID field
+- pagination with kaminari
 - google oauth integration (in front and admin)
-- bootstrap
-- structure to manage a simple entity (blog posts)
+- bootstrap 5
+- structure to manage a simple entity (Articles)
 - test suite (minitest)
 - factory_bot
+- strip_attributes
 - faker
 - data_migrate
 - cronjobs
