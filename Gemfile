@@ -21,6 +21,7 @@ gem "i18n-tasks"
 gem "image_processing"
 gem "jbuilder"
 gem "jquery-rails"
+gem "kaminari"
 gem "log_book"
 gem "mysql2"
 gem "oj"
@@ -41,7 +42,7 @@ gem "uglifier"
 gem "uuid"
 gem "virtus-relations"
 gem "virtus"
-gem "will_paginate", "~> 3.3"
+
 
 group :test do
   gem "database_cleaner"

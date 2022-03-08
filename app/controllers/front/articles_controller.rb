@@ -1,10 +1,10 @@
 class Front::ArticlesController < Front::BaseController
   before_action :load_article, only: [:show, :edit, :update, :destroy]
-  before_action :require_front_user, only: [:new, :create, :edit, :update, :destroy]
-  before_action :validate_current_front_user, only: [:edit, :update, :destroy]
+  before_action :require_front_user, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  before_action :validate_current_front_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @articles = current_front_user.articles.order_by_recent.paginate(page: params[:page], per_page: 10)
+    @articles = current_front_user.articles.order_by_recent.page(params[:page]).per(10)
   end
 
   def show; end

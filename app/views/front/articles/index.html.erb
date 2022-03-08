@@ -6,11 +6,8 @@
   </ol>
 </nav>
 
-<div class="row">
-  <div class="col-2">
-    <p><%= link_to "New article", new_front_article_path, :class => "btn btn-outline-primary" %></p>
-  </div>
-  <div class="col-10">
-    <%= render partial: "list", locals: { articles: @articles } %>
-  </div>
-</div>
+<p><%= link_to "New article", new_front_article_path, :class => "btn btn-outline-primary" %></p>
+
+<%= render partial: "list", locals: { articles: @articles } %>
+
+<%= paginate @articles %>

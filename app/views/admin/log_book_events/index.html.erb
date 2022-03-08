@@ -7,3 +7,5 @@
 </nav>
 
 <%= render partial: "list", locals: { log_book_events: @log_book_events } %>
+
+<%= paginate @log_book_events %>
