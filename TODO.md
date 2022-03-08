@@ -2,6 +2,5 @@
 - pagination
 - Implement "loging as (front user)" in admin menu
 - Posts controller only allow the creator to access to its own Posts
-- Make APP_CONFIG deep symbolized (not only the root level)
 - Aggregate view helpers in one. Use only one Markdown. Add unit test to helpers
 - Integrate gem "nilify_blanks" (or similar)

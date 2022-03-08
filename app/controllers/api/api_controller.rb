@@ -2,7 +2,7 @@ class Api::ApiController < ApplicationController
   before_action :authenticate_via_token
 
   def supported_tokens
-    Array.wrap(APP_CONFIG[:api]["token"])
+    Array.wrap(APP_CONFIG["api"]["token"])
   end
 
   private

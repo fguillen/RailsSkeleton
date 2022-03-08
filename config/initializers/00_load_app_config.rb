@@ -8,4 +8,4 @@
 # only the chunk of the YAML file that corresponds to the current RAILS_ENV
 
 config_template = ERB.new(YAML.safe_load(File.read("#{Rails.root}/config/app_config.yml"))[Rails.env].to_yaml)
-APP_CONFIG = YAML.safe_load(config_template.result(binding)).symbolize_keys
+APP_CONFIG = YAML.safe_load(config_template.result(binding))
