@@ -10,6 +10,7 @@
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><%= current_front_user.name %></a>
       <ul class="dropdown-menu">
+        <li class="nav-item"><%= link_to t("layouts.menu.profile"), [:front, current_front_user], class: "nav-link" %></li>
         <li class="nav-item"><%= link_to t("layouts.menu.logout"), front_logout_path, class: "nav-link" %></li>
       </ul>
     </li>

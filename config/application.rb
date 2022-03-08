@@ -27,5 +27,7 @@ module RailsSkeleton
     config.after_initialize do
       require "log_book/event"
     end
+
+    config.active_storage.variant_processor = :mini_magick
   end
 end

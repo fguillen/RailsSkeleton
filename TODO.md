@@ -2,3 +2,4 @@
 - pagination
 - Implement "loging as (front user)" in admin menu
 - Posts controller only allow the creator to access to its own Posts
+- Login "Remember me" functionality

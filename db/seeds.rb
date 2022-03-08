@@ -26,10 +26,14 @@ end
 
 tags_example = ["shopping", "cooking", "hang-out", "love", "passion"]
 10.times do
-  Article.create!(
-    front_user: FrontUser.find_by(email: email),
-    title: Faker::Lorem.sentence,
-    body: Faker::Lorem.paragraphs(number: rand(10..20)).join("\n\n"),
-    tag_list: tags_example.sample(rand(0..3))
-  )
+  article =
+    Article.create!(
+      front_user: FrontUser.find_by(email: email),
+      title: Faker::Lorem.sentence,
+      body: Faker::Lorem.paragraphs(number: rand(10..20)).join("\n\n"),
+      tag_list: tags_example.sample(rand(0..3))
+    )
+  article.pic.attach(io: File.open("#{Rails.root}/test/fixtures/files/yourule.png"), filename: "yourule.png")
+
+  puts "Article created: '#{article.title}'"
 end

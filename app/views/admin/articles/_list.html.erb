@@ -9,7 +9,7 @@
 
   <% articles.each do |article| %>
     <tr>
-      <td><%= link_to article.uuid, [:front, article] %></td>
+      <td><%= link_to article.uuid, [:admin, article] %></td>
       <td><%= article.title %></td>
       <td><%= render_labels(article.tag_list.sort, :tags) %></td>
       <td><%= article.created_at.to_fs(:datetimedb) %></td>
