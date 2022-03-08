@@ -1,10 +1,12 @@
 <% title t("views.articles.edit.title", :article_uuid => @article.uuid) %>
 
-<ol class="breadcrumb">
-  <li class="breadcrumb-item"><%= link_to t("layouts.breadcrumbs.articles"), :admin_articles %></li>
-  <li class="breadcrumb-item"><%= link_to @article.uuid, [:admin, @article] %></li>
-  <li class="breadcrumb-item active"><%= t "layouts.breadcrumbs.edit" %></li>
-</ol>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to t("layouts.breadcrumbs.articles"), :admin_articles %></li>
+    <li class="breadcrumb-item"><%= link_to @article.uuid, [:admin, @article] %></li>
+    <li class="breadcrumb-item active"><%= t "layouts.breadcrumbs.edit" %></li>
+  </ol>
+</nav>
 
 <p class="lead">
   <%= t "views.articles.edit.text" %>

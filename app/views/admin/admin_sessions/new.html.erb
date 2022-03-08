@@ -1,36 +1,43 @@
 <% title t("views.admin_sessions.new.title") %>
 
-<ol class="breadcrumb push_down">
-  <li class="active"><%= t("layouts.breadcrumbs.login_admin") %></li>
-</ol>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="active"><%= t("layouts.breadcrumbs.login_admin") %></li>
+  </ol>
+</nav>
 
-<div class="row">
-  <div class="card col-6">
-    <div class="card-body">
-      <%= form_for [:admin, @admin_session] do |f| %>
-        <%= render "/shared/form_errors", :object => f.object %>
-        <fieldset>
-          <legend><%= "Use your credentials" %></legend>
-          <hr>
-          <div class="mb-3">
-            <%= f.label :email, class: "form-label" %>
-            <%= f.text_field :email, :class => "form-control", :type => "email", :placeholder => t("activerecord.attributes.admin_user.email"), ariaDescribedby: "emailHelp" %>
-            <div id="emailHelp" class="form-text">Introduce your email.</div>
-          </div>
-          <div class="mb-3">
-            <%= f.label :password, class: "form-label" %>
-            <%= f.text_field :password, :class => "form-control", :type => "password", :placeholder => t("activerecord.attributes.admin_user.password"), ariaDescribedby: "passwordHelp" %>
-            <div id="passwordHelp" class="form-text">Introduce your password. <%= link_to "Forgot password?", admin_forgot_password_path %></div>
-          </div>
-          <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Remember me</label>
-          </div>
-          <%= f.submit "Sign in", :class => "btn btn-primary" %>
-        </fieldset>
-      <% end %>
+<div class="signup-header p-3 pb-md-4 mx-auto text-center">
+  <h1 class="display-4 fw-normal">Login</h1>
+  <p class="fs-5 text-muted">Login into your Admin account</p>
+</div>
 
-      <p class="mt-2">You don't have an account yet? <%= link_to "Sign up", "To Register page" %></p>
+<div class="row justify-content-md-center">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <%= form_for [:admin, @admin_session] do |f| %>
+          <%= render "/shared/form_errors", :object => f.object %>
+          <fieldset>
+            <legend><%= "Use your credentials" %></legend>
+            <hr>
+            <div class="mb-3">
+              <%= f.label :email, class: "form-label" %>
+              <%= f.text_field :email, :class => "form-control", :type => "email", :placeholder => t("activerecord.attributes.admin_user.email"), ariaDescribedby: "emailHelp" %>
+              <div id="emailHelp" class="form-text">Introduce your email.</div>
+            </div>
+            <div class="mb-3">
+              <%= f.label :password, class: "form-label" %>
+              <%= f.text_field :password, :class => "form-control", :type => "password", :placeholder => t("activerecord.attributes.admin_user.password"), ariaDescribedby: "passwordHelp" %>
+              <div id="passwordHelp" class="form-text">Introduce your password. <%= link_to "Forgot password?", admin_forgot_password_path %></div>
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Remember me</label>
+            </div>
+            <%= f.submit "Sign in", :class => "btn btn-primary" %>
+          </fieldset>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

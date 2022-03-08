@@ -1,8 +1,10 @@
 <% title t("views.front_users.index.title") %>
 
-<ol class="breadcrumb">
-  <li class="active"><%= t "layouts.breadcrumbs.front_users" %></li>
-</ol>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="active"><%= t "layouts.breadcrumbs.front_users" %></li>
+  </ol>
+</nav>
 
 <p><%= link_to "New FrontUser", new_admin_front_user_path, :class => "btn btn-outline-primary" %></p>
 
