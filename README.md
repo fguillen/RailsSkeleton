@@ -201,13 +201,15 @@ Check that the _region_ is properly set in `storage.yml` config file
 
 ## Configure SSL certificates
 
-Create the certificate: https://docs.google.com/document/d/1i5uJkdxm-eFWEkSnYMbDHrND9Se0L-4fryQzv9zbWDM/edit#
+### Installing SSL with Letsencrypt
 
-Download the certificates
-and put them on
+Follow instructions here: https://pentacent.medium.com/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71
 
-- ./etc/secret/certificate.crt
-- ./etc/secret/certificate.key
+The script is already there it should work. Configure variables `domains`, `email`, and `staging`:
+
+    ./init-letsencrypt.sh
+
+If failing check that the `nginx.conf` file has been copied properly into the Docker container.
 
 
 # Docker and deploy
@@ -273,8 +275,21 @@ Or maybe
     docker-compose down
     docker-compose up -d
 
-### Consoling
+### Docker
+
+#### Consoling
 
     docker-compose exec app bundle exec rails c
     docker-compose exec app bash
     docker-compose exec db mysql -uroot -proot
+    docker-compose exec web bash
+    docker-compose run --rm --entrypoint "/bin/sh" certbot
+    docker-compose run --rm --entrypoint "/bin/bash" web
+
+#### Logs
+
+    docker-compose logs
+
+#### Nginx reload
+
+    docker-compose exec web nginx -s reload

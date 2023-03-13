@@ -31,3 +31,7 @@ capybara-*.html
 pickle-email-*.html
 public/assets/uploads/
 rerun.txt
+
+# letsencrypt stuff
+/data/certbot
+/public/.well-known
