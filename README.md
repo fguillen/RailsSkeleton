@@ -211,6 +211,13 @@ The script is already there it should work. Configure variables `domains`, `emai
 
 If failing check that the `nginx.conf` file has been copied properly into the Docker container.
 
+If renovating:
+
+```
+repo> mv /data/certbot /tmp/
+repo> ./init-letsencrypt.sh
+```
+
 
 # Docker and deploy
 
