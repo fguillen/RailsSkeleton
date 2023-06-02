@@ -199,9 +199,12 @@ Check that the _region_ is properly set in `storage.yml` config file
 
 - https://docs.google.com/document/d/1i5uJkdxm-eFWEkSnYMbDHrND9Se0L-4fryQzv9zbWDM/edit#
 
-## Configure SSL certificates
 
-### Installing SSL with Letsencrypt
+## Docker and deploy
+
+### Configure SSL certificates
+
+#### Installing SSL with Letsencrypt
 
 Follow instructions here: https://pentacent.medium.com/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71
 
@@ -219,7 +222,7 @@ repo> ./init-letsencrypt.sh
 ```
 
 
-# Docker and deploy
+
 
 
 ### Install server basics
