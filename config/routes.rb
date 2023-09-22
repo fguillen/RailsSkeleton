@@ -19,6 +19,10 @@ Rails.application.routes.draw do
       get "log_book_events", on: :member
     end
     resources :articles
+
+    resources :articles_filters, only: [:new, :show] do
+      get "create", on: :collection
+    end
   end
 
   namespace :api do

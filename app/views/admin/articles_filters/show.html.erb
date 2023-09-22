@@ -1,0 +1,12 @@
+<% title t("views.articles_filter.show.title") %>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= t("layouts.breadcrumbs.articles_filters") %></li>
+    <li class="breadcrumb-item active">Filter result</li>
+  </ol>
+</nav>
+
+<%= render "form" %>
+
+<%= render partial: "admin/articles/list", locals: { articles: @articles_filter.filter } %>

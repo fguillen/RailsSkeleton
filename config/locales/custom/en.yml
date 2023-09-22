@@ -24,6 +24,12 @@ en:
         tags: Tags
         title: Title
         uuid: Uuid
+      articles_filter:
+        created_at_from: Created at from
+        created_at_to: Created at to
+        front_user_name: Front user name
+        tags: Tags
+        title: Title
       front_user:
         created_at: Created at
         email: Email
@@ -74,6 +80,9 @@ en:
       update:
         error: Errors were encountered when trying to update Article
         success: Successfully updated Article
+    articles_filter:
+      create:
+        error: Error
     front:
       access_not_authorized: Access not authorized
       authentication_required: Authentication required
@@ -115,6 +124,7 @@ en:
       admin_sessions: Forgotten Password
       admin_users: Admin Users
       articles: Articles
+      articles_filters: Articles filters
       edit: Edit
       forgot_password: Forgotten Password
       front_sessions: Front sessions
@@ -127,6 +137,7 @@ en:
     menu:
       admin_users: Admin Users
       articles: See all articles
+      articles_filters_new: Articles filters new
       edit_profile: Edit Profile
       features: Features
       front_users: Front users
@@ -171,17 +182,24 @@ en:
     articles:
       edit:
         body: Body
-        text: Text
+        text: Edit Article
         title: Title
       index:
         title: Title
       new:
-        text: Text
+        text: New Article
         title: Title
       show:
         delete_button: Delete button
         delete_confirmation: Delete confirmation
         edit_button: Edit button
+        title: Title
+    articles_filter:
+      show:
+        title: Title
+    articles_filters:
+      new:
+        text: New Articles Filter
         title: Title
     front_sessions:
       forgot_password:

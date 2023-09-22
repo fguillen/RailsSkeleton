@@ -1,0 +1,79 @@
+<%= form_for [:admin, @articles_filter], method: :get, html: { class: "mb-2" } do |f| %>
+  <%= render "/shared/form_errors", :object => f.object %>
+
+  <legend>Articles Filter configuration</legend>
+  <hr>
+
+  <div class="row mb-1">
+    <div class="col-sm-6">
+      <div class="form-group row">
+        <%= f.label :title, class: "col-sm-4 col-form-label text-right"%>
+
+        <div class="col-sm-8">
+          <%= f.text_field :title, class: "form-control"%>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="form-group row">
+        <%= f.label :front_user_name, class: "col-sm-4 col-form-label text-right"%>
+
+        <div class="col-sm-8">
+          <%= f.text_field :front_user_name, class: "form-control"%>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row mb-1">
+    <div class="col-sm-6">
+      <div class="form-group row">
+        <%= f.label :tags, class: "col-sm-4 col-form-label text-right"%>
+
+        <div class="col-sm-8">
+          <%= f.text_field :tags, class: "form-control"%>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="form-group row">
+        <%= f.label :tags_mode, class: "col-sm-4 col-form-label text-right"%>
+
+        <div class="col-sm-8">
+          <%= f.select(:tags_mode, [["Any", "any"], ["All", "all"]], {}, { class: "form-select" }) %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-1">
+    <div class="col-sm-6">
+      <div class="form-group row">
+        <%= f.label :created_at_from, class: "col-sm-4 col-form-label text-right"%>
+
+        <div class="col-sm-8">
+          <%= f.text_field :created_at_from, class: "form-control"%>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="form-group row">
+        <%= f.label :created_at_to, class: "col-sm-4 col-form-label text-right"%>
+
+        <div class="col-sm-8">
+          <%= f.text_field :created_at_to, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="offset-sm-2 col-sm-10 text-end">
+      <%= f.submit "Filter Articles", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
