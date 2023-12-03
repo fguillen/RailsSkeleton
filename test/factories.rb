@@ -33,4 +33,8 @@ FactoryBot.define do
     differences { "Wadus Event" }
     association :historizable, factory: :article
   end
+
+  factory :user_notifications_config do
+    association :user, factory: :front_user
+  end
 end

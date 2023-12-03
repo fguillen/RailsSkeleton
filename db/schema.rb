@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_07_192020) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_03_060115) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_id", null: false
@@ -131,11 +131,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_07_192020) do
   end
 
   create_table "tags", id: :integer, charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
-    t.string "name", collation: "utf8_bin"
+    t.string "name", collation: "utf8mb3_bin"
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true
+  end
+
+  create_table "user_notifications_configs", primary_key: "uuid", id: :string, charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
+    t.json "active_notifications"
+    t.string "user_id"
+    t.string "user_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_type", "user_id"], name: "index_user_notifications_configs_on_user_type_and_user_id", unique: true
+    t.index ["uuid"], name: "index_user_notifications_configs_on_uuid", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
