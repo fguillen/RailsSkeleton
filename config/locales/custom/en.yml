@@ -234,6 +234,20 @@ en:
     log_book_events:
       index:
         title: LogBook Events
+    notifications:
+      edit:
+        text: Update your notifications preferences
+        title: Notifications Preferences
+      notifications_active:
+        on_new_admin_user:
+          description: Email will be sent when a new Admin User is created in the system
+          name: When a new Admin User is created
+        on_new_article:
+          description: Email will be sent when a new Article is created in the system
+          name: When a new Article is created
+        on_new_front_user:
+          description: Email will be sent when a new Front User is created in the system
+          name: When a new Front User is created
     pagination:
       first: "&laquo; First"
       last: Last &raquo;

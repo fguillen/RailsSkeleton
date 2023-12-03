@@ -18,6 +18,7 @@ class Front::ArticlesController < Front::BaseController
     @article.front_user = current_front_user
 
     if @article.save
+      Notifications::OnNewArticleNotificationService.perform(@article)
       redirect_to [:front, @article], notice: t("controllers.articles.create.success")
     else
       flash.now[:alert] = t("controllers.articles.create.error")

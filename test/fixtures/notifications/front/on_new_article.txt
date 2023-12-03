@@ -1,0 +1,10 @@
+Front Notification
+
+New Article has been created
+
+* http://railsskeleton.com.test/front/articles/ARTICLE_UUID
+
+=======
+RailsSkeleton
+* hello railsskeleton.com.test
+

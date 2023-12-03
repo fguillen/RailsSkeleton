@@ -8,10 +8,18 @@
 </nav>
 
 <dl class="row">
-  <dt class="col-sm-2 text-right"><%= t "activerecord.attributes.admin_user.id" %></dt><dd class="col-sm-10"><%= @admin_user.id %></dd>
-  <dt class="col-sm-2 text-right"><%= t "activerecord.attributes.admin_user.uuid" %></dt><dd class="col-sm-10"><%= @admin_user.uuid %></dd>
-  <dt class="col-sm-2 text-right"><%= t "activerecord.attributes.admin_user.name" %></dt><dd class="col-sm-10"><%= @admin_user.name %></dd>
-  <dt class="col-sm-2 text-right"><%= t "activerecord.attributes.admin_user.email" %></dt><dd class="col-sm-10"><%= @admin_user.email %></dd>
+  <dt class="col-sm-3 text-right"><%= t "activerecord.attributes.admin_user.id" %></dt><dd class="col-sm-9"><%= @admin_user.id %></dd>
+  <dt class="col-sm-3 text-right"><%= t "activerecord.attributes.admin_user.uuid" %></dt><dd class="col-sm-9"><%= @admin_user.uuid %></dd>
+  <dt class="col-sm-3 text-right"><%= t "activerecord.attributes.admin_user.name" %></dt><dd class="col-sm-9"><%= @admin_user.name %></dd>
+  <dt class="col-sm-3 text-right"><%= t "activerecord.attributes.admin_user.email" %></dt><dd class="col-sm-9"><%= @admin_user.email %></dd>
+</dl>
+
+<h3>Notifications Preferences</h3>
+
+<dl class="row">
+  <% USER_NOTIFICATIONS_ROLES["admin"].each do |notification_name| %>
+    <dt class="col-sm-3 text-right"><%= t("views.notifications.notifications_active.#{notification_name}.name") %></dt><dd class="col-sm-9"><%= render_label(@admin_user.notifications_active.include?(notification_name), :boolean) %></dd>
+  <% end %>
 </dl>
 
 <div class="controls text-right">

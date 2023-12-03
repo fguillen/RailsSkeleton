@@ -42,9 +42,15 @@ class ActiveSupport::TestCase
     assert_equal(array_1.ids, array_2.ids)
   end
 
-  def assert_primary_keys(array_1, array_2, _message = nil)
+  def assert_primary_keys(array_1, array_2, any_order = false)
     array_1_keys = array_1.map { |e| e.send(e.class.primary_key) }
     array_2_keys = array_2.map { |e| e.send(e.class.primary_key) }
+
+    if any_order
+      array_1_keys = array_1_keys.sort
+      array_2_keys = array_2_keys.sort
+    end
+
     assert_equal(array_1_keys, array_2_keys)
   end
 

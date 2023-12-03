@@ -146,4 +146,47 @@ class Admin::AdminUsersControllerTest < ActionController::TestCase
 
     # assert_equal admin_user, AdminSession.new(:email => "email@email.com", :password => "PASS").record
   end
+
+  ## Notifications :: INI
+  def test_update_notifications_active
+    admin_user = FactoryBot.create(:admin_user, notifications_active: [])
+
+    put(
+      :update,
+      params: {
+        id: admin_user,
+        admin_user: {
+          notifications_active: ["on_new_article"]
+        }
+      }
+    )
+
+    assert_redirected_to [:admin, admin_user]
+    assert_not_nil(flash[:notice])
+
+    admin_user.reload
+    assert_equal(["on_new_article"], admin_user.notifications_active)
+  end
+
+  def test_update_notifications_active_when_empty
+    admin_user = FactoryBot.create(:admin_user, notifications_active: ["on_new_article"])
+    assert_equal(["on_new_article"], admin_user.notifications_active)
+
+    put(
+      :update,
+      params: {
+        id: admin_user,
+        admin_user: {
+          notifications_active: ["", nil]
+        }
+      }
+    )
+
+    assert_redirected_to [:admin, admin_user]
+    assert_not_nil(flash[:notice])
+
+    admin_user.reload
+    assert_equal([], admin_user.notifications_active)
+  end
+  ## Notifications :: END
 end

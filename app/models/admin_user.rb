@@ -9,6 +9,7 @@ class AdminUser < ApplicationRecord
     config.session_class = AdminSession
   end
 
+  serialize :notifications_active, Array
 
   has_many :authorizations, dependent: :destroy, class_name: "AdminAuthorization"
 
@@ -21,8 +22,23 @@ class AdminUser < ApplicationRecord
 
   scope :order_by_recent, -> { order("created_at desc") }
 
+  validate :notifications_active_are_allowed
+
   def send_reset_password_email
     reset_perishable_token!
     Notifier.admin_user_reset_password(self).deliver
   end
+
+  private
+
+  def notifications_active_are_allowed
+    return if notifications_active.empty?
+
+    notifications_active.each do |notification_active|
+      if !USER_NOTIFICATIONS_ROLES["admin"].include?(notification_active)
+        errors.add(:notifications_active, "active notification not allowed: '#{notification_active}'")
+      end
+    end
+  end
+
 end

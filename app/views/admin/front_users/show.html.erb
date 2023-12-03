@@ -15,6 +15,14 @@
   <dt class="col-sm-2 text-right"><%= t "activerecord.attributes.front_user.email" %></dt><dd class="col-sm-10"><%= @front_user.email %></dd>
 </dl>
 
+<h3>Notifications Preferences</h3>
+
+<dl class="row">
+  <% USER_NOTIFICATIONS_ROLES["front"].each do |notification_name| %>
+    <dt class="col-sm-3 text-right"><%= t("views.notifications.notifications_active.#{notification_name}.name") %></dt><dd class="col-sm-9"><%= render_label(@front_user.notifications_active.include?(notification_name), :boolean) %></dd>
+  <% end %>
+</dl>
+
 <div class="controls text-right">
   <p>
     <%= link_to t("views.front_users.show.edit_button"), edit_admin_front_user_path(@front_user), :class => "btn btn-primary" %>

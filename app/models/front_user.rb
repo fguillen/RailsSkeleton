@@ -10,6 +10,8 @@ class FrontUser < ApplicationRecord
     config.session_class = FrontSession
   end
 
+  serialize :notifications_active, Array
+
   has_many :authorizations, class_name: "FrontAuthorization", dependent: :destroy
 
   has_many :articles, dependent: :destroy
@@ -19,11 +21,24 @@ class FrontUser < ApplicationRecord
   validates :password, confirmation: true, allow_blank: true
 
   validates_with PasswordValidator, unless: -> { password.blank? }
+  validate :notifications_active_are_allowed
 
   scope :order_by_recent, -> { order("created_at desc") }
 
   def send_reset_password_email
     reset_perishable_token!
     Notifier.front_user_reset_password(self).deliver
+  end
+
+  private
+
+  def notifications_active_are_allowed
+    return if notifications_active.empty?
+
+    notifications_active.each do |notification_active|
+      if !USER_NOTIFICATIONS_ROLES["front"].include?(notification_active)
+        errors.add(:notifications_active, "active notification not allowed: '#{notification_active}'")
+      end
+    end
   end
 end

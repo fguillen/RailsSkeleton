@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_07_192020) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_03_060120) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_id", null: false
@@ -55,6 +55,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_07_192020) do
     t.string "persistence_token"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.text "notifications_active"
     t.index ["perishable_token"], name: "index_admin_users_on_perishable_token", unique: true
     t.index ["persistence_token"], name: "index_admin_users_on_persistence_token", unique: true
     t.index ["uuid"], name: "index_admin_users_on_uuid", unique: true
@@ -68,6 +69,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_07_192020) do
     t.datetime "updated_at", precision: nil, null: false
     t.index ["front_user_id"], name: "fk_rails_1451c23bee"
     t.index ["uuid"], name: "index_articles_on_uuid", unique: true
+  end
+
+  create_table "data_migrations", primary_key: "version", id: :string, charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
   end
 
   create_table "front_authorizations", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
@@ -86,6 +90,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_07_192020) do
     t.string "persistence_token"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.text "notifications_active"
     t.index ["perishable_token"], name: "index_front_users_on_perishable_token", unique: true
     t.index ["persistence_token"], name: "index_front_users_on_persistence_token", unique: true
     t.index ["uuid"], name: "index_front_users_on_uuid", unique: true
@@ -131,7 +136,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_07_192020) do
   end
 
   create_table "tags", id: :integer, charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
-    t.string "name", collation: "utf8_bin"
+    t.string "name", collation: "utf8mb3_bin"
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
     t.integer "taggings_count", default: 0

@@ -27,4 +27,28 @@ class FrontUserTest < ActiveSupport::TestCase
 
     assert_primary_keys([front_user_3, front_user_2, front_user_1], FrontUser.order_by_recent)
   end
+
+  ## Notifications :: INI
+  def test_initialize_notifications_active_array
+    front_user = FactoryBot.build(:front_user)
+    assert_equal([], front_user.notifications_active)
+
+    front_user.save!
+
+    assert_equal([], front_user.notifications_active)
+  end
+
+  def test_notifications_active_are_allowed
+    front_user = FactoryBot.create(:front_user)
+
+    assert front_user.valid?
+
+    front_user.notifications_active.push("on_new_article")
+    assert front_user.valid?
+
+    front_user.notifications_active.push("not_valid")
+    refute front_user.valid?
+    refute front_user.errors[:notifications_active].empty?
+  end
+  ## Notifications :: END
 end

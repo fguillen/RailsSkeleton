@@ -179,4 +179,20 @@ class Front::ArticlesControllerTest < ActionController::TestCase
     assert_redirected_to [:front, article]
     assert_not_nil(flash[:alert])
   end
+
+  def test_on_create_send_notifications
+    Notifications::OnNewArticleNotificationService.expects(:perform)
+
+    post(
+      :create,
+      params: {
+        article: {
+          title: "The Title Wadus",
+          body: "The Body Wadus Wadus Wadus Wadus",
+          tag_list: "one, two",
+          pic: fixture_file_upload("yourule.png")
+        }
+      }
+    )
+  end
 end

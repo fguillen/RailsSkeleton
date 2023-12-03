@@ -61,7 +61,11 @@ class Admin::AdminUsersController < Admin::BaseController
   protected
 
   def admin_user_params
-    params.require(:admin_user).permit(:name, :email, :password, :password_confirmation, :uuid)
+    if params[:admin_user][:notifications_active]
+      params[:admin_user][:notifications_active] = params[:admin_user][:notifications_active].compact_blank
+    end
+
+    params.require(:admin_user).permit(:name, :email, :password, :password_confirmation, notifications_active: [])
   end
 
   private

@@ -3,3 +3,4 @@ This is a simple test email
 =======
 RailsSkeleton
 * hello railsskeleton.com.test
+
