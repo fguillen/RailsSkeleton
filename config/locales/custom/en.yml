@@ -107,6 +107,10 @@ en:
       update:
         error: Errors were encountered when trying to update Front User
         success: Successfully updated Front User
+    user_notifications_prefs:
+      update:
+        error: Errors were encountered when trying to update Notifications Preferences
+        success: Successfully updated Notifications Prefereces
   date:
     formats:
       ymd: "%Y-%d-%m"
@@ -134,6 +138,7 @@ en:
       login_front: Login front
       new: New
       reset_password: Reset your password
+      user_notifications_pref: Notifications Preferences
     menu:
       admin_users: Admin Users
       articles: See all articles
@@ -150,6 +155,7 @@ en:
       pricing: Pricing
       profile: Profile
       signup: Signup
+      user_notifications_pref_edit: Notifications Preferences
   views:
     admin_sessions:
       forgot_password:
@@ -240,3 +246,17 @@ en:
       next: Next &rsaquo;
       previous: "&lsaquo; Prev"
       truncate: "&hellip;"
+    user_notifications_prefs:
+      active_notification:
+        on_new_admin_user:
+          description: Email will be sent when a new Admin User is created in the system
+          name: When a new Admin User is created
+        on_new_article:
+          description: Email will be sent when a new Article is created in the system
+          name: When a new Article is created
+        on_new_front_user:
+          description: Email will be sent when a new Front User is created in the system
+          name: When a new Front User is created
+      edit:
+        text: Update your notifications preferences
+        title: Notifications Preferences

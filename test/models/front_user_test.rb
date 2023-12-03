@@ -27,4 +27,16 @@ class FrontUserTest < ActiveSupport::TestCase
 
     assert_primary_keys([front_user_3, front_user_2, front_user_1], FrontUser.order_by_recent)
   end
+
+  def test_create_user_notifications_pref_on_create
+    front_user = FactoryBot.build(:front_user)
+    assert_nil front_user.user_notifications_pref
+
+    assert_difference "UserNotificationsPref.count", 1 do
+      front_user.save!
+    end
+
+    front_user.reload
+    assert_not_nil front_user.user_notifications_pref
+  end
 end

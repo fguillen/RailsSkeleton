@@ -12,7 +12,10 @@ Rails.application.routes.draw do
     patch "reset_password/:reset_password_code", to: "admin_users#reset_password_submit", as: :reset_password_submit
 
     resources :admin_sessions, only: [:new, :create, :destroy]
-    resources :admin_users
+    resources :admin_users do
+      resource :user_notifications_pref, only: [:edit, :update]
+    end
+
     resources :log_book_events, only: [:index]
     resources :front_users do
       get "articles", on: :member

@@ -26,7 +26,6 @@ class Admin::ArticlesController < Admin::BaseController
   def edit; end
 
   def update
-    Rails.logger.debug "params: #{article_params.inspect}"
     if @article.update(article_params)
       redirect_to [:admin, @article], notice: t("controllers.articles.update.success")
     else
