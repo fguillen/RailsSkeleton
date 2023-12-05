@@ -23,6 +23,8 @@ Rails.application.routes.draw do
     resources :articles_filters, only: [:new, :show] do
       get "create", on: :collection
     end
+
+    resource :user_notifications_config, only: [:edit, :update]
   end
 
   namespace :api do

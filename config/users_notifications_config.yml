@@ -1,0 +1,8 @@
+front_user:
+  - on_new_play_session
+
+admin_user:
+  - on_new_front_user
+  - on_new_tester_user
+  - on_new_admin_user
+  - on_new_play_session
