@@ -1,0 +1,16 @@
+<% title t("views.user_notifications_configs.edit.title") %>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to t("layouts.breadcrumbs.admin_users"), :admin_admin_users %></li>
+    <li class="breadcrumb-item"><%= link_to @admin_user.name, [:admin, @admin_user] %></li>
+    <li class="breadcrumb-item"><%= t("layouts.breadcrumbs.user_notifications_config") %></li>
+    <li class="breadcrumb-item active"><%= t "layouts.breadcrumbs.edit" %></li>
+  </ol>
+</nav>
+
+<p class="lead">
+  <%= t "views.user_notifications_configs.edit.text" %>
+</p>
+
+<%= render "form" %>

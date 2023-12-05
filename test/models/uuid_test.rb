@@ -24,9 +24,7 @@ class UUIDTest < ActiveSupport::TestCase
     Rails.application.eager_load!
     ApplicationRecord.descendants.select { |c| c.included_modules.include? HasUuid }.map do |model|
       factory_name = model.name.underscore.to_sym
-      record = FactoryBot.build(factory_name)
-      assert_nil record.uuid
-      record.save!
+      record = FactoryBot.create(factory_name)
       assert_not_nil record.uuid
     end
   end

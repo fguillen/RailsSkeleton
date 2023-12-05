@@ -25,4 +25,16 @@ class AdminUserTest < ActiveSupport::TestCase
 
     assert_primary_keys([admin_user_3, admin_user_2, admin_user_1], AdminUser.order_by_recent)
   end
+
+  def test_create_user_notifications_config_on_create
+    admin_user = FactoryBot.build(:admin_user)
+    assert_nil admin_user.user_notifications_config
+
+    assert_difference "UserNotificationsConfig.count", 1 do
+      admin_user.save!
+    end
+
+    admin_user.reload
+    assert_not_nil admin_user.user_notifications_config
+  end
 end

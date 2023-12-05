@@ -35,6 +35,16 @@ FactoryBot.define do
   end
 
   factory :user_notifications_config do
-    association :user, factory: :front_user
+    after(:build) do |user_notifications_config|
+      if user_notifications_config.user.nil?
+        create(:front_user, user_notifications_config: user_notifications_config)
+      end
+    end
+
+    before(:create) do |user_notifications_config|
+      if user_notifications_config.user.nil?
+        create(:front_user, user_notifications_config: user_notifications_config)
+      end
+    end
   end
 end
