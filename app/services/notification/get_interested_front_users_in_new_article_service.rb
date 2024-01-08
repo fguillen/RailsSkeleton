@@ -1,0 +1,2 @@
+class GetInterestedFrontUsersInNewArticleService
+end

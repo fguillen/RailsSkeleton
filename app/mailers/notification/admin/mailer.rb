@@ -1,4 +1,4 @@
-class Admin::UserMailer < ActionMailer::Base
+class Notification::Admin::Mailer < ActionMailer::Base
   default from: APP_CONFIG["admin_email"]
   layout "layouts/mailer"
 

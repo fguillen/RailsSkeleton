@@ -1,0 +1,10 @@
+Admin Notification
+
+New Article has been created
+
+* http://railsskeleton.com.test/admin/articles/eff6e4f9-4aec-43d4-b536-79d21dcc3ab9
+
+=======
+RailsSkeleton
+* hello railsskeleton.com.test
+

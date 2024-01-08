@@ -1,8 +1,0 @@
-New Article has been created
-
-* http://railsskeleton.com.test/admin/articles/185b176a-b6bd-4e96-9d93-37a0bb559fec
-
-=======
-RailsSkeleton
-* hello railsskeleton.com.test
-
