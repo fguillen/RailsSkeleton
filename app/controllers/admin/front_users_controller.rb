@@ -49,7 +49,10 @@ class Admin::FrontUsersController < Admin::BaseController
   protected
 
   def front_user_params
-    params[:front_user][:notifications_active] = params[:front_user][:notifications_active].compact_blank
+    if params[:front_user][:notifications_active]
+      params[:front_user][:notifications_active] = params[:front_user][:notifications_active].compact_blank
+    end
+
     params.require(:front_user).permit(:name, :email, :password, :password_confirmation, notifications_active: [])
   end
 
