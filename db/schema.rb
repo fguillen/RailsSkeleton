@@ -55,7 +55,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_03_060120) do
     t.string "persistence_token"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
-    t.json "notifications_active"
+    t.text "notifications_active"
     t.index ["perishable_token"], name: "index_admin_users_on_perishable_token", unique: true
     t.index ["persistence_token"], name: "index_admin_users_on_persistence_token", unique: true
     t.index ["uuid"], name: "index_admin_users_on_uuid", unique: true
@@ -90,7 +90,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_03_060120) do
     t.string "persistence_token"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
-    t.json "notifications_active"
+    t.text "notifications_active"
     t.index ["perishable_token"], name: "index_front_users_on_perishable_token", unique: true
     t.index ["persistence_token"], name: "index_front_users_on_persistence_token", unique: true
     t.index ["uuid"], name: "index_front_users_on_uuid", unique: true
