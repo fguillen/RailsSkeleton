@@ -2,7 +2,7 @@ Front Notification
 
 New Article has been created
 
-* http://railsskeleton.com.test/front/articles/f43572fa-c402-45dd-8c71-cf97a73e6973
+* http://railsskeleton.com.test/front/articles/ARTICLE_UUID
 
 =======
 RailsSkeleton

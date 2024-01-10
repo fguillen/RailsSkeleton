@@ -3,7 +3,7 @@ require "test_helper"
 class Admin::UserMailerTest < ActionMailer::TestCase
   def test_on_new_article
     admin_user = FactoryBot.create(:admin_user, email: "admin@email.com")
-    article = FactoryBot.create(:article, title: "NEW_ARTICLE")
+    article = FactoryBot.create(:article, title: "NEW_ARTICLE", uuid: "ARTICLE_UUID")
 
     email = Notification::Admin::Mailer.on_new_article(admin_user, article).deliver_now
     assert !ActionMailer::Base.deliveries.empty?
