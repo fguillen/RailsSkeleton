@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_03_060115) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_03_060120) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_id", null: false
@@ -55,6 +55,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_03_060115) do
     t.string "persistence_token"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.json "notifications_active"
     t.index ["perishable_token"], name: "index_admin_users_on_perishable_token", unique: true
     t.index ["persistence_token"], name: "index_admin_users_on_persistence_token", unique: true
     t.index ["uuid"], name: "index_admin_users_on_uuid", unique: true
@@ -89,6 +90,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_03_060115) do
     t.string "persistence_token"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.json "notifications_active"
     t.index ["perishable_token"], name: "index_front_users_on_perishable_token", unique: true
     t.index ["persistence_token"], name: "index_front_users_on_persistence_token", unique: true
     t.index ["uuid"], name: "index_front_users_on_uuid", unique: true
@@ -149,16 +151,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_03_060115) do
     t.datetime "updated_at", null: false
     t.index ["user_type", "user_id"], name: "index_user_notifications_configs_on_user_type_and_user_id", unique: true
     t.index ["uuid"], name: "index_user_notifications_configs_on_uuid", unique: true
-  end
-
-  create_table "user_notifications_prefs", primary_key: "uuid", id: :string, charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
-    t.json "active_notifications"
-    t.string "user_id"
-    t.string "user_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_type", "user_id"], name: "index_user_notifications_prefs_on_user_type_and_user_id", unique: true
-    t.index ["uuid"], name: "index_user_notifications_prefs_on_uuid", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

@@ -26,15 +26,27 @@ class AdminUserTest < ActiveSupport::TestCase
     assert_primary_keys([admin_user_3, admin_user_2, admin_user_1], AdminUser.order_by_recent)
   end
 
-  def test_create_user_notifications_pref_on_create
+  ## Notifications :: INI
+  def test_initialize_notifications_active_array
     admin_user = FactoryBot.build(:admin_user)
-    assert_nil admin_user.user_notifications_pref
+    assert_equal([], admin_user.notifications_active)
 
-    assert_difference "UserNotificationsPref.count", 1 do
-      admin_user.save!
-    end
+    admin_user.save!
 
-    admin_user.reload
-    assert_not_nil admin_user.user_notifications_pref
+    assert_equal([], admin_user.notifications_active)
   end
+
+  def test_notifications_active_are_allowed
+    admin_user = FactoryBot.create(:admin_user)
+
+    assert admin_user.valid?
+
+    admin_user.notifications_active.push("on_new_front_user")
+    assert admin_user.valid?
+
+    admin_user.notifications_active.push("not_valid")
+    refute admin_user.valid?
+    refute admin_user.errors[:notifications_active].empty?
+  end
+  ## Notifications :: END
 end

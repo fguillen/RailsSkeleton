@@ -2,7 +2,7 @@ require "test_helper"
 
 class Admin::FrontUsersControllerTest < ActionController::TestCase
   def setup
-    setup_admin_user
+    setup_front_user
   end
 
   def test_index
@@ -146,4 +146,46 @@ class Admin::FrontUsersControllerTest < ActionController::TestCase
     assert_equal(log_book_event.id, assigns(:log_book_events).first.id)
     assert_template "log_book_events"
   end
+
+  ## Notifications :: INI
+  def test_update_notifications_active
+    front_user = FactoryBot.create(:front_user)
+
+    put(
+      :update,
+      params: {
+        notifications_active: ["on_new_article"]
+      }
+    )
+
+    assert_redirected_to [:admin, front_user]
+    assert_not_nil(flash[:notice])
+
+    front_user.reload
+    assert_equal(["on_new_article"], front_user.notifications_active)
+  end
+
+  def test_update_empty
+    front_user = FactoryBot.create(:front_user)
+    user_notifications_pref = front_user.user_notifications_pref
+    user_notifications_pref.update(notifications_active: ["on_new_article", "on_new_front_user"])
+    assert_equal(["on_new_article", "on_new_front_user"], user_notifications_pref.notifications_active)
+
+    put(
+      :update,
+      params: {
+        front_user_id: front_user,
+        user_notifications_pref: {
+          notifications_active: ["", nil]
+        }
+      }
+    )
+
+    assert_redirected_to edit_admin_front_user_user_notifications_pref_path(user_admin_id: front_user)
+    assert_not_nil(flash[:notice])
+
+    user_notifications_pref.reload
+    assert_equal([], user_notifications_pref.notifications_active)
+  end
+  ## Notifications :: END
 end
