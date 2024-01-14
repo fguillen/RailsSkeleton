@@ -14,12 +14,12 @@ class Notifications::OnNewArticleNotificationServiceTest < ActiveSupport::TestCa
     admin_user_2 = FactoryBot.create(:admin_user, notifications_active: ["on_new_article"])
     admin_user_3 = FactoryBot.create(:admin_user, notifications_active: [])
 
-    Notifications::Front::Mailer.expects(:on_new_article).with(front_user_1, article)
-    Notifications::Front::Mailer.expects(:on_new_article).with(front_user_2, article)
+    Notifications::Front::Mailer.expects(:on_new_article).with(front_user_1, article).returns(stub(deliver: nil))
+    Notifications::Front::Mailer.expects(:on_new_article).with(front_user_2, article).returns(stub(deliver: nil))
     Notifications::Front::Mailer.expects(:on_new_article).with(front_user_3, article).never
 
-    Notifications::Admin::Mailer.expects(:on_new_article).with(admin_user_1, article)
-    Notifications::Admin::Mailer.expects(:on_new_article).with(admin_user_2, article)
+    Notifications::Admin::Mailer.expects(:on_new_article).with(admin_user_1, article).returns(stub(deliver: nil))
+    Notifications::Admin::Mailer.expects(:on_new_article).with(admin_user_2, article).returns(stub(deliver: nil))
     Notifications::Admin::Mailer.expects(:on_new_article).with(admin_user_3, article).never
 
     Notifications::OnNewArticleNotificationService.perform(article)
