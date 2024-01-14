@@ -22,7 +22,7 @@ class AdminUser < ApplicationRecord
 
   scope :order_by_recent, -> { order("created_at desc") }
 
-  validate :notifications_active_are_allowed
+  validate :notifications_active_are_allowed, if: :notifications_active_changed?
 
   def send_reset_password_email
     reset_perishable_token!

@@ -50,5 +50,18 @@ class FrontUserTest < ActiveSupport::TestCase
     refute front_user.valid?
     refute front_user.errors[:notifications_active].empty?
   end
+
+  def test_notifications_active_are_allowed_only_if_notifications_active_changed
+    front_user = FactoryBot.create(:front_user)
+    front_user.update_attribute("notifications_active", ["not_valid"])
+    assert front_user.valid?
+
+    front_user.update!(name: "OTHER_NAME")
+    assert front_user.valid?
+
+    front_user.notifications_active.push("not_valid_2")
+    refute front_user.valid?
+    refute front_user.errors[:notifications_active].empty?
+  end
   ## Notifications :: END
 end

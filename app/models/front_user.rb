@@ -21,7 +21,7 @@ class FrontUser < ApplicationRecord
   validates :password, confirmation: true, allow_blank: true
 
   validates_with PasswordValidator, unless: -> { password.blank? }
-  validate :notifications_active_are_allowed
+  validate :notifications_active_are_allowed, if: :notifications_active_changed?
 
   scope :order_by_recent, -> { order("created_at desc") }
 

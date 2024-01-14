@@ -48,5 +48,18 @@ class AdminUserTest < ActiveSupport::TestCase
     refute admin_user.valid?
     refute admin_user.errors[:notifications_active].empty?
   end
+
+  def test_notifications_active_are_allowed_only_if_notifications_active_changed
+    admin_user = FactoryBot.create(:admin_user)
+    admin_user.update_attribute("notifications_active", ["not_valid"])
+    assert admin_user.valid?
+
+    admin_user.update!(name: "OTHER_NAME")
+    assert admin_user.valid?
+
+    admin_user.notifications_active.push("not_valid_2")
+    refute admin_user.valid?
+    refute admin_user.errors[:notifications_active].empty?
+  end
   ## Notifications :: END
 end
