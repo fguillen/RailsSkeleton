@@ -132,12 +132,14 @@ class Front::FrontUsersControllerTest < ActionController::TestCase
 
   ## Notifications :: INI
   def test_update_notifications_active
+    NotificationsRoles.expects(:for_role).with("front").at_least_once.returns(["on_event"])
+
     put(
       :update,
       params: {
         id: @front_user,
         front_user: {
-          notifications_active: ["on_new_article"]
+          notifications_active: ["on_event"]
         }
       }
     )
@@ -146,12 +148,14 @@ class Front::FrontUsersControllerTest < ActionController::TestCase
     assert_not_nil(flash[:notice])
 
     @front_user.reload
-    assert_equal(["on_new_article"], @front_user.notifications_active)
+    assert_equal(["on_event"], @front_user.notifications_active)
   end
 
   def test_update_notifications_active_when_empty
-    @front_user.update(notifications_active: ["on_new_article"])
-    assert_equal(["on_new_article"], @front_user.notifications_active)
+    NotificationsRoles.expects(:for_role).with("front").at_least_once.returns(["on_event"])
+
+    @front_user.update(notifications_active: ["on_event"])
+    assert_equal(["on_event"], @front_user.notifications_active)
 
     put(
       :update,

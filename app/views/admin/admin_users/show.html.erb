@@ -14,13 +14,15 @@
   <dt class="col-sm-3 text-right"><%= t "activerecord.attributes.admin_user.email" %></dt><dd class="col-sm-9"><%= @admin_user.email %></dd>
 </dl>
 
-<h3>Notifications Preferences</h3>
+<% if !NotificationsRoles.for_role("admin").blank? %>
+  <h3>Notifications Preferences</h3>
 
-<dl class="row">
-  <% USER_NOTIFICATIONS_ROLES["admin"].each do |notification_name| %>
-    <dt class="col-sm-3 text-right"><%= t("views.notifications.notifications_active.#{notification_name}.name") %></dt><dd class="col-sm-9"><%= render_label(@admin_user.notifications_active.include?(notification_name), :boolean) %></dd>
-  <% end %>
-</dl>
+  <dl class="row">
+    <% NotificationsRoles.for_role("admin").each do |notification_name| %>
+      <dt class="col-sm-3 text-right"><%= t("views.notifications.notifications_active.#{notification_name}.name") %></dt><dd class="col-sm-9"><%= render_label(@admin_user.notifications_active.include?(notification_name), :boolean) %></dd>
+    <% end %>
+  </dl>
+<% end %>
 
 <div class="controls text-right">
   <p>

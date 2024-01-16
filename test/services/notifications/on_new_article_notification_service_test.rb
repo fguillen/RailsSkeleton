@@ -2,6 +2,9 @@ require "test_helper"
 
 class Notifications::OnNewArticleNotificationServiceTest < ActiveSupport::TestCase
   def test_perform
+    NotificationsRoles.expects(:for_role).with("front").at_least_once.returns(["on_new_article"])
+    NotificationsRoles.expects(:for_role).with("admin").at_least_once.returns(["on_new_article"])
+
     article = FactoryBot.create(:article)
 
     front_user_1 = FactoryBot.create(:front_user, notifications_active: ["on_new_article"])

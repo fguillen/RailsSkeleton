@@ -35,7 +35,7 @@ class AdminUser < ApplicationRecord
     return if notifications_active.empty?
 
     notifications_active.each do |notification_active|
-      if !USER_NOTIFICATIONS_ROLES["admin"].include?(notification_active)
+      if NotificationsRoles.for_role("admin").blank? || !NotificationsRoles.for_role("admin").include?(notification_active)
         errors.add(:notifications_active, "active notification not allowed: '#{notification_active}'")
       end
     end

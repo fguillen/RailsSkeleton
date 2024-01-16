@@ -39,11 +39,13 @@ class FrontUserTest < ActiveSupport::TestCase
   end
 
   def test_notifications_active_are_allowed
+    NotificationsRoles.expects(:for_role).with("front").at_least_once.returns(["on_event"])
+
     front_user = FactoryBot.create(:front_user)
 
     assert front_user.valid?
 
-    front_user.notifications_active.push("on_new_article")
+    front_user.notifications_active.push("on_event")
     assert front_user.valid?
 
     front_user.notifications_active.push("not_valid")
@@ -52,6 +54,8 @@ class FrontUserTest < ActiveSupport::TestCase
   end
 
   def test_notifications_active_are_allowed_only_if_notifications_active_changed
+    NotificationsRoles.expects(:for_role).with("front").at_least_once.returns(["on_event"])
+
     front_user = FactoryBot.create(:front_user)
     front_user.update_attribute("notifications_active", ["not_valid"])
     assert front_user.valid?

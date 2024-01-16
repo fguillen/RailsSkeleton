@@ -37,11 +37,13 @@ class AdminUserTest < ActiveSupport::TestCase
   end
 
   def test_notifications_active_are_allowed
+    NotificationsRoles.expects(:for_role).with("admin").at_least_once.returns(["on_event"])
+
     admin_user = FactoryBot.create(:admin_user)
 
     assert admin_user.valid?
 
-    admin_user.notifications_active.push("on_new_front_user")
+    admin_user.notifications_active.push("on_event")
     assert admin_user.valid?
 
     admin_user.notifications_active.push("not_valid")
@@ -50,6 +52,8 @@ class AdminUserTest < ActiveSupport::TestCase
   end
 
   def test_notifications_active_are_allowed_only_if_notifications_active_changed
+    NotificationsRoles.expects(:for_role).with("admin").at_least_once.returns(["on_event"])
+
     admin_user = FactoryBot.create(:admin_user)
     admin_user.update_attribute("notifications_active", ["not_valid"])
     assert admin_user.valid?

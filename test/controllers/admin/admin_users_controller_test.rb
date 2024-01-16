@@ -149,6 +149,8 @@ class Admin::AdminUsersControllerTest < ActionController::TestCase
 
   ## Notifications :: INI
   def test_update_notifications_active
+    NotificationsRoles.expects(:for_role).with("admin").at_least_once.returns(["on_event"])
+
     admin_user = FactoryBot.create(:admin_user, notifications_active: [])
 
     put(
@@ -156,7 +158,7 @@ class Admin::AdminUsersControllerTest < ActionController::TestCase
       params: {
         id: admin_user,
         admin_user: {
-          notifications_active: ["on_new_article"]
+          notifications_active: ["on_event"]
         }
       }
     )
@@ -165,12 +167,14 @@ class Admin::AdminUsersControllerTest < ActionController::TestCase
     assert_not_nil(flash[:notice])
 
     admin_user.reload
-    assert_equal(["on_new_article"], admin_user.notifications_active)
+    assert_equal(["on_event"], admin_user.notifications_active)
   end
 
   def test_update_notifications_active_when_empty
-    admin_user = FactoryBot.create(:admin_user, notifications_active: ["on_new_article"])
-    assert_equal(["on_new_article"], admin_user.notifications_active)
+    NotificationsRoles.expects(:for_role).with("admin").at_least_once.returns(["on_event"])
+
+    admin_user = FactoryBot.create(:admin_user, notifications_active: ["on_event"])
+    assert_equal(["on_event"], admin_user.notifications_active)
 
     put(
       :update,
