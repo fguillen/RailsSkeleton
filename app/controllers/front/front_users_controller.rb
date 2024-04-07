@@ -1,5 +1,5 @@
 class Front::FrontUsersController < Front::BaseController
-  before_action :require_front_user, only: [:show, :edit, :update, :destroy]
+  before_action :require_front_user, only: [:show, :edit, :update, :destroy, :my_profile]
   before_action :load_front_user, only: [:show, :edit, :update, :destroy]
   before_action :validate_current_front_user, only: [:show, :edit, :update, :destroy]
 
@@ -53,6 +53,10 @@ class Front::FrontUsersController < Front::BaseController
       flash.now[:alert] = t("controllers.front_users.reset_password.error")
       render :reset_password, layout: "front/base_login"
     end
+  end
+
+  def my_profile
+    redirect_to action: "show", id: current_front_user
   end
 
   protected

@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     post "forgot_password", to: "front_sessions#forgot_password_submit", as: :forgot_password_submit
     get "reset_password/:reset_password_code", to: "front_users#reset_password", as: :reset_password
     patch "reset_password/:reset_password_code", to: "front_users#reset_password_submit", as: :reset_password_submit
+    get "my_profile", to: "front_users#my_profile"
 
     resources :front_sessions, only: [:new, :create, :destroy]
 

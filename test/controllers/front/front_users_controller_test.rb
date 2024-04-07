@@ -174,4 +174,9 @@ class Front::FrontUsersControllerTest < ActionController::TestCase
     assert_equal([], @front_user.notifications_active)
   end
   ## Notifications :: END
+
+  def test_my_profile
+    get :my_profile
+    assert_redirected_to [:front, @front_user]
+  end
 end
