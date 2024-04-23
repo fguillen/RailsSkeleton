@@ -13,7 +13,7 @@ class Admin::AdminSessionsController < Admin::BaseController
       redirect_back_or_default admin_root_path
     else
       flash[:alert] = t("controllers.admin_sessions.authenticate.error")
-      render action: :new
+      render :new, status: 422
     end
   end
 
@@ -42,6 +42,6 @@ class Admin::AdminSessionsController < Admin::BaseController
   protected
 
   def admin_session_params
-    params.require(:admin_session).permit(:email, :password)
+    params.require(:admin_session).permit(:email, :password, :remember_me)
   end
 end

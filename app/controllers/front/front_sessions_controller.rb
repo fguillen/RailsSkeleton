@@ -13,7 +13,7 @@ class Front::FrontSessionsController < Front::BaseController
       redirect_back_or_default front_root_path
     else
       flash[:alert] = t("controllers.front_sessions.authenticate.error")
-      render action: :new
+      render :new, status: 422
     end
   end
 
@@ -42,6 +42,6 @@ class Front::FrontSessionsController < Front::BaseController
   protected
 
   def front_session_params
-    params.require(:front_session).permit(:email, :password)
+    params.require(:front_session).permit(:email, :password, :remember_me)
   end
 end

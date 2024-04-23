@@ -19,20 +19,24 @@
           <%= render "/shared/form_errors", :object => f.object %>
           <legend><%= "Use your credentials" %></legend>
           <hr>
+
           <div class="mb-3">
             <%= f.label :email, class: "form-label" %>
-            <%= f.text_field :email, :class => "form-control", :type => "email", :placeholder => t("activerecord.attributes.admin_user.email"), ariaDescribedby: "emailHelp" %>
+            <%= f.text_field :email, :class => "form-control", :type => "email", :placeholder => t("activerecord.attributes.admin_user.email"), ariaDescribedby: "emailHelp", required: true %>
             <div id="emailHelp" class="form-text">Introduce your email.</div>
           </div>
+
           <div class="mb-3">
             <%= f.label :password, class: "form-label" %>
-            <%= f.text_field :password, :class => "form-control", :type => "password", :placeholder => t("activerecord.attributes.admin_user.password"), ariaDescribedby: "passwordHelp" %>
+            <%= f.text_field :password, :class => "form-control", :type => "password", :placeholder => t("activerecord.attributes.admin_user.password"), ariaDescribedby: "passwordHelp", required: true %>
             <div id="passwordHelp" class="form-text">Introduce your password. <%= link_to "Forgot password?", admin_forgot_password_path %></div>
           </div>
+
           <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Remember me</label>
+            <%= f.check_box :remember_me, class: "form-check-input" %>
+            <%= f.label :remember_me, class: "form-check-label" %>
           </div>
+
           <%= f.submit "Sign in", :class => "btn btn-primary" %>
         <% end %>
       </div>
