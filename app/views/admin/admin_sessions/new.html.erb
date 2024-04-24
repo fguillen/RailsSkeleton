@@ -38,6 +38,31 @@
           </div>
 
           <%= f.submit "Sign in", :class => "btn btn-primary" %>
+
+          <div class="row mt-4 mb-3">
+            <div class="col">
+              <hr>
+            </div>
+            <div class="col-auto mt-1 text-center">
+              <span class="text-muted">or</span>
+            </div>
+            <div class="col">
+              <hr>
+            </div>
+          </div>
+
+          <div class="d-grid gap-2">
+            <%= link_to "/auth/google_oauth2?from=admin", class: "btn bsb-btn-xl btn-outline-primary", method: "post" do %>
+              <i class="bi bi-google"></i>
+              <span class="ms-2 fs-6">sign in with Google</span>
+            <% end %>
+
+            <%= link_to "javascript:alert('Just an example. Not implemented')", class: "btn bsb-btn-xl btn-outline-primary" do %>
+              <i class="bi bi-discord"></i>
+              <span class="ms-2 fs-6">sign in with Discord</span>
+            <% end %>
+          </div>
+
         <% end %>
       </div>
     </div>

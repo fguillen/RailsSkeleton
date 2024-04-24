@@ -100,6 +100,28 @@ You can overpass the lefthook on commit:
 
     git commit -m "MESSAGE" --no-verify
 
+# Development
+
+## Set puma-dev
+
+See docs: https://github.com/puma/puma-dev
+
+Basically:
+
+```
+brew install puma/puma/puma-dev
+sudo puma-dev -setup
+puma-dev -install -d pizza
+puma-dev link -n domain.com [path]
+open domain.com.pizza
+```
+
+To restart puma-dev:
+
+```
+touch tmp/restart.txt
+```
+
 
 # Production configuration
 
@@ -109,9 +131,9 @@ Check all the ENVARS in `.env.development` all of them have to be in your produc
 
 For the envvars:
 
-- SECRET_API_FRONT_TOKEN
-- SECRET_API_ADMIN_TOKEN
-- SECRET_APP_TOKEN
+- API_FRONT_TOKEN
+- API_ADMIN_TOKEN
+- APP_TOKEN
 
 You can run
 
@@ -125,19 +147,19 @@ Run
 
     rails secret
 
-and set the value for the `SECRET_RAILS_SECRET_KEY_BASE` envvar.
+and set the value for the `RAILS_SECRET_KEY_BASE` envvar.
 
 ## Set up Rollbar
 
 - https://rollbar.com/settings/accounts/fguillen.mail/projects/#create-new-project-container
-- Set the access token in the `SECRET_ROLLBAR_TOKEN` envvar
+- Set the access token in the `ROLLBAR_TOKEN` envvar
 
 #### Set up Sendgrid
 
 - https://app.sendgrid.com/settings/api_keys
 - Set partial permission > Email Sent
 - Copy the API key
-- Set it in the `SECRET_SENDGRID_API_KEY` envvar
+- Set it in the `SENDGRID_API_KEY` envvar
 
 ## Heroku ClearDB
 
@@ -151,9 +173,36 @@ You can set all ENVVARS at once in heroku:
 
 ## Google Auth
 
-We have to add the callbacks, check here:
+We need to set up the env vars:
 
-- https://asktheteam.railsskeleton.com/t/cant-login-with-google-oauth-on-my-development-environment/425/2
+```
+GOOGLE_AUTH_CLIENT_ID
+GOOGLE_AUTH_CLIENT_SECRET
+```
+
+Create an Application in Google Console. Set the URLS like here:
+
+> Api & Services > Credentials > OAuth 2.0 Client IDs
+
+> Authorized JavaScript origins:
+
+- https://railsskeleton.com.pizza
+- https://railsskeleton.com
+
+> Authorized redirect URIs:
+
+- https://railsskeleton.com.pizza/auth/google_oauth2/callback
+- https://railsskeleton.com.pizza/auth/failure
+- https://railsskeleton.com/auth/google_oauth2/callback
+- https://railsskeleton.com/auth/failure
+
+
+(The `.pizza` URLs are for development with puma-dev)
+
+Be ware that we need `https` protocol to use Google auth.
+
+The process is tedious, the domains have to be validated.
+
 
 ## Amazon S3
 
@@ -189,8 +238,8 @@ Group permissions:
 
 Get the API credentials from the IAM User and set them in the envvars:
 
-- SECRET_AWS_S3_ACCESS_KEY_ID
-- SECRET_AWS_S3_SECRET_ACCESS_KEY
+- AWS_S3_ACCESS_KEY_ID
+- AWS_S3_SECRET_ACCESS_KEY
 
 Check that the _region_ is properly set in `storage.yml` config file
 

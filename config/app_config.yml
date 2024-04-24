@@ -3,8 +3,8 @@ test:
   host: railsskeleton.com.test
   admin_email: it@railsskeleton.com
   google_auth:
-    client_id: "GOOGLE_CLIENT_ID"
-    client_secret: "<%= ENV.fetch('SECRET_GOOGLE_AUTH_CLIENT_SECRET') %>"
+    client_id: "GOOGLE_AUTH_CLIENT_ID"
+    client_secret: "GOOGLE_AUTH_CLIENT_SECRET"
   mini_graphite:
     mock_mode: true
     debug_mode:
@@ -22,8 +22,8 @@ development:
   host: railsskeleton.com.pizza
   admin_email: it@railsskeleton.com
   google_auth:
-    client_id: "193465454284-apigmm255ti8n2rb9ov2obtir6s2cdin.apps.googleusercontent.com"
-    client_secret: "<%= ENV.fetch('SECRET_GOOGLE_AUTH_CLIENT_SECRET') %>"
+    client_id: "<%= ENV.fetch('GOOGLE_AUTH_CLIENT_ID') %>"
+    client_secret: "<%= ENV.fetch('GOOGLE_AUTH_CLIENT_SECRET') %>"
   mini_graphite:
     mock_mode: true
     debug_mode: true
@@ -31,16 +31,16 @@ development:
     enabled: false
   api:
     admin_token:
-      - "<%= ENV.fetch('SECRET_API_ADMIN_TOKEN') %>"
+      - "<%= ENV.fetch('API_ADMIN_TOKEN') %>"
     token:
-      - "<%= ENV.fetch('SECRET_APP_TOKEN') %>"
+      - "<%= ENV.fetch('APP_TOKEN') %>"
 
 staging:
   host: staging.railsskeleton.com
   admin_email: it@railsskeleton.com
   google_auth:
-    client_id: "193465454284-apigmm255ti8n2rb9ov2obtir6s2cdin.apps.googleusercontent.com"
-    client_secret: "<%= ENV.fetch('SECRET_GOOGLE_AUTH_CLIENT_SECRET') %>"
+    client_id: "<%= ENV.fetch('GOOGLE_AUTH_CLIENT_ID') %>"
+    client_secret: "<%= ENV.fetch('GOOGLE_AUTH_CLIENT_SECRET') %>"
   mini_graphite:
     graphite_host: 10.0.128.44
     graphite_port: 2003
@@ -50,16 +50,16 @@ staging:
     debug_mode: true
   api:
     admin_token:
-      - "<%= ENV.fetch('SECRET_API_ADMIN_TOKEN') %>"
+      - "<%= ENV.fetch('API_ADMIN_TOKEN') %>"
     token:
-      - "<%= ENV.fetch('SECRET_APP_TOKEN') %>"
+      - "<%= ENV.fetch('APP_TOKEN') %>"
 
 production:
   host: railsskeleton.com
   admin_email: it@railsskeleton.com
   google_auth:
-    client_id: "193465454284-apigmm255ti8n2rb9ov2obtir6s2cdin.apps.googleusercontent.com"
-    client_secret: "<%= ENV.fetch('SECRET_GOOGLE_AUTH_CLIENT_SECRET') %>"
+    client_id: "<%= ENV.fetch('GOOGLE_AUTH_CLIENT_ID') %>"
+    client_secret: "<%= ENV.fetch('GOOGLE_AUTH_CLIENT_SECRET') %>"
   mini_graphite:
     graphite_host: 10.0.0.44
     graphite_port: 2003
@@ -69,6 +69,6 @@ production:
     debug_mode: false
   api:
     admin_token:
-      - "<%= ENV.fetch('SECRET_API_ADMIN_TOKEN') %>"
+      - "<%= ENV.fetch('API_ADMIN_TOKEN') %>"
     token:
-      - "<%= ENV.fetch('SECRET_APP_TOKEN') %>"
+      - "<%= ENV.fetch('APP_TOKEN') %>"

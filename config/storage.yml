@@ -8,7 +8,7 @@ local:
 
 amazon:
   service: S3
-  access_key_id: <%= ENV.fetch("SECRET_AWS_S3_ACCESS_KEY_ID") %>
-  secret_access_key: <%= ENV.fetch("SECRET_AWS_S3_SECRET_ACCESS_KEY") %>
+  access_key_id: <%= ENV.fetch("AWS_S3_ACCESS_KEY_ID") %>
+  secret_access_key: <%= ENV.fetch("AWS_S3_SECRET_ACCESS_KEY") %>
   region: "eu-west-1"
   bucket: "railsskeleton-assets-<%= Rails.env %>"

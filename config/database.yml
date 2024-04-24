@@ -3,7 +3,7 @@ default: &default
   encoding: utf8mb4
   collation: utf8mb4_bin
   username: root
-  password: <%= ENV.fetch('SECRET_RAILS_DB_PASSWORD') %>
+  password: <%= ENV.fetch('RAILS_DB_PASSWORD') %>
   host: 127.0.0.1
   port: 3306
 
