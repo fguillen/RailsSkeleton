@@ -112,8 +112,9 @@ Basically:
 brew install puma/puma/puma-dev
 sudo puma-dev -setup
 puma-dev -install -d pizza
-puma-dev link -n domain.com [path]
-open domain.com.pizza
+cd [project/path]
+puma-dev link -n railsskeleton.com
+open railsskeleton.com.pizza
 ```
 
 To restart puma-dev:
