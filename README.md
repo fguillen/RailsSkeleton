@@ -123,6 +123,12 @@ To restart puma-dev:
 touch tmp/restart.txt
 ```
 
+Logs are in:
+
+```
+~/Library/Logs/puma-dev.log
+```
+
 
 # Production configuration
 
