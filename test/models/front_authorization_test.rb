@@ -26,4 +26,19 @@ class FrontAuthorizationTest < ActiveSupport::TestCase
     assert_equal("NAME", front_user.name)
     assert_equal("email@example.com", front_user.email)
   end
+
+  def test_on_create_initialize_uid_and_provider
+    omniauth_data = {
+      uid: "UID",
+      provider: "PROVIDER"
+    }
+
+    front_user = FactoryBot.create(:front_user)
+
+    front_authorization = FrontAuthorization.create!(front_user: front_user, omniauth_data: omniauth_data)
+
+    assert_equal(front_user, front_authorization.front_user)
+    assert_equal("UID", front_authorization.uid)
+    assert_equal("PROVIDER", front_authorization.provider)
+  end
 end

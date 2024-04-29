@@ -2,6 +2,8 @@ class Front::FrontAuthorizationsController < Front::BaseController
   def create
     omniauth_data = request.env["omniauth.auth"] # Google response with user data
     omniauth_params = request.env["omniauth.params"]
+    omniauth_params = request.env["omniauth.params"]
+
     authorization = FrontAuthorization.find_from_omniauth_data(omniauth_data) # Look for a previous authorization
 
     if authorization # User was already authenticated with Google, log the user in
@@ -12,14 +14,14 @@ class Front::FrontAuthorizationsController < Front::BaseController
       front_user = FrontUser.find_by_email omniauth_data[:info][:email]
 
       if front_user # FrontUser with Google email found, create authentication record and log the user in
-        front_user.authorizations.create({ provider: omniauth_data[:provider], uid: omniauth_data[:uid] })
+        FrontAuthorization.create(front_user: front_user, omniauth_data: omniauth_data, omniauth_params: omniauth_params)
         FrontSession.create(front_user, true)
         flash[:notice] = "Welcome back #{front_user.name}"
         redirect_back_or_default front_root_path
       else
         if omniauth_params && omniauth_params["sign_up"] # It is a Sign up
           front_user = FrontAuthorization.create_user_from_omniauth_data(omniauth_data)
-          front_user.authorizations.create({ provider: omniauth_data[:provider], uid: omniauth_data[:uid] })
+          FrontAuthorization.create(front_user: front_user, omniauth_data: omniauth_data, omniauth_params: omniauth_params)
           FrontSession.create(front_user, true)
           flash[:notice] = "Welcome #{front_user.name}, you have been registered"
           redirect_to front_root_path
