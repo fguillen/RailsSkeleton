@@ -260,8 +260,6 @@ Check that the _region_ is properly set in `storage.yml` config file
 
 ### Configure SSL certificates
 
-#### Installing SSL with Letsencrypt
-
 Follow instructions here: https://pentacent.medium.com/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71
 
 The script is already there it should work. Configure variables `domains`, `email`, and `staging`:
@@ -277,9 +275,17 @@ repo> mv /data/certbot /tmp/
 repo> ./init-letsencrypt.sh
 ```
 
+#### To set up for testing and development
 
+If you want to `docker-compose up` in your local machine. You can set self-signed cert. It will make the browser complain, but at least it will work:
 
-
+```
+mkdir -p data/certbot/conf/live/app.playcocola.com/
+openssl req -x509 -nodes -newkey rsa:4096 -days 36500\
+    -keyout 'data/certbot/conf/live/app.playcocola.com/privkey.pem' \
+    -out 'data/certbot/conf/live/app.playcocola.com/fullchain.pem' \
+    -subj '/CN=localhost'
+```
 
 ### Install server basics
 
