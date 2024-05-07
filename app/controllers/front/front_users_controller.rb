@@ -12,7 +12,8 @@ class Front::FrontUsersController < Front::BaseController
 
   def create
     @front_user = FrontUser.new(front_user_params)
-    if @front_user.save
+
+    if valid_captcha?(model: @front_user) && @front_user.save
       redirect_to [:front, @front_user], notice: t("controllers.front_users.create.success")
     else
       flash.now[:alert] = t("controllers.front_users.create.error")

@@ -35,3 +35,5 @@ rerun.txt
 # letsencrypt stuff
 /data/certbot
 /public/.well-known
+
+/config/master.key

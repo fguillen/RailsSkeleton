@@ -17,6 +17,9 @@ test:
     token:
       - TEST_TOKEN_1
       - TEST_TOKEN_2
+  captcha:
+    site_key: "SITE_KEY"
+    secret_key: "SECRET_KEY"
 
 development:
   host: railsskeleton.com.pizza
@@ -34,6 +37,9 @@ development:
       - "<%= ENV.fetch('API_ADMIN_TOKEN') %>"
     token:
       - "<%= ENV.fetch('APP_TOKEN') %>"
+  captcha:
+    site_key: "<%= ENV.fetch('CAPTCHA_SITE_KEY') %>"
+    secret_key: "<%= ENV.fetch('CAPTCHA_SECRET_KEY') %>"
 
 staging:
   host: staging.railsskeleton.com
@@ -53,6 +59,9 @@ staging:
       - "<%= ENV.fetch('API_ADMIN_TOKEN') %>"
     token:
       - "<%= ENV.fetch('APP_TOKEN') %>"
+  captcha:
+    site_key: "<%= ENV.fetch('CAPTCHA_SITE_KEY') %>"
+    secret_key: "<%= ENV.fetch('CAPTCHA_SECRET_KEY') %>"
 
 production:
   host: railsskeleton.com
@@ -72,3 +81,6 @@ production:
       - "<%= ENV.fetch('API_ADMIN_TOKEN') %>"
     token:
       - "<%= ENV.fetch('APP_TOKEN') %>"
+  captcha:
+    site_key: "<%= ENV.fetch('CAPTCHA_SITE_KEY') %>"
+    secret_key: "<%= ENV.fetch('CAPTCHA_SECRET_KEY') %>"

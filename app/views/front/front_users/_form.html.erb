@@ -35,6 +35,13 @@
     </div>
   </div>
 
+
+  <div class="row mb-3">
+    <div class="col-sm-10 offset-sm-2">
+      <%= captcha_tags action: "sign_up" %>
+    </div>
+  </div>
+
   <% if !NotificationsRoles.for_role("front").blank? %>
     <legend><%= t("views.notifications.edit.title") %></legend>
     <hr>

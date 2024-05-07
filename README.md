@@ -25,6 +25,7 @@ the basis for a new Rails application
 - integration with SendGrid
 - integration with Rollbar
 - Upload images (Storage/S3)
+- turnstile-captcha (Recaptcha)
 
 
 ### Creating a new App

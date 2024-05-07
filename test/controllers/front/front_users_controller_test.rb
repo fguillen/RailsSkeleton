@@ -21,7 +21,27 @@ class Front::FrontUsersControllerTest < ActionController::TestCase
   end
 
   def test_create_invalid
+    @controller.expects(:valid_captcha?).returns(true)
     FrontUser.any_instance.stubs(:valid?).returns(false)
+
+    post(
+      :create,
+      params: {
+        front_user: {
+          name: "Front Wadus",
+          email: "email@email.com",
+          password: "Password!",
+          password_confirmation: "Password!"
+        }
+      }
+    )
+    assert_template "new"
+    assert_not_nil(flash[:alert])
+  end
+
+  def test_create_invalid_captcha
+    @controller.expects(:valid_captcha?).returns(false)
+
     post(
       :create,
       params: {
@@ -38,6 +58,8 @@ class Front::FrontUsersControllerTest < ActionController::TestCase
   end
 
   def test_create_valid
+    @controller.expects(:valid_captcha?).returns(true)
+
     post(
       :create,
       params: {
