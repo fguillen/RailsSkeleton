@@ -10,6 +10,7 @@ end
 #   This will make future mergings MUCH easier. <3
 gem "active_storage_validations"
 gem "acts-as-taggable-on"
+gem "amazing_print"
 gem "authlogic"
 gem "aws-sdk-s3", require: false
 gem "bluecloth"
@@ -28,6 +29,7 @@ gem "oj"
 gem "omniauth-google-oauth2"
 gem "omniauth-rails_csrf_protection", "~> 1.0"
 gem "puma"
+gem "rails_semantic_logger"
 gem "rails", "~> 7.0"
 gem "redcarpet"
 gem "rexml"
@@ -63,7 +65,6 @@ group :development, :test do
 end
 
 group :development do
-  gem "awesome_print"
   gem "brakeman"
   gem "bundle-audit"
   gem "guard"

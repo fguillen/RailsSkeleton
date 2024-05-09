@@ -29,5 +29,9 @@ module RailsSkeleton
     end
 
     config.active_storage.variant_processor = :mini_magick
+
+    config.log_tags = {
+      request_id: :uuid
+    }
   end
 end

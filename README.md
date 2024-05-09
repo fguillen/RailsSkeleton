@@ -26,6 +26,11 @@ the basis for a new Rails application
 - integration with Rollbar
 - Upload images (Storage/S3)
 - turnstile-captcha (Recaptcha)
+- Semantic logging
+- Oauth2 (Google already integrated)
+- Captcha
+- Opentelemetry
+
 
 
 ### Creating a new App
