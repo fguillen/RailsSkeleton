@@ -1,4 +1,4 @@
 - Add has_many form: https://learn.co/lessons/has-many-through-forms-rails
 - Implement "login as (front user)" in admin menu
 - Posts controller only allow the creator to access to its own Posts
-- Login "Remember me" functionality
+- move Controller Tests to ActionDispatch::IntegrationTest (it is done in front_articles_controller_test)

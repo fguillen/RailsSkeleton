@@ -1,8 +1,8 @@
 class AdminAuthorization < ApplicationRecord
   belongs_to :admin_user
 
-  serialize :omniauth_data, JSON
-  serialize :omniauth_params, JSON
+  serialize :omniauth_data, coder: JSON
+  serialize :omniauth_params, coder: JSON
 
   validates_presence_of :admin_user_id, :uid, :provider
   validates_uniqueness_of :uid, scope: :provider

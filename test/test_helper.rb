@@ -35,7 +35,7 @@ class ActiveSupport::TestCase
 
   def setup_front_user
     @front_user = FactoryBot.create(:front_user, uuid: "FRONT_USER_UUID", created_at: "2000-01-01")
-    @controller.stubs(:current_front_user).returns(@front_user)
+    Front::BaseController.any_instance.stubs(:current_front_user).returns(@front_user)
   end
 
   def assert_ids(array_1, array_2, _message = nil)

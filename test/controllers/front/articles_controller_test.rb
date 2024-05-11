@@ -1,6 +1,6 @@
 require "test_helper"
 
-class Front::ArticlesControllerTest < ActionController::TestCase
+class Front::ArticlesControllerTest < ActionDispatch::IntegrationTest
   def setup
     setup_front_user
   end
@@ -10,7 +10,7 @@ class Front::ArticlesControllerTest < ActionController::TestCase
     article_2 = FactoryBot.create(:article, created_at: "2020-04-26", front_user: @front_user)
     article_3 = FactoryBot.create(:article, created_at: "2020-04-27")
 
-    get :index
+    get front_articles_path
 
     assert_template "front/articles/index"
     assert_primary_keys([article_2, article_1], assigns(:articles))
@@ -19,14 +19,14 @@ class Front::ArticlesControllerTest < ActionController::TestCase
   def test_show
     article = FactoryBot.create(:article, front_user: @front_user)
 
-    get :show, params: { id: article }
+    get front_article_path(article)
 
     assert_template "front/articles/show"
     assert_equal(article, assigns(:article))
   end
 
   def test_new
-    get :new
+    get new_front_article_path
     assert_template "front/articles/new"
     assert_not_nil(assigns(:article))
   end
@@ -37,7 +37,7 @@ class Front::ArticlesControllerTest < ActionController::TestCase
     Article.any_instance.stubs(:valid?).returns(false)
 
     post(
-      :create,
+      front_articles_path,
       params: {
         article: {
           front_user_id: front_user_1,
@@ -52,7 +52,7 @@ class Front::ArticlesControllerTest < ActionController::TestCase
 
   def test_create_valid
     post(
-      :create,
+      front_articles_path,
       params: {
         article: {
           title: "The Title Wadus",
@@ -76,7 +76,7 @@ class Front::ArticlesControllerTest < ActionController::TestCase
   def test_edit
     article = FactoryBot.create(:article, front_user: @front_user)
 
-    get :edit, params: { id: article }
+    get edit_front_article_path(article)
 
     assert_template "edit"
     assert_equal(article, assigns(:article))
@@ -88,9 +88,8 @@ class Front::ArticlesControllerTest < ActionController::TestCase
     Article.any_instance.stubs(:valid?).returns(false)
 
     put(
-      :update,
+      front_article_path(article),
       params: {
-        id: article,
         article: {
           title: "The New Title"
         }
@@ -105,9 +104,8 @@ class Front::ArticlesControllerTest < ActionController::TestCase
     article = FactoryBot.create(:article, front_user: @front_user)
 
     put(
-      :update,
+      front_article_path(article),
       params: {
-        id: article,
         article: {
           title: "The New Title"
         }
@@ -124,7 +122,7 @@ class Front::ArticlesControllerTest < ActionController::TestCase
   def test_destroy
     article = FactoryBot.create(:article, front_user: @front_user)
 
-    delete :destroy, params: { id: article }
+    delete front_article_path(article)
 
     assert_redirected_to :front_articles
     assert_not_nil(flash[:notice])
@@ -136,12 +134,7 @@ class Front::ArticlesControllerTest < ActionController::TestCase
     front_user = FactoryBot.create(:front_user)
     article = FactoryBot.create(:article, front_user: front_user)
 
-    get(
-      :edit,
-      params: {
-        id: article
-      }
-    )
+    get edit_front_article_path(article)
 
     assert_redirected_to [:front, article]
     assert_not_nil(flash[:alert])
@@ -152,9 +145,8 @@ class Front::ArticlesControllerTest < ActionController::TestCase
     article = FactoryBot.create(:article, front_user: front_user)
 
     put(
-      :update,
+      front_article_path(article),
       params: {
-        id: article,
         article: {
           message: "The Wadus Message New"
         }
@@ -169,12 +161,7 @@ class Front::ArticlesControllerTest < ActionController::TestCase
     front_user = FactoryBot.create(:front_user)
     article = FactoryBot.create(:article, front_user: front_user)
 
-    delete(
-      :destroy,
-      params: {
-        id: article
-      }
-    )
+    delete front_article_path(article)
 
     assert_redirected_to [:front, article]
     assert_not_nil(flash[:alert])
@@ -184,7 +171,7 @@ class Front::ArticlesControllerTest < ActionController::TestCase
     Notifications::OnNewArticleNotificationService.expects(:perform)
 
     post(
-      :create,
+      front_articles_path,
       params: {
         article: {
           title: "The Title Wadus",
