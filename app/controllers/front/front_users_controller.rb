@@ -13,7 +13,13 @@ class Front::FrontUsersController < Front::BaseController
   def create
     @front_user = FrontUser.new(front_user_params)
 
-    if valid_captcha?(model: @front_user) && @front_user.save
+    captcha = valid_captcha?(model: @front_user)
+
+    if !captcha
+      HiPrometheus::Metrics.counter_increment(:captcha_fail)
+    end
+
+    if captcha && @front_user.save
       redirect_to [:front, @front_user], notice: t("controllers.front_users.create.success")
     else
       flash.now[:alert] = t("controllers.front_users.create.error")

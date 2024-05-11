@@ -19,6 +19,7 @@ class Front::ArticlesController < Front::BaseController
 
     if @article.save
       Notifications::OnNewArticleNotificationService.perform(@article)
+      HiPrometheus::Metrics.counter_increment(:num_articles, { user: current_front_user.id })
       redirect_to [:front, @article], notice: t("controllers.articles.create.success")
     else
       flash.now[:alert] = t("controllers.articles.create.error")

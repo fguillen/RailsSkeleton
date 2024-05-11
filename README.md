@@ -30,6 +30,15 @@ the basis for a new Rails application
 - Oauth2 (Google already integrated)
 - Captcha
 - Opentelemetry
+- PrometheusClient
+
+#### Telemetry architecture
+
+It is based on this project:
+
+- https://github.com/michal-kazmierczak/opentelemetry-rails-example
+- https://mkaz.me/blog/2023/collecting-metrics-from-multi-process-web-servers-the-ruby-case/
+
 
 
 

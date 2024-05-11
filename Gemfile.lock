@@ -301,6 +301,7 @@ GEM
     parser (3.1.1.0)
       ast (~> 2.4.1)
     power_assert (2.0.1)
+    prometheus-client (4.2.2)
     pry (0.14.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -495,6 +496,7 @@ DEPENDENCIES
   oj
   omniauth-google-oauth2
   omniauth-rails_csrf_protection (~> 1.0)
+  prometheus-client
   puma
   rails (~> 7.0)
   rails-controller-testing

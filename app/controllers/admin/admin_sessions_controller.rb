@@ -10,6 +10,7 @@ class Admin::AdminSessionsController < Admin::BaseController
 
     if @admin_session.save
       flash[:notice] = t("controllers.admin_sessions.authenticate.success")
+      HiPrometheus::Metrics.counter_increment(:num_logins, { role: "admin", user: @admin_session.record.id })
       redirect_back_or_default admin_root_path
     else
       flash[:alert] = t("controllers.admin_sessions.authenticate.error")
