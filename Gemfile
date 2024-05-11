@@ -49,7 +49,7 @@ gem "virtus"
 
 
 group :test do
-  gem "database_cleaner"
+  # gem "database_cleaner"
   gem "factory_bot"
   gem "minitest", "~> 5.15.0"
   gem "mocha"
@@ -59,18 +59,12 @@ end
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
-  gem "capybara"
-  gem "selenium-webdriver"
   gem "timecop"
-  gem "webdrivers"
 end
 
 group :development do
   gem "brakeman"
   gem "bundle-audit"
-  gem "guard"
-  gem "guard-minitest"
-  gem "listen"
   gem "spring"
   gem "spring-watcher-listen"
   gem "web-console"
