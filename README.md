@@ -31,6 +31,7 @@ the basis for a new Rails application
 - Captcha
 - Opentelemetry
 - PrometheusClient
+- Grafana promtail (to send logs to Loki server)
 
 #### Telemetry architecture
 
@@ -142,6 +143,26 @@ Logs are in:
 
 ```
 ~/Library/Logs/puma-dev.log
+```
+
+To stop puma-dev permantely
+```
+puma-dev -uninstall
+```
+
+## Set dummy certs for Docker web container
+
+```
+BASE_PATH="./data/certbot"
+CERT_PATH="/etc/letsencrypt/live/railsskeleton.com"
+mkdir -p $BASE_PATH/conf/live/railsskeleton.com
+curl -s https://raw.githubusercontent.com/certbot/certbot/master/certbot-nginx/certbot_nginx/_internal/tls_configs/options-ssl-nginx.conf > "$BASE_PATH/conf/options-ssl-nginx.conf"
+  curl -s https://raw.githubusercontent.com/certbot/certbot/master/certbot/certbot/ssl-dhparams.pem > "$BASE_PATH/conf/ssl-dhparams.pem"
+docker-compose run --rm --entrypoint "\
+  openssl req -x509 -nodes -newkey rsa:4096 -days 1\
+    -keyout '$CERT_PATH/privkey.pem' \
+    -out '$CERT_PATH/fullchain.pem' \
+    -subj '/CN=localhost'" certbot
 ```
 
 

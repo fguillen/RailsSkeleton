@@ -1,4 +1,4 @@
-# From: https://gist.github.com/satendra02/1b335b06bfc5921df486f26bd98e0e89
+# Originally inspired on: https://gist.github.com/satendra02/1b335b06bfc5921df486f26bd98e0e89
 
 version: '3'
 services:
@@ -53,3 +53,10 @@ services:
     volumes:
       - ./data/certbot/conf:/etc/letsencrypt
       - ./data/certbot/www:/var/www/certbot
+
+  promtail:
+    image: grafana/promtail:3.0.0
+    volumes:
+      - ./docker/promtail/config.yml:/etc/promtail/config.yml
+      - ./log/:/var/log/rails/:ro
+    command: -config.file=/etc/promtail/config.yml

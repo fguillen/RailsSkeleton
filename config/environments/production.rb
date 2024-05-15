@@ -25,4 +25,6 @@ Rails.application.configure do
   config.action_mailer.sendgrid_actionmailer_settings = {
     api_key: ENV["SENDGRID_API_KEY"],
   }
+
+  config.rails_semantic_logger.format = :logfmt
 end
