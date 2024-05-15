@@ -20,6 +20,8 @@ test:
   captcha:
     site_key: "SITE_KEY"
     secret_key: "SECRET_KEY"
+  opentelemetry:
+    traces_exporter: "none"
 
 development:
   host: railsskeleton.com.pizza
@@ -40,6 +42,8 @@ development:
   captcha:
     site_key: "<%= ENV.fetch('CAPTCHA_SITE_KEY') %>"
     secret_key: "<%= ENV.fetch('CAPTCHA_SECRET_KEY') %>"
+  opentelemetry:
+    traces_exporter: "none" # console
 
 staging:
   host: staging.railsskeleton.com
@@ -62,6 +66,9 @@ staging:
   captcha:
     site_key: "<%= ENV.fetch('CAPTCHA_SITE_KEY') %>"
     secret_key: "<%= ENV.fetch('CAPTCHA_SECRET_KEY') %>"
+  opentelemetry:
+    traces_exporter: "otlp"
+    otlp_endpoint: "http://otelcollector.zebra.town:14318"
 
 production:
   host: railsskeleton.com
@@ -84,3 +91,6 @@ production:
   captcha:
     site_key: "<%= ENV.fetch('CAPTCHA_SITE_KEY') %>"
     secret_key: "<%= ENV.fetch('CAPTCHA_SECRET_KEY') %>"
+  opentelemetry:
+    traces_exporter: "otlp"
+    otlp_endpoint: "http://otelcollector.zebra.town:14318"
