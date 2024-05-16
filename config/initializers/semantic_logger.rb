@@ -1,5 +1,4 @@
 # From here: https://github.com/michal-kazmierczak/opentelemetry-rails-example/blob/main/rails_app/config/initializers/semantic_logger.rb
-# As I don't understand the use, I decided to comment it out
 
 if !defined?(Rails::Console)
   # Rails.application.config.semantic_logger.add_appender(
