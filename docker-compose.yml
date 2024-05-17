@@ -60,3 +60,21 @@ services:
       - ./docker/promtail/config.yml:/etc/promtail/config.yml
       - ./log/:/var/log/rails/:ro
     command: -config.file=/etc/promtail/config.yml
+
+  # From: https://stackoverflow.com/a/66060895/316700
+  node_exporter:
+    image: prom/node-exporter:v1.8.0
+    network_mode: host
+    pid: host
+    restart: unless-stopped
+    volumes:
+      # Remember to use read-only bind mounts.
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro,rslave
+    command:
+      - "--web.listen-address=:9100"
+      - "--path.procfs=/host/proc"
+      - "--path.sysfs=/host/sys"
+      - "--path.rootfs=/rootfs" # Necessary for collecting host filesystem metrics.
+      - "--collector.filesystem.ignored-mount-points='^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)'"
