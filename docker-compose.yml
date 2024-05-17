@@ -32,6 +32,7 @@ services:
         BASIC_AUTH_PASSWORD: ${BASIC_AUTH_PASSWORD}
     depends_on:
       - app
+      - node_exporter
     ports:
       - 80:80
       - 443:443
@@ -67,7 +68,7 @@ services:
   # From: https://stackoverflow.com/a/66060895/316700
   node_exporter:
     image: prom/node-exporter:v1.8.0
-    network_mode: host
+    # network_mode: host # If this is activate we can not protect it with basic auth in nginx
     pid: host
     restart: unless-stopped
     volumes:
