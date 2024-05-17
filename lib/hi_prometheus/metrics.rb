@@ -3,6 +3,9 @@ require "prometheus/client"
 ## Usage:
 # HiPrometheus::Metrics.counter_increment(:num_logins, { role: "admin", user: user.id })
 # HiPrometheus::Metrics.gauge_set(:article_sold_euros, { payment_method: "cash" }, 10.5)
+# HiPrometheus::Metrics.benchmark_wrapper(:calculate_something, { label_name: "label_value" }, :calculation) do
+#   Services::CalculateSomething.perform #=> ().calculation() => will be set in the label :result
+# end
 #
 class HiPrometheus::Metrics
   def self.instance
@@ -40,10 +43,34 @@ class HiPrometheus::Metrics
     gauge(metric, labels).increment(by: amount, labels: labels)
   end
 
+  def self.benchmark_wrapper(metric, labels = {}, result_send_method = nil)
+    log("benchmark_wrapper(#{metric}, #{labels}, #{result_send_method})")
+    counter_increment(:"#{metric}_counter", labels)
+
+    result = nil
+
+    time =
+      Benchmark.realtime do
+        result = yield
+      end
+
+    if !result_send_method.nil?
+      labels[:result] = result.send(result_send_method)
+    end
+
+    gauge_set(:"#{metric}_duration", labels, time * 1000)
+
+    result # return the block call return
+  end
+
   private
 
-  def log(message)
+  def self.log(message)
     Rails.logger.debug("[HiPrometheus::Metrics] #{message}")
+  end
+
+  def log(message)
+    HiPrometheus::Metrics.log(message)
   end
 
   def counter(metric, labels)

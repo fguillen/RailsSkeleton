@@ -64,4 +64,18 @@ class HiPrometheus::MetricsTest < Minitest::Test
 
     assert_equal("Metric 'my_gauge_3' exists but is not Counter (Prometheus::Client::Gauge)", exception.message)
   end
+
+  def test_benchmark_wrapper
+    result = OpenStruct.new(method_name: "method_result")
+
+    HiPrometheus::Metrics.expects(:counter_increment).with(:metric_name_counter, { label_name: "label_value" })
+    HiPrometheus::Metrics.expects(:gauge_set).with(:metric_name_duration, { label_name: "label_value", result: "method_result" }, is_a(Numeric))
+
+    block_return =
+      HiPrometheus::Metrics.benchmark_wrapper(:metric_name, { label_name: "label_value" }, :method_name) do
+        result
+      end
+
+    assert_equal(result, block_return)
+  end
 end
