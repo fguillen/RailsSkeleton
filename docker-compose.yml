@@ -27,6 +27,9 @@ services:
     build:
       context: .
       dockerfile: ./docker/web/DockerFile
+      args:
+        BASIC_AUTH_USERNAME: ${BASIC_AUTH_USERNAME}
+        BASIC_AUTH_PASSWORD: ${BASIC_AUTH_PASSWORD}
     depends_on:
       - app
     ports:
