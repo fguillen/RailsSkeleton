@@ -26,18 +26,25 @@ class HiPrometheus::Metrics
   end
 
   def counter_increment(metric, labels = {}, amount = 1)
+    log("counter_increment(#{metric}, #{labels}, #{amount})")
     counter(metric, labels).increment(by: amount, labels: labels)
   end
 
   def gauge_set(metric, labels = {}, value = 1)
+    log("gauge_set(#{metric}, #{labels}, #{value})")
     gauge(metric, labels).set(value, labels: labels)
   end
 
   def gauge_increment(metric, labels = {}, amount = 1)
+    log("gauge_increment(#{metric}, #{labels}, #{amount})")
     gauge(metric, labels).increment(by: amount, labels: labels)
   end
 
   private
+
+  def log(message)
+    Rails.logger.debug("[HiPrometheus::Metrics] #{message}")
+  end
 
   def counter(metric, labels)
     _counter = registry.get(metric)

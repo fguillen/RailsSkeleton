@@ -10,7 +10,7 @@ clients:
   - url: http://loki.zebra.town:3100/loki/api/v1/push
 
 scrape_configs:
-  - job_name: rails
+  - job_name: rails_logs
     static_configs:
       - targets:
           - localhost
