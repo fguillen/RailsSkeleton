@@ -7,7 +7,7 @@ the basis for a new Rails application
 
 ### Includes
 
-- Rails 7.0
+- Rails 7.1
 - admin/front/guest scopes
 - login in front and admin (authlogic)
 - table index based on UUID field

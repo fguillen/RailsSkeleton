@@ -10,7 +10,7 @@ class FrontUser < ApplicationRecord
     config.session_class = FrontSession
   end
 
-  serialize :notifications_active, type: Array
+  serialize :notifications_active, type: Array, coder: YAML
 
   has_many :authorizations, class_name: "FrontAuthorization", dependent: :destroy
 

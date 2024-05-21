@@ -27,7 +27,7 @@ ENV RACK_ENV="production"
 RUN mkdir -p tmp/pids
 RUN mkdir -p tmp/sockets
 
-# Adding gems
+# Adding gemsassets/config/manifest.js:2
 COPY Gemfile Gemfile
 COPY Gemfile.lock Gemfile.lock
 

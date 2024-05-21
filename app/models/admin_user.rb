@@ -9,7 +9,7 @@ class AdminUser < ApplicationRecord
     config.session_class = AdminSession
   end
 
-  serialize :notifications_active, type: Array
+  serialize :notifications_active, type: Array, coder: YAML
 
   has_many :authorizations, dependent: :destroy, class_name: "AdminAuthorization"
 
