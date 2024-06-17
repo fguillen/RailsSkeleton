@@ -5,7 +5,7 @@ module HasUuid
     before_validation :initialize_uuid, on: :create
 
     def initialize_uuid
-      self.uuid ||= SecureRandom.uuid
+      self.uuid ||= ShortUUID.shorten(SecureRandom.uuid)
     end
   end
 end
