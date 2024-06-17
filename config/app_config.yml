@@ -3,7 +3,7 @@ test:
   host: railsskeleton.com.test
   admin_email: it@railsskeleton.com
   google_auth:
-    client_id: "GOOGLE_AUTH_CLIENT_ID"
+    client_id: "google_auth.client_id"
     client_secret: "GOOGLE_AUTH_CLIENT_SECRET"
   mini_graphite:
     mock_mode: true
@@ -27,8 +27,8 @@ development:
   host: railsskeleton.com.pizza
   admin_email: it@railsskeleton.com
   google_auth:
-    client_id: "<%= ENV.fetch('GOOGLE_AUTH_CLIENT_ID') %>"
-    client_secret: "<%= ENV.fetch('GOOGLE_AUTH_CLIENT_SECRET') %>"
+    client_id: "<%= Rails.application.credentials.google_auth.client_id %>"
+    client_secret: "<%= Rails.application.credentials.google_auth.client_secret %>"
   mini_graphite:
     mock_mode: true
     debug_mode: true
@@ -36,12 +36,12 @@ development:
     enabled: false
   api:
     admin_token:
-      - "<%= ENV.fetch('API_ADMIN_TOKEN') %>"
+      - "<%= Rails.application.credentials.api_admin_token %>"
     token:
-      - "<%= ENV.fetch('APP_TOKEN') %>"
+      - "<%= Rails.application.credentials.app_token %>"
   captcha:
-    site_key: "<%= ENV.fetch('CAPTCHA_SITE_KEY') %>"
-    secret_key: "<%= ENV.fetch('CAPTCHA_SECRET_KEY') %>"
+    site_key: "<%= Rails.application.credentials.captcha.site_key %>"
+    secret_key: "<%= Rails.application.credentials.captcha.secret_key %>"
   opentelemetry:
     traces_exporter: "none" # console
 
@@ -49,8 +49,8 @@ staging:
   host: staging.railsskeleton.com
   admin_email: it@railsskeleton.com
   google_auth:
-    client_id: "<%= ENV.fetch('GOOGLE_AUTH_CLIENT_ID') %>"
-    client_secret: "<%= ENV.fetch('GOOGLE_AUTH_CLIENT_SECRET') %>"
+    client_id: "<%= Rails.application.credentials.google_auth.client_id %>"
+    client_secret: "<%= Rails.application.credentials.google_auth.client_secret %>"
   mini_graphite:
     graphite_host: 10.0.128.44
     graphite_port: 2003
@@ -60,22 +60,22 @@ staging:
     debug_mode: true
   api:
     admin_token:
-      - "<%= ENV.fetch('API_ADMIN_TOKEN') %>"
+      - "<%= Rails.application.credentials.api_admin_token %>"
     token:
-      - "<%= ENV.fetch('APP_TOKEN') %>"
+      - "<%= Rails.application.credentials.app_token %>"
   captcha:
-    site_key: "<%= ENV.fetch('CAPTCHA_SITE_KEY') %>"
-    secret_key: "<%= ENV.fetch('CAPTCHA_SECRET_KEY') %>"
+    site_key: "<%= Rails.application.credentials.captcha.site_key %>"
+    secret_key: "<%= Rails.application.credentials.captcha.secret_key %>"
   opentelemetry:
     traces_exporter: "otlp"
-    otlp_endpoint: "http://otelcollector.zebra.town:14318"
+    otlp_endpoint: "http://otelcollector.railsskeleton.com:14318"
 
 production:
   host: railsskeleton.com
   admin_email: it@railsskeleton.com
   google_auth:
-    client_id: "<%= ENV.fetch('GOOGLE_AUTH_CLIENT_ID') %>"
-    client_secret: "<%= ENV.fetch('GOOGLE_AUTH_CLIENT_SECRET') %>"
+    client_id: "<%= Rails.application.credentials.google_auth.client_id %>"
+    client_secret: "<%= Rails.application.credentials.google_auth.client_secret %>"
   mini_graphite:
     graphite_host: 10.0.0.44
     graphite_port: 2003
@@ -85,12 +85,12 @@ production:
     debug_mode: false
   api:
     admin_token:
-      - "<%= ENV.fetch('API_ADMIN_TOKEN') %>"
+      - "<%= Rails.application.credentials.api_admin_token %>"
     token:
-      - "<%= ENV.fetch('APP_TOKEN') %>"
+      - "<%= Rails.application.credentials.app_token %>"
   captcha:
-    site_key: "<%= ENV.fetch('CAPTCHA_SITE_KEY') %>"
-    secret_key: "<%= ENV.fetch('CAPTCHA_SECRET_KEY') %>"
+    site_key: "<%= Rails.application.credentials.captcha.site_key %>"
+    secret_key: "<%= Rails.application.credentials.captcha.secret_key %>"
   opentelemetry:
     traces_exporter: "otlp"
-    otlp_endpoint: "http://otelcollector.zebra.town:14318"
+    otlp_endpoint: "http://otelcollector.railsskeleton.com:14318"

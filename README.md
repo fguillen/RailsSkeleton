@@ -57,10 +57,13 @@ Clone and renaming:
     git add .
     git commit -m "Renaming Project"
 
+Set the credentials:
+
+    EDITOR="code --wait" rails credentials:edit
+
 Setting up App:
 
     bin/setup
-
 
 
 ### Adding something to the Skeleton

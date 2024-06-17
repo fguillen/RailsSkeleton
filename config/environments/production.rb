@@ -27,4 +27,6 @@ Rails.application.configure do
   }
 
   config.rails_semantic_logger.format = :logfmt
+
+  config.require_master_key = true
 end
