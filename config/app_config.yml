@@ -3,7 +3,7 @@ test:
   host: railsskeleton.com.test
   admin_email: it@railsskeleton.com
   google_auth:
-    client_id: "google_auth.client_id"
+    client_id: "GOOGLE_AUTH_CLIENT_ID"
     client_secret: "GOOGLE_AUTH_CLIENT_SECRET"
   mini_graphite:
     mock_mode: true

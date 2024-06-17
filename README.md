@@ -61,6 +61,8 @@ Set the credentials:
 
     EDITOR="code --wait" rails credentials:edit
 
+See the `config/credentials.example.yml`
+
 Setting up App:
 
     bin/setup
