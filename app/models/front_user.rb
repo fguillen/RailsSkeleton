@@ -4,6 +4,7 @@ class FrontUser < ApplicationRecord
 
   self.primary_key = :uuid
   include HasUuid
+  include DowncaseEmail
 
   acts_as_authentic do |config|
     config.crypto_provider = ::Authlogic::CryptoProviders::SCrypt

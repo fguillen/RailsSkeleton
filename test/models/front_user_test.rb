@@ -68,4 +68,12 @@ class FrontUserTest < ActiveSupport::TestCase
     refute front_user.errors[:notifications_active].empty?
   end
   ## Notifications :: END
+
+  def test_downcase_email
+    front_user = FactoryBot.build(:front_user, email: "005@EXample.com")
+    assert_equal("005@EXample.com", front_user.email)
+
+    front_user.save!
+    assert_equal("005@example.com", front_user.email)
+  end
 end
