@@ -23,6 +23,7 @@ RUN rm -rf /tmp/docker.nginx
 COPY docker/web/nginx.conf /tmp/docker.nginx
 
 # Create basic auth file
+# Adding basic auth to routes /node_exporter and /metrics
 RUN htpasswd -bc /etc/nginx/.htpasswd ${BASIC_AUTH_USERNAME} ${BASIC_AUTH_PASSWORD}
 
 # substitute variable references in the Nginx config template for real values from the environment

@@ -2,40 +2,45 @@
 set -e
 set -x
 
-apt-get update
-apt-get install git-core
+# SSH config
+read -p "SSH autohorized key: " ssh_authorized_key
+echo $ssh_authorized_key >> ~/.ssh/authorized_keys
+
+sudo apt-get update
+sudo apt-get install git-core
 
 # Install Docker
-# From here: https://docs.docker.com/install/linux/docker-ce/ubuntu/#set-up-the-repository
-sudo apt-get install \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    software-properties-common
+## From here: https://docs.docker.com/install/linux/docker-ce/ubuntu/#set-up-the-repository
 
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+## Uninstall not official packages
+for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
 
-sudo add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) \
-   stable"
+## Set up Docker's apt repository.
+### Add Docker's official GPG key:
+sudo apt-get install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
 
-apt-get install docker-ce
+### Add the repository to Apt sources:
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
 
-# Docker compose
-# From here: https://docs.docker.com/compose/install/
-sudo curl -L "https://github.com/docker/compose/releases/download/1.29.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-docker-compose --version
+##Install the Docker packages.
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # Download the App
-mkdir -p /var/apps
+sudo mkdir -p /var/apps
+sudo chown -R ubuntu:ubuntu /var/apps
 cd /var/apps
-git clone https://fguillen@github.com/fguillen/RailsSkeleton.git
+git clone https://fguillen@github.com/fguillen/DashboardChatbot.git
 
 # Start the App
-cd /var/apps/RailsSkeleton
-docker-compose build
-docker-compose up -d
-docker-compose exec app bundle exec rake db:create db:schema:load
-# docker-compose exec app bundle exec rake db:seed # Optional
+cd /var/apps/DashboardChatbot
+sudo docker-compose build
+sudo docker-compose up -d
+sudo docker-compose exec app bundle exec rake db:create db:schema:load
+# sudo docker-compose exec app bundle exec rake db:seed # Optional

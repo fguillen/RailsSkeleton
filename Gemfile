@@ -55,6 +55,7 @@ gem "strip_attributes"
 gem "style_palette"
 gem "turbo-rails"
 gem "turnstile-captcha", require: "turnstile" # Cloudflare Turnstile Captcha
+gem "tzinfo-data"
 gem "uglifier"
 gem "uuid"
 gem "virtus-relations"
