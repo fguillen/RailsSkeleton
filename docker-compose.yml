@@ -20,6 +20,7 @@ services:
     restart: always
     depends_on:
       - db
+      - redis
 
   web:
     build:
@@ -39,6 +40,13 @@ services:
       - ./data/certbot/conf:/etc/letsencrypt
       - ./data/certbot/www:/var/www/certbot
     restart: always
+
+  redis:
+    image: "redis:7-alpine"
+    ports:
+      - 6379
+    volumes:
+    - ./_data/redis:/var/lib/redis/data
 
   cron:
     build:
