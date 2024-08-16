@@ -29,4 +29,11 @@ Rails.application.configure do
   config.rails_semantic_logger.format = :logfmt
 
   config.require_master_key = true
+
+  # Cable config
+  config.action_cable.allowed_request_origins = [/http:\/\/*/, /https:\/\/*/]
+
+  config.hosts << "railsskeleton.com"
+  config.hosts << "localhost"
+  config.hosts << "upstream_app"
 end
