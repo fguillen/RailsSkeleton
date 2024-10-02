@@ -312,7 +312,7 @@ If failing check that the `nginx.conf` file has been copied properly into the Do
 If renovating:
 
 ```
-repo> mv /data/certbot /tmp/
+repo> mv ./data/certbot /tmp/
 repo> ./init-letsencrypt.sh
 ```
 
